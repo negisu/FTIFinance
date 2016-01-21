@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="659b2a28-46b9-4bbe-a001-0c8028af380d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="webSQL.xsd" MetadataType="Schema" ID="00bdf24d-f3e6-487e-8abe-f06197727b34" SourceId="1" SourceUrl="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc?xsd=xsd3" />
+    <MetadataFile FileName="webSQL1.xsd" MetadataType="Schema" ID="14e661ec-fb5a-4360-bcf8-75d54a268be0" SourceId="1" SourceUrl="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc?xsd=xsd0" />
+    <MetadataFile FileName="webSQL2.xsd" MetadataType="Schema" ID="60080cf5-9df5-4069-ad42-3bdf03880146" SourceId="1" SourceUrl="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc?xsd=xsd2" />
+    <MetadataFile FileName="SQLServices.wsdl" MetadataType="Wsdl" ID="94c21b29-4e5d-4551-adf7-329fc15cbc24" SourceId="1" SourceUrl="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc?wsdl" />
+    <MetadataFile FileName="webSQL.disco" MetadataType="Disco" ID="e864122e-3feb-480e-af88-a046107ca3eb" SourceId="1" SourceUrl="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc?disco" />
+    <MetadataFile FileName="webSQL3.xsd" MetadataType="Schema" ID="2fc4112d-b12e-4470-aa1c-1a6ebda41931" SourceId="1" SourceUrl="http://ftimember.off.fti.or.th/_layouts/iSQL/webSQL.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

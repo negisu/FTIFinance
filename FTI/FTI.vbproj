@@ -1,0 +1,2288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{354FE207-EEDC-427A-9175-C3EB4877A49D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>FTI.My.MyApplication</StartupObject>
+    <RootNamespace>FTI</RootNamespace>
+    <AssemblyName>FTI</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>C:\Users\yumem\Desktop\tempFINANCE\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>99</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>FTI.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>FTI.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>9EA500C7C05220EF09E4069915BAD3E0336416E4</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ERP_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logofti.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML">
+      <HintPath>..\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>tools\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel.4.5">
+      <HintPath>..\ExcelDataReader\Excel.4.5.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AliasAccount.vb" />
+    <Compile Include="CCBoxItem.vb" />
+    <Compile Include="CheckedComboBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="classApps.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dsReports.vb">
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainDivs.Designer.vb">
+      <DependentUpon>frmMainDivs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainDivs.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainDivsNew.Designer.vb">
+      <DependentUpon>frmMainDivsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainDivsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainISONew.Designer.vb">
+      <DependentUpon>frmMainISONew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainISONew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainOutStanding.Designer.vb">
+      <DependentUpon>frmMainOutStanding.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainOutStanding.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainProductsNew.Designer.vb">
+      <DependentUpon>frmMainProductsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainProductsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainIndusNew.Designer.vb">
+      <DependentUpon>frmMainIndusNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainIndusNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainBusTypeNew.Designer.vb">
+      <DependentUpon>frmMainBusTypeNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainBusTypeNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainContactsSkillNew.Designer.vb">
+      <DependentUpon>frmMainContactsSkillNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainContactsSkillNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainContactsLangNew.Designer.vb">
+      <DependentUpon>frmMainContactsLangNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainContactsLangNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainExcelMatchColumns.Designer.vb">
+      <DependentUpon>frmMainExcelMatchColumns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainExcelMatchColumns.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainCompanies.Designer.vb">
+      <DependentUpon>frmMainCompanies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainCompanies.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainMemberAll.Designer.vb">
+      <DependentUpon>frmMainMemberAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainMemberAll.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainUsersInfo.Designer.vb">
+      <DependentUpon>frmMainUsersInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainUsersInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainLocationsNew.Designer.vb">
+      <DependentUpon>frmMainLocationsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainLocationsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainAddressType.Designer.vb">
+      <DependentUpon>frmMainAddressType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainAddressType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainFileType.Designer.vb">
+      <DependentUpon>frmMainFileType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainFileType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainFileTypeNew.Designer.vb">
+      <DependentUpon>frmMainFileTypeNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainFileTypeNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainGroupsNew.Designer.vb">
+      <DependentUpon>frmMainGroupsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainGroupsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainUsersPasswordChange.Designer.vb">
+      <DependentUpon>frmMainUsersPasswordChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainUsersPasswordChange.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainUsersNew.Designer.vb">
+      <DependentUpon>frmMainUsersNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainUsersNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainUsers.Designer.vb">
+      <DependentUpon>frmMainUsers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainUsers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainPermissionsNew.Designer.vb">
+      <DependentUpon>frmMainPermissionsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainPermissionsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainStatus.Designer.vb">
+      <DependentUpon>frmMainStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainGroups.Designer.vb">
+      <DependentUpon>frmMainGroups.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainGroups.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainStatusNew.Designer.vb">
+      <DependentUpon>frmMainStatusNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainStatusNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainProvinces.Designer.vb">
+      <DependentUpon>frmMainProvinces.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainProvinces.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainPreName.Designer.vb">
+      <DependentUpon>frmMainPreName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainPreName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainAddressTypeNew.Designer.vb">
+      <DependentUpon>frmMainAddressTypeNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainAddressTypeNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainProvincesNew.Designer.vb">
+      <DependentUpon>frmMainProvincesNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainProvincesNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainPreNameNew.Designer.vb">
+      <DependentUpon>frmMainPreNameNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainPreNameNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainPositionsNew.Designer.vb">
+      <DependentUpon>frmMainPositionsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainPositionsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainPermissions.Designer.vb">
+      <DependentUpon>frmMainPermissions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainPermissions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainParameters.Designer.vb">
+      <DependentUpon>frmMainParameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainISO.Designer.vb">
+      <DependentUpon>frmMainISO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainISO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainProducts.Designer.vb">
+      <DependentUpon>frmMainProducts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainProducts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainBusType.Designer.vb">
+      <DependentUpon>frmMainBusType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainBusType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroupsDetails.Designer.vb">
+      <DependentUpon>frmFTICommitteeGroupsDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroupsDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroups.Designer.vb">
+      <DependentUpon>frmFTICommitteeGroups.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroups.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroupsNew.Designer.vb">
+      <DependentUpon>frmFTICommitteeGroupsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroupsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteePositionNew.Designer.vb">
+      <DependentUpon>frmFTICommitteePositionNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteePositionNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroupsReports.Designer.vb">
+      <DependentUpon>frmFTICommitteeGroupsReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeGroupsReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberSummary.Designer.vb">
+      <DependentUpon>frmFTImemberSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberSummary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberChanged.Designer.vb">
+      <DependentUpon>frmFTImemberChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberApproval.Designer.vb">
+      <DependentUpon>frmFTImemberApproval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberApproval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberExistingFields.Designer.vb">
+      <DependentUpon>frmFTImemberExistingFields.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberExistingFields.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberExisting.Designer.vb">
+      <DependentUpon>frmFTImemberExisting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberExisting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberHold.Designer.vb">
+      <DependentUpon>frmFTImemberHold.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberHold.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIrepresentInfo.Designer.vb">
+      <DependentUpon>frmFTIrepresentInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIrepresentInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIrepresentLabel.Designer.vb">
+      <DependentUpon>frmFTIrepresentLabel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIrepresentLabel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIrepresentConfirm.Designer.vb">
+      <DependentUpon>frmFTIrepresentConfirm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIrepresentConfirm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberStatusFields.Designer.vb">
+      <DependentUpon>frmFTImemberStatusFields.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberStatusFields.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberStatus.Designer.vb">
+      <DependentUpon>frmFTImemberStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberResignFields.Designer.vb">
+      <DependentUpon>frmFTImemberResignFields.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberResignFields.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberResign.Designer.vb">
+      <DependentUpon>frmFTImemberResign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberResign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberConfirmFields.Designer.vb">
+      <DependentUpon>frmFTImemberConfirmFields.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberConfirmFields.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTImemberConfirm.Designer.vb">
+      <DependentUpon>frmFTImemberConfirm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTImemberConfirm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIapprovalStatus.Designer.vb">
+      <DependentUpon>frmFTIapprovalStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIapprovalStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTICommittee.Designer.vb">
+      <DependentUpon>frmFTICommittee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommittee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIconsiderationRule2.Designer.vb">
+      <DependentUpon>frmFTIconsiderationRule2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIconsiderationRule2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIAddressNew.Designer.vb">
+      <DependentUpon>frmFTIAddressNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIAddressNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dsReports.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainAbout.Designer.vb">
+      <DependentUpon>frmMainAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIFees.Designer.vb">
+      <DependentUpon>frmFTIFees.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIFees.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIFeesRule1.Designer.vb">
+      <DependentUpon>frmFTIFeesRule1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIFeesRule1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIFeesRule2.Designer.vb">
+      <DependentUpon>frmFTIFeesRule2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIFeesRule2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIFeesRule3.Designer.vb">
+      <DependentUpon>frmFTIFeesRule3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIFeesRule3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainFileNew.Designer.vb">
+      <DependentUpon>frmMainFileNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainFileNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIMemberGroupAdd.Designer.vb">
+      <DependentUpon>frmFTIMemberGroupAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIMemberGroupAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainQueries.Designer.vb">
+      <DependentUpon>frmMainQueries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainQueries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIsmes.Designer.vb">
+      <DependentUpon>frmFTIsmes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIsmes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIRDLCnewApplyInv.Designer.vb">
+      <DependentUpon>frmFTIRDLCnewApplyInv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIRDLCnewApplyInv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIapproval.Designer.vb">
+      <DependentUpon>frmFTIapproval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIapproval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIconsideration.Designer.vb">
+      <DependentUpon>frmFTIconsideration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIconsideration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTInew.Designer.vb">
+      <DependentUpon>frmFTInew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTInew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIRDLCnewApply.Designer.vb">
+      <DependentUpon>frmFTIRDLCnewApply.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIRDLCnewApply.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainContacts.Designer.vb">
+      <DependentUpon>frmMainContacts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainContacts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIStatusResignNew.Designer.vb">
+      <DependentUpon>frmFTIStatusResignNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIStatusResignNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainContactsNew.Designer.vb">
+      <DependentUpon>frmMainContactsNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainContactsNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainLogin.Designer.vb">
+      <DependentUpon>frmMainLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainPositions.Designer.vb">
+      <DependentUpon>frmMainPositions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainPositions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainLocations.Designer.vb">
+      <DependentUpon>frmMainLocations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainLocations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainReports.Designer.vb">
+      <DependentUpon>frmMainReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainReportViewer.Designer.vb">
+      <DependentUpon>frmMainReportViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainReportViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modApps.vb" />
+    <Compile Include="module1\frmFTI.Designer.vb">
+      <DependentUpon>frmFTI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modPub.vb" />
+    <Compile Include="module1\frmFTICommitteeNew.Designer.vb">
+      <DependentUpon>frmFTICommitteeNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTICommitteeNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIWorkGroup.Designer.vb">
+      <DependentUpon>frmFTIWorkGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIWorkGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module1\frmFTIWorkGroupNew.Designer.vb">
+      <DependentUpon>frmFTIWorkGroupNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module1\frmFTIWorkGroupNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1ApprovalNewMemberNo.Designer.vb">
+      <DependentUpon>frmGS1ApprovalNewMemberNo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1ApprovalNewMemberNo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1approvalStatus.Designer.vb">
+      <DependentUpon>frmGS1approvalStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1approvalStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1approval.Designer.vb">
+      <DependentUpon>frmGS1approval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1approval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1.Designer.vb">
+      <DependentUpon>frmGS1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1ApprovalMemberResign.Designer.vb">
+      <DependentUpon>frmGS1ApprovalMemberResign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1ApprovalMemberResign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1consideration.Designer.vb">
+      <DependentUpon>frmGS1consideration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1consideration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1considerationRule2.Designer.vb">
+      <DependentUpon>frmGS1considerationRule2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1considerationRule2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1Fees.Designer.vb">
+      <DependentUpon>frmGS1Fees.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1Fees.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1FeesRule1.Designer.vb">
+      <DependentUpon>frmGS1FeesRule1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1FeesRule1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1FeesRule2.Designer.vb">
+      <DependentUpon>frmGS1FeesRule2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1FeesRule2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1FeesRule3.Designer.vb">
+      <DependentUpon>frmGS1FeesRule3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1FeesRule3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1selectNew.designer.vb">
+      <DependentUpon>frmGS1selectNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1selectNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1Setting.Designer.vb">
+      <DependentUpon>frmGS1Setting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1Setting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1ExtendMemberNo.Designer.vb">
+      <DependentUpon>frmGS1ExtendMemberNo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1ExtendMemberNo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1MemberChanged.Designer.vb">
+      <DependentUpon>frmGS1MemberChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1MemberChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1ApprovalMemberChanged.Designer.vb">
+      <DependentUpon>frmGS1ApprovalMemberChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1ApprovalMemberChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1Contact.Designer.vb">
+      <DependentUpon>frmGS1Contact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1Contact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1ean13.Designer.vb">
+      <DependentUpon>frmGS1ean13.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1ean13.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1ean13New.Designer.vb">
+      <DependentUpon>frmGS1ean13New.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1ean13New.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1manualNew.Designer.vb">
+      <DependentUpon>frmGS1manualNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1manualNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1MemberCost.Designer.vb">
+      <DependentUpon>frmGS1MemberCost.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1MemberCost.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1MemberResign.Designer.vb">
+      <DependentUpon>frmGS1MemberResign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1MemberResign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1resellNew.Designer.vb">
+      <DependentUpon>frmGS1resellNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1resellNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1reserve.Designer.vb">
+      <DependentUpon>frmGS1reserve.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1reserve.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1reserveNew.Designer.vb">
+      <DependentUpon>frmGS1reserveNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1reserveNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingCost.Designer.vb">
+      <DependentUpon>frmGS1SettingCost.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingCost.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingFooter.Designer.vb">
+      <DependentUpon>frmGS1SettingFooter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingFooter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingMember.Designer.vb">
+      <DependentUpon>frmGS1SettingMember.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingType.Designer.vb">
+      <DependentUpon>frmGS1SettingType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1SettingType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1smes.Designer.vb">
+      <DependentUpon>frmGS1smes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1smes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1StatusChanged.Designer.vb">
+      <DependentUpon>frmGS1StatusChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1StatusChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module2\frmGS1StatusResignNew.Designer.vb">
+      <DependentUpon>frmGS1StatusResignNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module2\frmGS1StatusResignNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmApprovalMemberChanged.Designer.vb">
+      <DependentUpon>frmApprovalMemberChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmApprovalMemberChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmApprovalMemberResign.Designer.vb">
+      <DependentUpon>frmApprovalMemberResign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmApprovalMemberResign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmApprovalNewMemberNo.Designer.vb">
+      <DependentUpon>frmApprovalNewMemberNo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmApprovalNewMemberNo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmContact.Designer.vb">
+      <DependentUpon>frmContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmContact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmExtendMemberNo.Designer.vb">
+      <DependentUpon>frmExtendMemberNo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmExtendMemberNo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmINI.Designer.vb">
+      <DependentUpon>frmINI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmINI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmINIFees.Designer.vb">
+      <DependentUpon>frmINIFees.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmINIFees.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmINIFeesRule1.Designer.vb">
+      <DependentUpon>frmINIFeesRule1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmINIFeesRule1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmINIFeesRule2.Designer.vb">
+      <DependentUpon>frmINIFeesRule2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmINIFeesRule2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmINIFeesRule3.Designer.vb">
+      <DependentUpon>frmINIFeesRule3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmINIFeesRule3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmINIsmes.Designer.vb">
+      <DependentUpon>frmINIsmes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmINIsmes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmMember.Designer.vb">
+      <DependentUpon>frmMember.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmMemberChanged.Designer.vb">
+      <DependentUpon>frmMemberChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmMemberChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmMemberCost.Designer.vb">
+      <DependentUpon>frmMemberCost.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmMemberCost.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmMemberResign.Designer.vb">
+      <DependentUpon>frmMemberResign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmMemberResign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmSetting.Designer.vb">
+      <DependentUpon>frmSetting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmSetting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmSettingCost.Designer.vb">
+      <DependentUpon>frmSettingCost.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmSettingCost.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmSettingFooter.Designer.vb">
+      <DependentUpon>frmSettingFooter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmSettingFooter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmSettingMember.Designer.vb">
+      <DependentUpon>frmSettingMember.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmSettingMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmSettingType.Designer.vb">
+      <DependentUpon>frmSettingType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmSettingType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module3\frmStatusChanged.Designer.vb">
+      <DependentUpon>frmStatusChanged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module3\frmStatusChanged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmCostCourse.Designer.vb">
+      <DependentUpon>frmCostCourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmCostCourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmCourseEvaluation.Designer.vb">
+      <DependentUpon>frmCourseEvaluation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmCourseEvaluation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmCourseName.Designer.vb">
+      <DependentUpon>frmCourseName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmCourseName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmEnquiry.Designer.vb">
+      <DependentUpon>frmEnquiry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmEnquiry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmReserveBigCourse.Designer.vb">
+      <DependentUpon>frmReserveBigCourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmReserveBigCourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmReserveCourse.Designer.vb">
+      <DependentUpon>frmReserveCourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmReserveCourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainerDetail.Designer.vb">
+      <DependentUpon>frmTrainerDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainerDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainerEvaluate.Designer.vb">
+      <DependentUpon>frmTrainerEvaluate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainerEvaluate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingDetail.Designer.vb">
+      <DependentUpon>frmTrainingDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingEvaluation.Designer.vb">
+      <DependentUpon>frmTrainingEvaluation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingEvaluation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingFooter.Designer.vb">
+      <DependentUpon>frmTrainingFooter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingFooter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingHistory.Designer.vb">
+      <DependentUpon>frmTrainingHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingRequest.Designer.vb">
+      <DependentUpon>frmTrainingRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingSetting.Designer.vb">
+      <DependentUpon>frmTrainingSetting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingSetting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingSettingCost.Designer.vb">
+      <DependentUpon>frmTrainingSettingCost.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingSettingCost.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module4\frmTrainingSettingCourse.Designer.vb">
+      <DependentUpon>frmTrainingSettingCourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module4\frmTrainingSettingCourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmBank.Designer.vb">
+      <DependentUpon>frmBank.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmBank.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmBankAccount.Designer.vb">
+      <DependentUpon>frmBankAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmBankAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmBankBranch.Designer.vb">
+      <DependentUpon>frmBankBranch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmBankBranch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINCalculateFee.Designer.vb">
+      <DependentUpon>frmFINCalculateFee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINCalculateFee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINCancelReceipt.Designer.vb">
+      <DependentUpon>frmFINCancelReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINCancelReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINCashier.Designer.vb">
+      <DependentUpon>frmFINCashier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINCashier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINCreditType.Designer.vb">
+      <DependentUpon>frmFINCreditType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINCreditType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINDebtor.Designer.vb">
+      <DependentUpon>frmFINDebtor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINDebtor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINDebtorAddress.Designer.vb">
+      <DependentUpon>frmFINDebtorAddress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINDebtorAddress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINDebtSummary.Designer.vb">
+      <DependentUpon>frmFINDebtSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINDebtSummary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINDefaultSystem.Designer.vb">
+      <DependentUpon>frmFINDefaultSystem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINDefaultSystem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINDocumentType.Designer.vb">
+      <DependentUpon>frmFINDocumentType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINDocumentType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryCheque.Designer.vb">
+      <DependentUpon>frmFINEnquiryCheque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryCheque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryDailyDocument.Designer.vb">
+      <DependentUpon>frmFINEnquiryDailyDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryDailyDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryDailyReceipt.Designer.vb">
+      <DependentUpon>frmFINEnquiryDailyReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryDailyReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryInvoice.Designer.vb">
+      <DependentUpon>frmFINEnquiryInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryInvoiceByMember.Designer.vb">
+      <DependentUpon>frmFINEnquiryInvoiceByMember.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryInvoiceByMember.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryTransferPayment.Designer.vb">
+      <DependentUpon>frmFINEnquiryTransferPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINEnquiryTransferPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINMain.Designer.vb">
+      <DependentUpon>frmFINMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINNewInvoice.Designer.vb">
+      <DependentUpon>frmFINNewInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINNewInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINAddress.Designer.vb">
+      <DependentUpon>frmFINAddress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINAddress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINAR_MEMBER.Designer.vb">
+      <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINAR_MEMBER.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINSubSectionRemain.Designer.vb">
+      <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINSubSectionRemain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINTestFunction.Designer.vb">
+      <DependentUpon>frmFINTestFunction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINTestFunction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Helper\DocumentNumberHelper.vb" />
+    <Compile Include="module5\Helper\ModelHelper.vb" />
+    <Compile Include="module5\Helper\NumberHelper.vb" />
+    <Compile Include="module5\Helper\PermissionHelper.vb" />
+    <Compile Include="module5\Helper\QueryHelper.vb" />
+    <Compile Include="module5\Invoice\Form\frmFINInvoice.Designer.vb">
+      <DependentUpon>frmFINInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Invoice\Form\frmFINInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Model\FN_MASTER_RECEIPT.vb" />
+    <Compile Include="module5\Model\IV_ADDRESS.vb" />
+    <Compile Include="module5\Model\IV_DETAIL.vb" />
+    <Compile Include="module5\Model\IV_HEAD.vb" />
+    <Compile Include="module5\Model\PN_ADDRESS.vb" />
+    <Compile Include="module5\Model\PN_DETAIL.vb" />
+    <Compile Include="module5\Model\DOC_RUNNING.vb" />
+    <Compile Include="module5\Model\PN_HEAD.vb" />
+    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.Designer.vb">
+      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\Form\frmFINPaymentNotice.Designer.vb">
+      <DependentUpon>frmFINPaymentNotice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\Form\frmFINPaymentNotice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINPaymentType.Designer.vb">
+      <DependentUpon>frmFINPaymentType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINPaymentType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINPaymetnByDocument.Designer.vb">
+      <DependentUpon>frmFINPaymetnByDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINPaymetnByDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINPeriod.Designer.vb">
+      <DependentUpon>frmFINPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINPeriod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINPeriodDeduction.Designer.vb">
+      <DependentUpon>frmFINPeriodDeduction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINPeriodDeduction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINReceiptManual.Designer.vb">
+      <DependentUpon>frmFINReceiptManual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINReceiptManual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINReceiptReference.Designer.vb">
+      <DependentUpon>frmFINReceiptReference.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINReceiptReference.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestList.Designer.vb">
+      <DependentUpon>frmFINPaymentNoticeCancelRequestList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestApprovalList.Designer.vb">
+      <DependentUpon>frmFINPaymentNoticeCancelRequestApprovalList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestApprovalList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Search\Edit\frmFINEditList.Designer.vb">
+      <DependentUpon>frmFINEditList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Search\Edit\frmFINEditList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalList.Designer.vb">
+      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINDocumentList.Designer.vb">
+      <DependentUpon>frmFINDocumentList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINDocumentList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\frmFINPaymentNoticeSearch.Designer.vb">
+      <DependentUpon>frmFINPaymentNoticeSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\frmFINPaymentNoticeSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Receipt\frmFINReceipt.Designer.vb">
+      <DependentUpon>frmFINReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Receipt\frmFINReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Receipt\frmFINReceiptCancle.Designer.vb">
+      <DependentUpon>frmFINReceiptCancle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Receipt\frmFINReceiptCancle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Receipt\frmFINReceiptSearch.Designer.vb">
+      <DependentUpon>frmFINReceiptSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Receipt\frmFINReceiptSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Report\frmFINReportAR.Designer.vb">
+      <DependentUpon>frmFINReportAR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Report\frmFINReportAR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\Report\frmFINReportProduct.Designer.vb">
+      <DependentUpon>frmFINReportProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\Report\frmFINReportProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINSubSection.Designer.vb">
+      <DependentUpon>frmFINSubSection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINSubSection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmTypeReceipt.Designer.vb">
+      <DependentUpon>frmTypeReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmTypeReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module7\frmSAPreceipt.Designer.vb">
+      <DependentUpon>frmSAPreceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module7\frmSAPreceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\iSQL\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\bgLogin.png" />
+    <Content Include="Images\bgSplash.png" />
+    <Content Include="Images\btnExit.png" />
+    <Content Include="Images\btnLogin.png" />
+    <Content Include="Images\imgNew.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logoLogin.png" />
+    <Content Include="Reports\module1\rdlc5.3.25.07.FTInewApplyMonths.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\shopping-money-box-icon1.png" />
+    <None Include="Resources\City-Post-Office-icon.png" />
+    <None Include="Resources\สภาอุตสาหกรรมแห่งประเทศไทย.png" />
+    <None Include="Resources\cancel-icon.png" />
+    <None Include="Resources\shopping-money-box-icon.png" />
+    <None Include="Resources\house-308936_640.png" />
+    <EmbeddedResource Include="frmMainDivs.resx">
+      <DependentUpon>frmMainDivs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainDivsNew.resx">
+      <DependentUpon>frmMainDivsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainISONew.resx">
+      <DependentUpon>frmMainISONew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainOutStanding.resx">
+      <DependentUpon>frmMainOutStanding.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainProductsNew.resx">
+      <DependentUpon>frmMainProductsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainIndusNew.resx">
+      <DependentUpon>frmMainIndusNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainBusTypeNew.resx">
+      <DependentUpon>frmMainBusTypeNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainMemberAll.resx">
+      <DependentUpon>frmMainMemberAll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainISO.resx">
+      <DependentUpon>frmMainISO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainProducts.resx">
+      <DependentUpon>frmMainProducts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainBusType.resx">
+      <DependentUpon>frmMainBusType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommitteeGroupsDetails.resx">
+      <DependentUpon>frmFTICommitteeGroupsDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommitteeGroups.resx">
+      <DependentUpon>frmFTICommitteeGroups.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommitteeGroupsNew.resx">
+      <DependentUpon>frmFTICommitteeGroupsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommitteePositionNew.resx">
+      <DependentUpon>frmFTICommitteePositionNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommitteeGroupsReports.resx">
+      <DependentUpon>frmFTICommitteeGroupsReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberSummary.resx">
+      <DependentUpon>frmFTImemberSummary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberChanged.resx">
+      <DependentUpon>frmFTImemberChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberApproval.resx">
+      <DependentUpon>frmFTImemberApproval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberExistingFields.resx">
+      <DependentUpon>frmFTImemberExistingFields.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberExisting.resx">
+      <DependentUpon>frmFTImemberExisting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberHold.resx">
+      <DependentUpon>frmFTImemberHold.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIrepresentInfo.resx">
+      <DependentUpon>frmFTIrepresentInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIrepresentLabel.resx">
+      <DependentUpon>frmFTIrepresentLabel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIrepresentConfirm.resx">
+      <DependentUpon>frmFTIrepresentConfirm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberStatusFields.resx">
+      <DependentUpon>frmFTImemberStatusFields.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberStatus.resx">
+      <DependentUpon>frmFTImemberStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberResignFields.resx">
+      <DependentUpon>frmFTImemberResignFields.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberResign.resx">
+      <DependentUpon>frmFTImemberResign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberConfirmFields.resx">
+      <DependentUpon>frmFTImemberConfirmFields.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTImemberConfirm.resx">
+      <DependentUpon>frmFTImemberConfirm.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Reports\module1\rdlc5.3.25.01.FTImemberResign.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.01.FTImemberStatusChanged.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.01.FTImemberStatusHold.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.02.FTIrepresentConfirmation.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.03.FTImemberExistingTH.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.03.FTImemberExistingEN.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.04.FTIrepresentLabel.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.05.FTImemberApproval.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.08.FTImemberChanged.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.09.FTIrepresentInfo.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.11.1.FTImemberSummary.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="module2\frmGS1ApprovalNewMemberNo.resx">
+      <DependentUpon>frmGS1ApprovalNewMemberNo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1ApprovalMemberResign.resx">
+      <DependentUpon>frmGS1ApprovalMemberResign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1approvalStatus.resx">
+      <DependentUpon>frmGS1approvalStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1approval.resx">
+      <DependentUpon>frmGS1approval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1.resx">
+      <DependentUpon>frmGS1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1ApprovalMemberChanged.resx">
+      <DependentUpon>frmGS1ApprovalMemberChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1consideration.resx">
+      <DependentUpon>frmGS1consideration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1considerationRule2.resx">
+      <DependentUpon>frmGS1considerationRule2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1Fees.resx">
+      <DependentUpon>frmGS1Fees.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1FeesRule1.resx">
+      <DependentUpon>frmGS1FeesRule1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1FeesRule2.resx">
+      <DependentUpon>frmGS1FeesRule2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1FeesRule3.resx">
+      <DependentUpon>frmGS1FeesRule3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1manualNew.resx">
+      <DependentUpon>frmGS1manualNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1MemberCost.resx">
+      <DependentUpon>frmGS1MemberCost.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1MemberResign.resx">
+      <DependentUpon>frmGS1MemberResign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1resellNew.resx">
+      <DependentUpon>frmGS1resellNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1reserve.resx">
+      <DependentUpon>frmGS1reserve.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1reserveNew.resx">
+      <DependentUpon>frmGS1reserveNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1selectNew.resx">
+      <DependentUpon>frmGS1selectNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1Setting.resx">
+      <DependentUpon>frmGS1Setting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1ExtendMemberNo.resx">
+      <DependentUpon>frmGS1ExtendMemberNo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1MemberChanged.resx">
+      <DependentUpon>frmGS1MemberChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1Contact.resx">
+      <DependentUpon>frmGS1Contact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1ean13.resx">
+      <DependentUpon>frmGS1ean13.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1ean13New.resx">
+      <DependentUpon>frmGS1ean13New.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1SettingCost.resx">
+      <DependentUpon>frmGS1SettingCost.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1SettingFooter.resx">
+      <DependentUpon>frmGS1SettingFooter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1SettingMember.resx">
+      <DependentUpon>frmGS1SettingMember.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1SettingType.resx">
+      <DependentUpon>frmGS1SettingType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1smes.resx">
+      <DependentUpon>frmGS1smes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1StatusChanged.resx">
+      <DependentUpon>frmGS1StatusChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module2\frmGS1StatusResignNew.resx">
+      <DependentUpon>frmGS1StatusResignNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmApprovalMemberChanged.resx">
+      <DependentUpon>frmApprovalMemberChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmApprovalMemberResign.resx">
+      <DependentUpon>frmApprovalMemberResign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmApprovalNewMemberNo.resx">
+      <DependentUpon>frmApprovalNewMemberNo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmContact.resx">
+      <DependentUpon>frmContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmExtendMemberNo.resx">
+      <DependentUpon>frmExtendMemberNo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmINI.resx">
+      <DependentUpon>frmINI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmINIFees.resx">
+      <DependentUpon>frmINIFees.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmINIFeesRule1.resx">
+      <DependentUpon>frmINIFeesRule1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmINIFeesRule2.resx">
+      <DependentUpon>frmINIFeesRule2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmINIFeesRule3.resx">
+      <DependentUpon>frmINIFeesRule3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmINIsmes.resx">
+      <DependentUpon>frmINIsmes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmMember.resx">
+      <DependentUpon>frmMember.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmMemberChanged.resx">
+      <DependentUpon>frmMemberChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmMemberCost.resx">
+      <DependentUpon>frmMemberCost.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmMemberResign.resx">
+      <DependentUpon>frmMemberResign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmSetting.resx">
+      <DependentUpon>frmSetting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmSettingCost.resx">
+      <DependentUpon>frmSettingCost.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmSettingFooter.resx">
+      <DependentUpon>frmSettingFooter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmSettingMember.resx">
+      <DependentUpon>frmSettingMember.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmSettingType.resx">
+      <DependentUpon>frmSettingType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module3\frmStatusChanged.resx">
+      <DependentUpon>frmStatusChanged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmCostCourse.resx">
+      <DependentUpon>frmCostCourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmCourseEvaluation.resx">
+      <DependentUpon>frmCourseEvaluation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmCourseName.resx">
+      <DependentUpon>frmCourseName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmEnquiry.resx">
+      <DependentUpon>frmEnquiry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmReserveBigCourse.resx">
+      <DependentUpon>frmReserveBigCourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmReserveCourse.resx">
+      <DependentUpon>frmReserveCourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainerDetail.resx">
+      <DependentUpon>frmTrainerDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainerEvaluate.resx">
+      <DependentUpon>frmTrainerEvaluate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingDetail.resx">
+      <DependentUpon>frmTrainingDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingEvaluation.resx">
+      <DependentUpon>frmTrainingEvaluation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingFooter.resx">
+      <DependentUpon>frmTrainingFooter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingHistory.resx">
+      <DependentUpon>frmTrainingHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingRequest.resx">
+      <DependentUpon>frmTrainingRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingSetting.resx">
+      <DependentUpon>frmTrainingSetting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingSettingCost.resx">
+      <DependentUpon>frmTrainingSettingCost.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module4\frmTrainingSettingCourse.resx">
+      <DependentUpon>frmTrainingSettingCourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmBank.resx">
+      <DependentUpon>frmBank.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmBankAccount.resx">
+      <DependentUpon>frmBankAccount.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmBankBranch.resx">
+      <DependentUpon>frmBankBranch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINAddress.resx">
+      <DependentUpon>frmFINAddress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINCalculateFee.resx">
+      <DependentUpon>frmFINCalculateFee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINCancelReceipt.resx">
+      <DependentUpon>frmFINCancelReceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINCashier.resx">
+      <DependentUpon>frmFINCashier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINCreditType.resx">
+      <DependentUpon>frmFINCreditType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINDebtor.resx">
+      <DependentUpon>frmFINDebtor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINDebtorAddress.resx">
+      <DependentUpon>frmFINDebtorAddress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINDebtSummary.resx">
+      <DependentUpon>frmFINDebtSummary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINDefaultSystem.resx">
+      <DependentUpon>frmFINDefaultSystem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINDocumentType.resx">
+      <DependentUpon>frmFINDocumentType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINEnquiryCheque.resx">
+      <DependentUpon>frmFINEnquiryCheque.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINEnquiryDailyDocument.resx">
+      <DependentUpon>frmFINEnquiryDailyDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINEnquiryDailyReceipt.resx">
+      <DependentUpon>frmFINEnquiryDailyReceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINEnquiryInvoice.resx">
+      <DependentUpon>frmFINEnquiryInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINEnquiryInvoiceByMember.resx">
+      <DependentUpon>frmFINEnquiryInvoiceByMember.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINEnquiryTransferPayment.resx">
+      <DependentUpon>frmFINEnquiryTransferPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINMain.resx">
+      <DependentUpon>frmFINMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINNewInvoice.resx">
+      <DependentUpon>frmFINNewInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINAR_MEMBER.resx">
+      <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINSubSectionRemain.resx">
+      <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINTestFunction.resx">
+      <DependentUpon>frmFINTestFunction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Invoice\Form\frmFINInvoice.resx">
+      <DependentUpon>frmFINInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\Form\frmFINPaymentNotice.resx">
+      <DependentUpon>frmFINPaymentNotice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINPaymentType.resx">
+      <DependentUpon>frmFINPaymentType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINPaymetnByDocument.resx">
+      <DependentUpon>frmFINPaymetnByDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINPeriod.resx">
+      <DependentUpon>frmFINPeriod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINPeriodDeduction.resx">
+      <DependentUpon>frmFINPeriodDeduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINReceiptManual.resx">
+      <DependentUpon>frmFINReceiptManual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINReceiptReference.resx">
+      <DependentUpon>frmFINReceiptReference.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestList.resx">
+      <DependentUpon>frmFINPaymentNoticeCancelRequestList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestApprovalList.resx">
+      <DependentUpon>frmFINPaymentNoticeCancelRequestApprovalList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Search\Edit\frmFINEditList.resx">
+      <DependentUpon>frmFINEditList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalList.resx">
+      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINDocumentList.resx">
+      <DependentUpon>frmFINDocumentList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\frmFINPaymentNoticeSearch.resx">
+      <DependentUpon>frmFINPaymentNoticeSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.resx">
+      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Receipt\frmFINReceipt.resx">
+      <DependentUpon>frmFINReceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Receipt\frmFINReceiptCancle.resx">
+      <DependentUpon>frmFINReceiptCancle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Receipt\frmFINReceiptSearch.resx">
+      <DependentUpon>frmFINReceiptSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Report\frmFINReportAR.resx">
+      <DependentUpon>frmFINReportAR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\Report\frmFINReportProduct.resx">
+      <DependentUpon>frmFINReportProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINSubSection.resx">
+      <DependentUpon>frmFINSubSection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmTypeReceipt.resx">
+      <DependentUpon>frmTypeReceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module7\frmSAPreceipt.resx">
+      <DependentUpon>frmSAPreceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\module5\Receipt.rdlc" />
+    <None Include="Service References\iSQL\webSQL.disco" />
+    <None Include="Service References\iSQL\FTI.iSQL.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\iSQL\configuration91.svcinfo" />
+    <None Include="Service References\iSQL\configuration.svcinfo" />
+    <None Include="Service References\iSQL\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <Content Include="Images\BGs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\imgAdd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\imgBGbtn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\imgClear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\imgDelete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\imgSave.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\imgSearch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="frmMainContactsSkillNew.resx">
+      <DependentUpon>frmMainContactsSkillNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainContactsLangNew.resx">
+      <DependentUpon>frmMainContactsLangNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainExcelMatchColumns.resx">
+      <DependentUpon>frmMainExcelMatchColumns.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainCompanies.resx">
+      <DependentUpon>frmMainCompanies.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainUsersInfo.resx">
+      <DependentUpon>frmMainUsersInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainLocationsNew.resx">
+      <DependentUpon>frmMainLocationsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainAddressType.resx">
+      <DependentUpon>frmMainAddressType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainFileType.resx">
+      <DependentUpon>frmMainFileType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainFileTypeNew.resx">
+      <DependentUpon>frmMainFileTypeNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainGroupsNew.resx">
+      <DependentUpon>frmMainGroupsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainUsersPasswordChange.resx">
+      <DependentUpon>frmMainUsersPasswordChange.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainUsersNew.resx">
+      <DependentUpon>frmMainUsersNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainUsers.resx">
+      <DependentUpon>frmMainUsers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainPermissionsNew.resx">
+      <DependentUpon>frmMainPermissionsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainStatus.resx">
+      <DependentUpon>frmMainStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainGroups.resx">
+      <DependentUpon>frmMainGroups.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainStatusNew.resx">
+      <DependentUpon>frmMainStatusNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainProvinces.resx">
+      <DependentUpon>frmMainProvinces.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainPreName.resx">
+      <DependentUpon>frmMainPreName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainAddressTypeNew.resx">
+      <DependentUpon>frmMainAddressTypeNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainProvincesNew.resx">
+      <DependentUpon>frmMainProvincesNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainPreNameNew.resx">
+      <DependentUpon>frmMainPreNameNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainPositionsNew.resx">
+      <DependentUpon>frmMainPositionsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainPermissions.resx">
+      <DependentUpon>frmMainPermissions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainParameters.resx">
+      <DependentUpon>frmMainParameters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIapprovalStatus.resx">
+      <DependentUpon>frmFTIapprovalStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommittee.resx">
+      <DependentUpon>frmFTICommittee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIconsiderationRule2.resx">
+      <DependentUpon>frmFTIconsiderationRule2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIAddressNew.resx">
+      <DependentUpon>frmFTIAddressNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainAbout.resx">
+      <DependentUpon>frmMainAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIFees.resx">
+      <DependentUpon>frmFTIFees.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIFeesRule1.resx">
+      <DependentUpon>frmFTIFeesRule1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIFeesRule2.resx">
+      <DependentUpon>frmFTIFeesRule2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIFeesRule3.resx">
+      <DependentUpon>frmFTIFeesRule3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTI.resx">
+      <DependentUpon>frmFTI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainFileNew.resx">
+      <DependentUpon>frmMainFileNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIMemberGroupAdd.resx">
+      <DependentUpon>frmFTIMemberGroupAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainQueries.resx">
+      <DependentUpon>frmMainQueries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIsmes.resx">
+      <DependentUpon>frmFTIsmes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIRDLCnewApplyInv.resx">
+      <DependentUpon>frmFTIRDLCnewApplyInv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIapproval.resx">
+      <DependentUpon>frmFTIapproval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIconsideration.resx">
+      <DependentUpon>frmFTIconsideration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTInew.resx">
+      <DependentUpon>frmFTInew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIRDLCnewApply.resx">
+      <DependentUpon>frmFTIRDLCnewApply.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainContacts.resx">
+      <DependentUpon>frmMainContacts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIStatusResignNew.resx">
+      <DependentUpon>frmFTIStatusResignNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainContactsNew.resx">
+      <DependentUpon>frmMainContactsNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainLogin.resx">
+      <DependentUpon>frmMainLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainPositions.resx">
+      <DependentUpon>frmMainPositions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainLocations.resx">
+      <DependentUpon>frmMainLocations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainReports.resx">
+      <DependentUpon>frmMainReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainReportViewer.resx">
+      <DependentUpon>frmMainReportViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTICommitteeNew.resx">
+      <DependentUpon>frmFTICommitteeNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIWorkGroup.resx">
+      <DependentUpon>frmFTIWorkGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module1\frmFTIWorkGroupNew.resx">
+      <DependentUpon>frmFTIWorkGroupNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="logofti.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rdlcTemp.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.5.FTInewApply.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlcFTInewApplyInv.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.01.FTImemberConfirm.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\module1\rdlc5.3.25.10.FTIconsideration1.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\iSQL\SQLServices.wsdl" />
+    <None Include="Service References\iSQL\webSQL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iSQL\webSQL1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iSQL\webSQL2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\iSQL\webSQL3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dsReports.xsc">
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </None>
+    <None Include="dsReports.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReports.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsReports.xss">
+      <DependentUpon>dsReports.xsd</DependentUpon>
+    </None>
+    <None Include="ERP_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\ChunkTransporter.TableManifest.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="ClosedXML">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Excel.4.5">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="ICSharpCode.SharpZipLib">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.Common">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WinForms">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Types">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="module6\" />
+    <Folder Include="Reports\module2\" />
+    <Folder Include="Reports\module3\" />
+    <Folder Include="Reports\module4\" />
+    <Folder Include="Reports\module6\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\iSQL\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

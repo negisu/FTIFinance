@@ -1,0 +1,43 @@
+﻿Public Class IV_DETAIL
+    Public OU_CODE As String
+    Public DIV_CODE As String
+    Public SUB_TYPE As String
+    Public TRAN_NO As String
+    Public SEQ As Integer
+    Public SUB_SECTION_CODE As String
+    Public REF_NO As String
+    Public REF_DATE As Date
+    Public QTY As Integer
+    Public U_PRICE As Double
+    Public OLD_PRICE As Double
+    Public NEW_PRICE As Double
+    Public UMS_CODE As String
+    Public GROSS_AMT As Double
+    Public DISC_RATE1 As Double
+    Public DISC_RATE2 As Double
+    Public DISC_BAHT As Double
+    Public DISC_AMT As Double
+    Public NET_AMT As Double
+    Public VAT_AMT As Double
+    Public TOTAL_AMT As Double
+    Public NOTE As String
+    Public FREE_YN As String
+    Public CR_BY As String
+    Public CR_DATE As Date
+    Public UPD_BY As String
+    Public UPD_DATE As Date
+    Public PROG_ID As String
+    Public MB_YEAR As Integer
+    Public TR_COURSE_CODE As String
+    Public REF_TABLE As String
+    Public REGIST_CODE As Double
+    Public BAL_AMT As Double
+    Public DN_AMT As Double
+    Public CN_AMT As Double
+    Public PAY_AMT As Double
+    Public REF_IV_SEQ As Integer
+    Public TR_START_DATE As Date
+    Public TR_END_DATE As Date
+    Public RN_AMT As Double
+
+End Class
