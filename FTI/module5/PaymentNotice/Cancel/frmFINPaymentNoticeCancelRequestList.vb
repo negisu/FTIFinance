@@ -1,6 +1,12 @@
 ﻿Public Class frmFINPaymentNoticeCancelRequestList
+    Public TRAN_TYPE As String
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If TRAN_TYPE = "IV" Then
+            Me.Text = "ยกเลิกใบแจ้งหนี้"
+            Label1.Text = "ยกเลิกใบแจ้งหนี้"
+        End If
+
         RefTextBox.Enabled = False
         FromDateTextBox.Enabled = False
         ToDateTextBox.Enabled = False
@@ -38,6 +44,8 @@
             parameters.Add("@p9", user_div)
         End If
 
+        query &= " AND TRAN_TYPE = @p10 "
+        parameters.Add("@p10", TRAN_TYPE)
         'query &= " AND CANCEL_FLAG IS NULL "
 
         If isRef.Checked And Not String.IsNullOrEmpty(RefTextBox.Text) Then
@@ -159,7 +167,7 @@
                     buttonCell.Style.BackColor = Color.FromName("ControlLight")
                 End If
 
-                
+
             Else
                 If row.Cells("CANCEL_FLAG").Value.ToString() = "P" Then
                     row.Cells("STATUS").Value = "รออนุมัติคำร้องยกเลิก"
@@ -221,16 +229,20 @@
                         Dim query As String = "UPDATE PN_HEAD SET CANCEL_FLAG = @p0, CANCEL_REASON = @p1, CANCEL_BY = @p2 WHERE TRAN_NO = @p3"
                         Dim parameters As New Dictionary(Of String, Object)
                         Dim cancleReason As String = row.Cells("CANCEL_REASON").Value.ToString()
-                        parameters.Add("@p0", "P")
+                        If TRAN_TYPE = "PN" Then
+                            parameters.Add("@p0", "P")
+                        Else
+                            parameters.Add("@p0", "A")    
+                        End If
                         parameters.Add("@p1", cancleReason)
                         parameters.Add("@p2", user_name)
                         parameters.Add("@p3", row.Cells("TRAN_NO").Value)
-
                         Try
                             executeWebSQL(query, parameters)
                         Catch ex As Exception
                             MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                         End Try
+
 
                     End If
                 Next

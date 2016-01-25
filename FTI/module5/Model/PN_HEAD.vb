@@ -3,6 +3,9 @@
     Public OU_CODE As String
     Public DIV_CODE As String
     Public TRAN_NO As String
+    Public PN_TRAN_NO As String
+    Public IV_TRAN_NO As String
+    Public RC_TRAN_NO As String
     Public TRAN_DATE As Date
     Public TRAN_TYPE As String
     Public BUDGET_YEAR As Integer

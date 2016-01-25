@@ -19,5 +19,6 @@
     Public UPD_BY As String
     Public UPD_DATE As Date
     Public PROG_ID As String
-    Public BRANCH_NAME As String
+    Public BRANCH_NAME_TH As String
+    Public BRANCH_NAME_EN As String
 End Class

@@ -1,4 +1,5 @@
 ﻿Public Class frmFINPaymentNotice
+    Public TRAN_TYPE As String
     Dim ds As DataSet
     Dim MB_COMP_PERSON_ADDRESS As DataTable
     Dim ADDRESSDataTable As DataTable
@@ -34,7 +35,6 @@
         {"U_PRICE", "U_PRICE_VAT", "U_PRICE_INC_VAT", "NET_U_PRICE", "NET_U_PRICE_VAT", "NET_U_PRICE_INC_VAT", "DISC_AMT", "DISC_AMT_VAT", "DISC_AMT_INC_VAT", "TOTAL", "TOTAL_VAT", "SUM_TOTAL", "TOP_DISC_AMT", "GRAND_AMT", "GRAND_AMT_VAT", "GRAND_AMT_INC_VAT"}
 
 
-
     Dim isLockAll As Boolean = False
     Dim isChanged As Boolean = False
     Dim ex_rate As Double = 1.0
@@ -65,7 +65,7 @@
             newProductRow("DISC_AMT_INC_VAT") = "0.00"
             newProductRow("SEQ") = DETAILDataTable.Rows.Count + 1
             newProductRow("OU_CODE") = OU_CODE
-            newProductRow("SUB_TYPE") = "PN1"
+            newProductRow("SUB_TYPE") = TRAN_TYPE
             Try
                 DETAILDataTable.Rows.Add(newProductRow)
             Catch ex As ConstraintException
@@ -100,6 +100,13 @@
     '==============================================================================================================================================='
 
     Private Sub frmFINPaymentNotice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If TRAN_TYPE = "IV" Then
+            Me.Text = "บันทึกใบแจ้งหนี้"
+            IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งชำระ"
+            FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
+        Else
+
+        End If
 
         initForm()
         loadForm()
@@ -155,7 +162,7 @@
             CR_TERMTextBox.Text = "0"
             DocumentStatusLabel.Text = "ปกติ"
             PrintStatusLabel.Text = "0"
-            getHEAD()
+            getHEADDatatable()
         Else
             TRAN_NO = TRAN_NOLabel.Text
             getHEAD()
@@ -257,7 +264,7 @@
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If isNew Then
-            TRAN_NO = DocumentNumberHelper.getPN_DOC_RUNNING(OU_CODE, user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "PN1")
+            TRAN_NO = DocumentNumberHelper.getPN_DOC_RUNNING(OU_CODE, user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), TRAN_TYPE)
         End If
 
         If validatePN_DETAIL() And validateAddress() Then
@@ -715,8 +722,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     '==============================================================================================================================================='
     '==============================================================================================================================================='
 
-
-    Private Sub getHEAD()
+    Private Sub getHEADDatatable()
         Dim parameters As New Dictionary(Of String, Object)
         Dim query As String = String.Empty
         query &= "SELECT  TOP 1 * "
@@ -726,6 +732,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         parameters.Add("@p0", TRAN_NO)
 
         HEADDataTable = fillWebSQL(query, parameters, "PN_HEAD")
+    End Sub
+    Private Sub getHEAD()
+        getHEADDatatable()
         If isNew Then
             HEADDataTable.Rows.Add()
 
@@ -769,6 +778,21 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         Catch ex As Exception
 
         End Try
+        If TRAN_TYPE = "PN" Then
+            If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()) Then
+                TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()
+            End If
+
+        Else
+            If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()) Then
+                TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()
+            End If
+
+        End If
+        If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("RC_TRAN_NO").ToString()) Then
+            RC_TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("RC_TRAN_NO").ToString()
+        End If
+
         CR_TERMTextBox.Text = HEADDataTable.Rows(0).Item("CR_TERM").ToString()
         AR_CODETextBox.Text = HEADDataTable.Rows(0).Item("AR_CODE").ToString()
         MEMBER_CODETextBox.Text = HEADDataTable.Rows(0).Item("MB_MEMBER_CODE").ToString()
@@ -791,8 +815,8 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         parameters.Add("@p0", TRAN_NO)
         ADDRESSDataTable = fillWebSQL(query, parameters, "PN_ADDRESS")
 
-
-
+        BRANCH_NAME_THTextBox.Text = ADDRESSDataTable.Rows(0).Item("BRANCH_NAME_TH").ToString()
+        BRANCH_NAME_ENTextBox.Text = ADDRESSDataTable.Rows(0).Item("BRANCH_NAME_EN").ToString()
         ADDR1_EN.Text = ADDRESSDataTable.Rows(0).Item("ADDR1_EN").ToString()
 
 
@@ -847,7 +871,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         End If
 
         pn.TRAN_NO = TRAN_NO
-        pn.TRAN_TYPE = "PN"
+        pn.TRAN_TYPE = TRAN_TYPE
         Try
             pn.TRAN_DATE = TRAN_DATEPicker.Value
         Catch ex As Exception
@@ -907,7 +931,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.CURR_CODE = CurrencyComboBox.Text
 
         QueryHelper.insertModel("PN_HEAD", pn)
-        getHEAD()
+        getHEADDatatable()
 
 
     End Sub
@@ -930,7 +954,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             pn.CR_BY = user_name
             pn.CR_DATE = DateTime.Now
         End If
-
+        'document
         pn.TRAN_NO = TRAN_NO
         pn.AR_CODE = AR_CODETextBox.Text
         pn.ADDR_SEQ = 1
@@ -944,7 +968,10 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.UPD_BY = user_name
         pn.UPD_DATE = DateTime.Now
         pn.AR_CODE = AR_CODETextBox.Text
+        pn.BRANCH_NAME_TH = BRANCH_NAME_THTextBox.Text
+        pn.BRANCH_NAME_EN = BRANCH_NAME_ENTextBox.Text
 
+        'delivery
         QueryHelper.insertModel("PN_ADDRESS", pn)
         pn.ADDR_SEQ = 2
         pn.ADDR1_EN = ADDR1_EN2.Text
@@ -992,7 +1019,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         docRunning.DIV_CODE = user_div
         docRunning.BUDGET_YEAR = Integer.Parse(DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
         docRunning.PERIOD = 0
-        docRunning.SUB_TYPE = "PN1"
+        docRunning.SUB_TYPE = TRAN_TYPE
         docRunning.DOC_RUNNING_NO = TRAN_NO
         docRunning.CR_BY = user_name
         docRunning.CR_DATE = DateTime.Now
@@ -1148,7 +1175,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             Try
                 PrintStatusLabel.Text = (Integer.Parse(PrintStatusLabel.Text) + 1).ToString
                 insertOrUpdateHEAD()
+                insertOrUpdateDETAIL()
                 getHEAD()
+                getDETAIL()
             Catch ex As Exception
 
             End Try

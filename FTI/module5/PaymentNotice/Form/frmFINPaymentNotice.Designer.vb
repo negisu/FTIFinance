@@ -29,10 +29,12 @@ Partial Class frmFINPaymentNotice
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label36 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.BRANCH_NAME_THTextBox = New System.Windows.Forms.TextBox()
         Me.ADDR1_TH = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.BRANCH_NAME_ENTextBox = New System.Windows.Forms.TextBox()
         Me.ADDR1_EN = New System.Windows.Forms.TextBox()
         Me.Label57 = New System.Windows.Forms.Label()
         Me.FAXTextBox = New System.Windows.Forms.TextBox()
@@ -75,7 +77,7 @@ Partial Class frmFINPaymentNotice
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.TRAN_DATELabel = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.FormTitleLabel = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.NumberReadingLabel = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
@@ -127,16 +129,20 @@ Partial Class frmFINPaymentNotice
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TRAN_NO_REFLabel = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.IVTRAN_NOLabel = New System.Windows.Forms.Label()
+        Me.RCTRAN_NOLabel = New System.Windows.Forms.Label()
+        Me.RC_TRAN_NO_REFLabel = New System.Windows.Forms.Label()
+        Me.previewRC = New System.Windows.Forms.Button()
+        Me.previewIV = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.DUE_DATEPicker = New System.Windows.Forms.DateTimePicker()
         Me.TRAN_DATEPicker = New System.Windows.Forms.DateTimePicker()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.TAX_NOTextBox = New System.Windows.Forms.TextBox()
+        Me.MEMBER_CODETextBox = New System.Windows.Forms.TextBox()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label41 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.currLabel5 = New System.Windows.Forms.Label()
@@ -146,27 +152,21 @@ Partial Class frmFINPaymentNotice
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.MEMBER_CODETextBox = New System.Windows.Forms.TextBox()
-        Me.TAX_NOTextBox = New System.Windows.Forms.TextBox()
         Me.TELEPHONETextBox2 = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.FAXTextBox2 = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.ATTN_NAME_ENTextBox2 = New System.Windows.Forms.TextBox()
-        Me.ADDR1_EN2 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.ATTN_NAME_THTextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.ADDR1_TH2 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ATTN_NAME_THTextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.ADDR1_EN2 = New System.Windows.Forms.TextBox()
+        Me.ATTN_NAME_ENTextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -184,8 +184,8 @@ Partial Class frmFINPaymentNotice
         Me.Panel8.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.TabControl2.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -231,7 +231,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
         Me.TabPage1.Controls.Add(Me.Label36)
-        Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.BRANCH_NAME_THTextBox)
         Me.TabPage1.Controls.Add(Me.ADDR1_TH)
         Me.TabPage1.Controls.Add(Me.Label8)
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
@@ -253,13 +253,13 @@ Partial Class frmFINPaymentNotice
         Me.Label36.Text = "สถานประกอบการ"
         Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TextBox1
+        'BRANCH_NAME_THTextBox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(179, 9)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(388, 22)
-        Me.TextBox1.TabIndex = 271
+        Me.BRANCH_NAME_THTextBox.Location = New System.Drawing.Point(179, 9)
+        Me.BRANCH_NAME_THTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.BRANCH_NAME_THTextBox.Name = "BRANCH_NAME_THTextBox"
+        Me.BRANCH_NAME_THTextBox.Size = New System.Drawing.Size(388, 22)
+        Me.BRANCH_NAME_THTextBox.TabIndex = 271
         '
         'ADDR1_TH
         '
@@ -286,7 +286,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
         Me.TabPage2.Controls.Add(Me.Label38)
-        Me.TabPage2.Controls.Add(Me.TextBox2)
+        Me.TabPage2.Controls.Add(Me.BRANCH_NAME_ENTextBox)
         Me.TabPage2.Controls.Add(Me.ADDR1_EN)
         Me.TabPage2.Controls.Add(Me.Label57)
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
@@ -295,6 +295,26 @@ Partial Class frmFINPaymentNotice
         Me.TabPage2.Size = New System.Drawing.Size(587, 98)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "English"
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label38.Location = New System.Drawing.Point(1, 9)
+        Me.Label38.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(60, 20)
+        Me.Label38.TabIndex = 274
+        Me.Label38.Text = "Branch"
+        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'BRANCH_NAME_ENTextBox
+        '
+        Me.BRANCH_NAME_ENTextBox.Location = New System.Drawing.Point(179, 9)
+        Me.BRANCH_NAME_ENTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.BRANCH_NAME_ENTextBox.Name = "BRANCH_NAME_ENTextBox"
+        Me.BRANCH_NAME_ENTextBox.Size = New System.Drawing.Size(388, 22)
+        Me.BRANCH_NAME_ENTextBox.TabIndex = 273
         '
         'ADDR1_EN
         '
@@ -866,16 +886,16 @@ Partial Class frmFINPaymentNotice
         Me.TRAN_DATELabel.TabIndex = 247
         Me.TRAN_DATELabel.Text = "*วันที่ออก"
         '
-        'Label12
+        'FormTitleLabel
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(20, 13)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(157, 25)
-        Me.Label12.TabIndex = 250
-        Me.Label12.Text = "เอกสารใบแจ้งชำระ"
+        Me.FormTitleLabel.AutoSize = True
+        Me.FormTitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormTitleLabel.Location = New System.Drawing.Point(20, 13)
+        Me.FormTitleLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.FormTitleLabel.Name = "FormTitleLabel"
+        Me.FormTitleLabel.Size = New System.Drawing.Size(157, 25)
+        Me.FormTitleLabel.TabIndex = 250
+        Me.FormTitleLabel.Text = "เอกสารใบแจ้งชำระ"
         '
         'Panel1
         '
@@ -1355,89 +1375,89 @@ Partial Class frmFINPaymentNotice
         Me.TRAN_NO_REFLabel.Location = New System.Drawing.Point(169, 10)
         Me.TRAN_NO_REFLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.TRAN_NO_REFLabel.Name = "TRAN_NO_REFLabel"
-        Me.TRAN_NO_REFLabel.Size = New System.Drawing.Size(175, 20)
+        Me.TRAN_NO_REFLabel.Size = New System.Drawing.Size(39, 20)
         Me.TRAN_NO_REFLabel.TabIndex = 278
-        Me.TRAN_NO_REFLabel.Text = "ยังไม่มีการออกใบแจ้งหนี้"
+        Me.TRAN_NO_REFLabel.Text = "ไม่มี"
         Me.TRAN_NO_REFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label22
+        'IVTRAN_NOLabel
         '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label22.Location = New System.Drawing.Point(8, 10)
-        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(111, 20)
-        Me.Label22.TabIndex = 277
-        Me.Label22.Text = "เลขที่ใบแจ้งหนี้"
-        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.IVTRAN_NOLabel.AutoSize = True
+        Me.IVTRAN_NOLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.IVTRAN_NOLabel.Location = New System.Drawing.Point(8, 10)
+        Me.IVTRAN_NOLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.IVTRAN_NOLabel.Name = "IVTRAN_NOLabel"
+        Me.IVTRAN_NOLabel.Size = New System.Drawing.Size(111, 20)
+        Me.IVTRAN_NOLabel.TabIndex = 277
+        Me.IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งหนี้"
+        Me.IVTRAN_NOLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label10
+        'RCTRAN_NOLabel
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label10.Location = New System.Drawing.Point(8, 38)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(97, 20)
-        Me.Label10.TabIndex = 279
-        Me.Label10.Text = "เลขที่ใบเสร็จ"
-        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.RCTRAN_NOLabel.AutoSize = True
+        Me.RCTRAN_NOLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.RCTRAN_NOLabel.Location = New System.Drawing.Point(8, 38)
+        Me.RCTRAN_NOLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.RCTRAN_NOLabel.Name = "RCTRAN_NOLabel"
+        Me.RCTRAN_NOLabel.Size = New System.Drawing.Size(97, 20)
+        Me.RCTRAN_NOLabel.TabIndex = 279
+        Me.RCTRAN_NOLabel.Text = "เลขที่ใบเสร็จ"
+        Me.RCTRAN_NOLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label20
+        'RC_TRAN_NO_REFLabel
         '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label20.Location = New System.Drawing.Point(169, 38)
-        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(161, 20)
-        Me.Label20.TabIndex = 280
-        Me.Label20.Text = "ยังไม่มีการออกใบเสร็จ"
-        Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.RC_TRAN_NO_REFLabel.AutoSize = True
+        Me.RC_TRAN_NO_REFLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.RC_TRAN_NO_REFLabel.Location = New System.Drawing.Point(169, 38)
+        Me.RC_TRAN_NO_REFLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.RC_TRAN_NO_REFLabel.Name = "RC_TRAN_NO_REFLabel"
+        Me.RC_TRAN_NO_REFLabel.Size = New System.Drawing.Size(39, 20)
+        Me.RC_TRAN_NO_REFLabel.TabIndex = 280
+        Me.RC_TRAN_NO_REFLabel.Text = "ไม่มี"
+        Me.RC_TRAN_NO_REFLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Button1
+        'previewRC
         '
-        Me.Button1.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.Button1.BackgroundImage = Global.FTI.My.Resources.Resources.imgBGbtn
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Button1.Location = New System.Drawing.Point(388, 36)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(96, 28)
-        Me.Button1.TabIndex = 282
-        Me.Button1.Text = "เปิด"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.previewRC.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.previewRC.BackgroundImage = Global.FTI.My.Resources.Resources.imgBGbtn
+        Me.previewRC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.previewRC.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.previewRC.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.previewRC.Location = New System.Drawing.Point(436, 35)
+        Me.previewRC.Margin = New System.Windows.Forms.Padding(4)
+        Me.previewRC.Name = "previewRC"
+        Me.previewRC.Size = New System.Drawing.Size(96, 28)
+        Me.previewRC.TabIndex = 282
+        Me.previewRC.Text = "เปิด"
+        Me.previewRC.UseVisualStyleBackColor = False
         '
-        'Button2
+        'previewIV
         '
-        Me.Button2.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.Button2.BackgroundImage = Global.FTI.My.Resources.Resources.imgBGbtn
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Button2.Location = New System.Drawing.Point(388, 5)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(96, 28)
-        Me.Button2.TabIndex = 281
-        Me.Button2.Text = "เปิด"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.previewIV.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.previewIV.BackgroundImage = Global.FTI.My.Resources.Resources.imgBGbtn
+        Me.previewIV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.previewIV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.previewIV.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.previewIV.Location = New System.Drawing.Point(436, 4)
+        Me.previewIV.Margin = New System.Windows.Forms.Padding(4)
+        Me.previewIV.Name = "previewIV"
+        Me.previewIV.Size = New System.Drawing.Size(96, 28)
+        Me.previewIV.TabIndex = 281
+        Me.previewIV.Text = "เปิด"
+        Me.previewIV.UseVisualStyleBackColor = False
         '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
-        Me.Panel5.Controls.Add(Me.Button2)
-        Me.Panel5.Controls.Add(Me.Button1)
-        Me.Panel5.Controls.Add(Me.Label22)
+        Me.Panel5.Controls.Add(Me.previewIV)
+        Me.Panel5.Controls.Add(Me.previewRC)
+        Me.Panel5.Controls.Add(Me.IVTRAN_NOLabel)
         Me.Panel5.Controls.Add(Me.TRAN_NO_REFLabel)
-        Me.Panel5.Controls.Add(Me.Label20)
-        Me.Panel5.Controls.Add(Me.Label10)
+        Me.Panel5.Controls.Add(Me.RC_TRAN_NO_REFLabel)
+        Me.Panel5.Controls.Add(Me.RCTRAN_NOLabel)
         Me.Panel5.Location = New System.Drawing.Point(16, 178)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(499, 71)
+        Me.Panel5.Size = New System.Drawing.Size(848, 71)
         Me.Panel5.TabIndex = 283
         '
         'Panel6
@@ -1492,6 +1512,51 @@ Partial Class frmFINPaymentNotice
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(848, 84)
         Me.Panel7.TabIndex = 285
+        '
+        'TAX_NOTextBox
+        '
+        Me.TAX_NOTextBox.BackColor = System.Drawing.Color.LemonChiffon
+        Me.TAX_NOTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TAX_NOTextBox.Location = New System.Drawing.Point(121, 56)
+        Me.TAX_NOTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.TAX_NOTextBox.Name = "TAX_NOTextBox"
+        Me.TAX_NOTextBox.ReadOnly = True
+        Me.TAX_NOTextBox.Size = New System.Drawing.Size(161, 22)
+        Me.TAX_NOTextBox.TabIndex = 289
+        '
+        'MEMBER_CODETextBox
+        '
+        Me.MEMBER_CODETextBox.BackColor = System.Drawing.Color.LemonChiffon
+        Me.MEMBER_CODETextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MEMBER_CODETextBox.Location = New System.Drawing.Point(121, 30)
+        Me.MEMBER_CODETextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.MEMBER_CODETextBox.Name = "MEMBER_CODETextBox"
+        Me.MEMBER_CODETextBox.ReadOnly = True
+        Me.MEMBER_CODETextBox.Size = New System.Drawing.Size(161, 22)
+        Me.MEMBER_CODETextBox.TabIndex = 288
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label43.Location = New System.Drawing.Point(314, 3)
+        Me.Label43.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(61, 20)
+        Me.Label43.TabIndex = 287
+        Me.Label43.Text = "ชื่อลูกหนี้"
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label41.Location = New System.Drawing.Point(8, 29)
+        Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(85, 20)
+        Me.Label41.TabIndex = 285
+        Me.Label41.Text = "เลขที่สมาชิก"
+        Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label27
         '
@@ -1609,71 +1674,6 @@ Partial Class frmFINPaymentNotice
         Me.Label32.Text = "ภาษี"
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label38.Location = New System.Drawing.Point(1, 9)
-        Me.Label38.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(60, 20)
-        Me.Label38.TabIndex = 274
-        Me.Label38.Text = "Branch"
-        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(179, 9)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(388, 22)
-        Me.TextBox2.TabIndex = 273
-        '
-        'Label41
-        '
-        Me.Label41.AutoSize = True
-        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label41.Location = New System.Drawing.Point(8, 29)
-        Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(85, 20)
-        Me.Label41.TabIndex = 285
-        Me.Label41.Text = "เลขที่สมาชิก"
-        Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label43
-        '
-        Me.Label43.AutoSize = True
-        Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label43.Location = New System.Drawing.Point(314, 3)
-        Me.Label43.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(61, 20)
-        Me.Label43.TabIndex = 287
-        Me.Label43.Text = "ชื่อลูกหนี้"
-        '
-        'MEMBER_CODETextBox
-        '
-        Me.MEMBER_CODETextBox.BackColor = System.Drawing.Color.LemonChiffon
-        Me.MEMBER_CODETextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MEMBER_CODETextBox.Location = New System.Drawing.Point(121, 30)
-        Me.MEMBER_CODETextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.MEMBER_CODETextBox.Name = "MEMBER_CODETextBox"
-        Me.MEMBER_CODETextBox.ReadOnly = True
-        Me.MEMBER_CODETextBox.Size = New System.Drawing.Size(161, 22)
-        Me.MEMBER_CODETextBox.TabIndex = 288
-        '
-        'TAX_NOTextBox
-        '
-        Me.TAX_NOTextBox.BackColor = System.Drawing.Color.LemonChiffon
-        Me.TAX_NOTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TAX_NOTextBox.Location = New System.Drawing.Point(121, 56)
-        Me.TAX_NOTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.TAX_NOTextBox.Name = "TAX_NOTextBox"
-        Me.TAX_NOTextBox.ReadOnly = True
-        Me.TAX_NOTextBox.Size = New System.Drawing.Size(161, 22)
-        Me.TAX_NOTextBox.TabIndex = 289
-        '
         'TELEPHONETextBox2
         '
         Me.TELEPHONETextBox2.Location = New System.Drawing.Point(95, 153)
@@ -1722,59 +1722,6 @@ Partial Class frmFINPaymentNotice
         Me.TabControl2.Size = New System.Drawing.Size(601, 127)
         Me.TabControl2.TabIndex = 273
         '
-        'TabPage4
-        '
-        Me.TabPage4.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
-        Me.TabPage4.Controls.Add(Me.ADDR1_EN2)
-        Me.TabPage4.Controls.Add(Me.ATTN_NAME_ENTextBox2)
-        Me.TabPage4.Controls.Add(Me.Label17)
-        Me.TabPage4.Controls.Add(Me.Label13)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(593, 98)
-        Me.TabPage4.TabIndex = 1
-        Me.TabPage4.Text = "English"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label13.Location = New System.Drawing.Point(3, 38)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(74, 20)
-        Me.Label13.TabIndex = 222
-        Me.Label13.Text = "*Address"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label17.Location = New System.Drawing.Point(3, 10)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(33, 20)
-        Me.Label17.TabIndex = 216
-        Me.Label17.Text = "*To"
-        '
-        'ATTN_NAME_ENTextBox2
-        '
-        Me.ATTN_NAME_ENTextBox2.Location = New System.Drawing.Point(84, 10)
-        Me.ATTN_NAME_ENTextBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.ATTN_NAME_ENTextBox2.Name = "ATTN_NAME_ENTextBox2"
-        Me.ATTN_NAME_ENTextBox2.Size = New System.Drawing.Size(499, 22)
-        Me.ATTN_NAME_ENTextBox2.TabIndex = 217
-        '
-        'ADDR1_EN2
-        '
-        Me.ADDR1_EN2.Location = New System.Drawing.Point(84, 35)
-        Me.ADDR1_EN2.Margin = New System.Windows.Forms.Padding(4)
-        Me.ADDR1_EN2.Multiline = True
-        Me.ADDR1_EN2.Name = "ADDR1_EN2"
-        Me.ADDR1_EN2.Size = New System.Drawing.Size(499, 56)
-        Me.ADDR1_EN2.TabIndex = 273
-        '
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
@@ -1789,24 +1736,14 @@ Partial Class frmFINPaymentNotice
         Me.TabPage3.TabIndex = 0
         Me.TabPage3.Text = "ไทย"
         '
-        'Label9
+        'ADDR1_TH2
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label9.Location = New System.Drawing.Point(3, 9)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(76, 20)
-        Me.Label9.TabIndex = 237
-        Me.Label9.Text = "*ชื่อผู้ติดต่อ"
-        '
-        'ATTN_NAME_THTextBox2
-        '
-        Me.ATTN_NAME_THTextBox2.Location = New System.Drawing.Point(84, 10)
-        Me.ATTN_NAME_THTextBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.ATTN_NAME_THTextBox2.Name = "ATTN_NAME_THTextBox2"
-        Me.ATTN_NAME_THTextBox2.Size = New System.Drawing.Size(485, 22)
-        Me.ATTN_NAME_THTextBox2.TabIndex = 238
+        Me.ADDR1_TH2.Location = New System.Drawing.Point(84, 35)
+        Me.ADDR1_TH2.Margin = New System.Windows.Forms.Padding(4)
+        Me.ADDR1_TH2.Multiline = True
+        Me.ADDR1_TH2.Name = "ADDR1_TH2"
+        Me.ADDR1_TH2.Size = New System.Drawing.Size(485, 56)
+        Me.ADDR1_TH2.TabIndex = 272
         '
         'Label11
         '
@@ -1819,14 +1756,77 @@ Partial Class frmFINPaymentNotice
         Me.Label11.TabIndex = 239
         Me.Label11.Text = "*ที่อยู่"
         '
-        'ADDR1_TH2
+        'ATTN_NAME_THTextBox2
         '
-        Me.ADDR1_TH2.Location = New System.Drawing.Point(84, 35)
-        Me.ADDR1_TH2.Margin = New System.Windows.Forms.Padding(4)
-        Me.ADDR1_TH2.Multiline = True
-        Me.ADDR1_TH2.Name = "ADDR1_TH2"
-        Me.ADDR1_TH2.Size = New System.Drawing.Size(485, 56)
-        Me.ADDR1_TH2.TabIndex = 272
+        Me.ATTN_NAME_THTextBox2.Location = New System.Drawing.Point(84, 10)
+        Me.ATTN_NAME_THTextBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.ATTN_NAME_THTextBox2.Name = "ATTN_NAME_THTextBox2"
+        Me.ATTN_NAME_THTextBox2.Size = New System.Drawing.Size(485, 22)
+        Me.ATTN_NAME_THTextBox2.TabIndex = 238
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label9.Location = New System.Drawing.Point(3, 9)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(76, 20)
+        Me.Label9.TabIndex = 237
+        Me.Label9.Text = "*ชื่อผู้ติดต่อ"
+        '
+        'TabPage4
+        '
+        Me.TabPage4.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.TabPage4.Controls.Add(Me.ADDR1_EN2)
+        Me.TabPage4.Controls.Add(Me.ATTN_NAME_ENTextBox2)
+        Me.TabPage4.Controls.Add(Me.Label17)
+        Me.TabPage4.Controls.Add(Me.Label13)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage4.Size = New System.Drawing.Size(593, 98)
+        Me.TabPage4.TabIndex = 1
+        Me.TabPage4.Text = "English"
+        '
+        'ADDR1_EN2
+        '
+        Me.ADDR1_EN2.Location = New System.Drawing.Point(84, 35)
+        Me.ADDR1_EN2.Margin = New System.Windows.Forms.Padding(4)
+        Me.ADDR1_EN2.Multiline = True
+        Me.ADDR1_EN2.Name = "ADDR1_EN2"
+        Me.ADDR1_EN2.Size = New System.Drawing.Size(499, 56)
+        Me.ADDR1_EN2.TabIndex = 273
+        '
+        'ATTN_NAME_ENTextBox2
+        '
+        Me.ATTN_NAME_ENTextBox2.Location = New System.Drawing.Point(84, 10)
+        Me.ATTN_NAME_ENTextBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.ATTN_NAME_ENTextBox2.Name = "ATTN_NAME_ENTextBox2"
+        Me.ATTN_NAME_ENTextBox2.Size = New System.Drawing.Size(499, 22)
+        Me.ATTN_NAME_ENTextBox2.TabIndex = 217
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label17.Location = New System.Drawing.Point(3, 10)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(33, 20)
+        Me.Label17.TabIndex = 216
+        Me.Label17.Text = "*To"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label13.Location = New System.Drawing.Point(3, 38)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(74, 20)
+        Me.Label13.TabIndex = 222
+        Me.Label13.Text = "*Address"
         '
         'GroupBox6
         '
@@ -1870,7 +1870,7 @@ Partial Class frmFINPaymentNotice
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Label26)
-        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.FormTitleLabel)
         Me.Controls.Add(Me.btProdDel)
         Me.Controls.Add(Me.btProdAdd)
         Me.Controls.Add(Me.DETAIL)
@@ -1913,10 +1913,10 @@ Partial Class frmFINPaymentNotice
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
         Me.TabControl2.ResumeLayout(False)
-        Me.TabPage4.ResumeLayout(False)
-        Me.TabPage4.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        Me.TabPage4.ResumeLayout(False)
+        Me.TabPage4.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
@@ -1978,7 +1978,7 @@ Partial Class frmFINPaymentNotice
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents TRAN_DATELabel As System.Windows.Forms.Label
-    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents FormTitleLabel As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label57 As System.Windows.Forms.Label
@@ -2019,15 +2019,15 @@ Partial Class frmFINPaymentNotice
     Friend WithEvents INNER_NOTETextBox As System.Windows.Forms.TextBox
     Friend WithEvents EX_RATETextBox As System.Windows.Forms.TextBox
     Friend WithEvents TRAN_NO_REFLabel As System.Windows.Forms.Label
-    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents IVTRAN_NOLabel As System.Windows.Forms.Label
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents RCTRAN_NOLabel As System.Windows.Forms.Label
+    Friend WithEvents RC_TRAN_NO_REFLabel As System.Windows.Forms.Label
+    Friend WithEvents previewRC As System.Windows.Forms.Button
+    Friend WithEvents previewIV As System.Windows.Forms.Button
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
@@ -2044,9 +2044,9 @@ Partial Class frmFINPaymentNotice
     Friend WithEvents DUE_DATEPicker As System.Windows.Forms.DateTimePicker
     Friend WithEvents TRAN_DATEPicker As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label36 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents BRANCH_NAME_THTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label38 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents BRANCH_NAME_ENTextBox As System.Windows.Forms.TextBox
     Friend WithEvents TAX_NOTextBox As System.Windows.Forms.TextBox
     Friend WithEvents MEMBER_CODETextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label43 As System.Windows.Forms.Label

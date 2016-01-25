@@ -34,7 +34,7 @@
         If PermissionHelper.isAdmin() Then
 
         Else
-            query &= " PN_HEAD.DIV_CODE = @p9 "
+            query &= " PN_HEAD.DIV_CODE = @p9  AND TRAN_TYPE = 'PN'  "
             parameters.Add("@p9", user_div)
         End If
 

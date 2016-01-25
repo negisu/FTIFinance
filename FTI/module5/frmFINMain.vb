@@ -74,6 +74,7 @@
     Private Sub AddPNToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddPNToolStripMenuItem.Click
         If fPN Is Nothing Then
             fPN = New frmFINPaymentNotice
+            fPN.TRAN_TYPE = "PN"
             fPN.MdiParent = Me.MdiParent
             fPN.WindowState = FormWindowState.Maximized
             fPN.Show()
@@ -85,15 +86,16 @@
     End Sub
 
     Private Sub AddIVToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddIVToolStripMenuItem1.Click
-        If fIV Is Nothing Then
-            fIV = New frmFINInvoice
-            fIV.MdiParent = Me.MdiParent
-            fIV.WindowState = FormWindowState.Maximized
-            fIV.Show()
+        If fPN Is Nothing Then
+            fPN = New frmFINPaymentNotice
+            fPN.TRAN_TYPE = "IV"
+            fPN.MdiParent = Me.MdiParent
+            fPN.WindowState = FormWindowState.Maximized
+            fPN.Show()
         Else
             'focus opening form
-            fIV.Show()
-            fIV.Focus()
+            fPN.Show()
+            fPN.Focus()
         End If
     End Sub
 
@@ -175,6 +177,7 @@
             Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
             If fPN Is Nothing Then
                 fPN = New frmFINPaymentNotice
+                fPN.TRAN_TYPE = "PN"
                 fPN.TRAN_NOLabel.Text = TRAN_NO
                 fPN.MdiParent = Me.MdiParent
                 fPN.WindowState = FormWindowState.Maximized
@@ -184,6 +187,7 @@
                     fPN.Dispose()
                     fPN = Nothing
                     fPN = New frmFINPaymentNotice
+                    fPN.TRAN_TYPE = "PN"
                     fPN.TRAN_NOLabel.Text = TRAN_NO
                     fPN.MdiParent = Me.MdiParent
                     fPN.WindowState = FormWindowState.Maximized
@@ -202,6 +206,7 @@
 
     Private Sub CancelRequestPNToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelRequestPNToolStripMenuItem.Click
         Dim f As New frmFINPaymentNoticeCancelRequestList
+        f.TRAN_TYPE = "PN"
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
         End If
@@ -231,28 +236,40 @@
         f.TRAN_TYPE = "IV"
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
-            If fIV Is Nothing Then
-                fIV = New frmFINInvoice
-                fIV.TRAN_NOLabel.Text = TRAN_NO
-                fIV.MdiParent = Me.MdiParent
-                fIV.WindowState = FormWindowState.Maximized
-                fIV.Show()
+            If fPN Is Nothing Then
+                fPN = New frmFINPaymentNotice
+                fPN.TRAN_TYPE = "IV"
+                fPN.TRAN_NOLabel.Text = TRAN_NO
+                fPN.MdiParent = Me.MdiParent
+                fPN.WindowState = FormWindowState.Maximized
+                fPN.Show()
             Else
                 If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    fIV.Dispose()
-                    fIV = Nothing
-                    fIV = New frmFINInvoice
-                    fIV.TRAN_NOLabel.Text = TRAN_NO
-                    fIV.MdiParent = Me.MdiParent
-                    fIV.WindowState = FormWindowState.Maximized
-                    fIV.Show()
+                    fPN.Dispose()
+                    fPN = Nothing
+                    fPN = New frmFINPaymentNotice
+                    fPN.TRAN_TYPE = "IV"
+                    fPN.TRAN_NOLabel.Text = TRAN_NO
+                    fPN.MdiParent = Me.MdiParent
+                    fPN.WindowState = FormWindowState.Maximized
+                    fPN.Show()
                 Else
                     'focus opening form
-                    fIV.Show()
-                    fIV.Focus()
+                    fPN.Show()
+                    fPN.Focus()
                 End If
 
             End If
+        End If
+        f.Dispose()
+        f = Nothing
+    End Sub
+
+    Private Sub CancelRequestIVToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelRequestIVToolStripMenuItem.Click
+        Dim f As New frmFINPaymentNoticeCancelRequestList
+        f.TRAN_TYPE = "IV"
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
         End If
         f.Dispose()
         f = Nothing

@@ -10,24 +10,78 @@
             Return
         End Try
 
-
-
         Dim TRAN_NO As String = DataGridView1.Rows(e.RowIndex).Cells("TRAN_NO").Value.ToString()
+        Dim HEADDataTable As DataTable
+        Dim DETAILDataTable As DataTable
+        Dim ADDRESSDataTable As DataTable
         Dim parameters As New Dictionary(Of String, Object)
-        Dim query As String
-        query = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = @p0 WHERE TRAN_NO = '" & TRAN_NO & "'"
+        parameters.Add("@p0", TRAN_NO)
+        Dim query As String = "SELECT  TOP 1 * FROM PN_HEAD LEFT JOIN MB_COMP_PERSON ON PN_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE LEFT JOIN MB_PRENAME ON MB_COMP_PERSON.PREN_CODE = MB_PRENAME.PRENAME_CODE WHERE TRAN_NO = @p0"
 
-        parameters.Clear()
+        HEADDataTable = fillWebSQL(query, parameters, "PN_HEAD")
+
+        query = "SELECT * FROM PN_DETAIL INNER JOIN IV_SUB_SECTION ON PN_DETAIL.SUB_SECTION_CODE = IV_SUB_SECTION.SUB_SECTION_CODE INNER JOIN SU_DIVISION ON IV_SUB_SECTION.DIV_CODE_INC=SU_DIVISION.DIV_CODE  WHERE TRAN_NO = @p0 ORDER BY SEQ"
+
+        DETAILDataTable = fillWebSQL(query, parameters, "PN_DETAIL")
+
+        query = "SELECT  TOP 2 * FROM            PN_ADDRESS WHERE           TRAN_NO = @p0 ORDER BY ADDR_SEQ "
+
+        ADDRESSDataTable = fillWebSQL(query, parameters, "PN_ADDRESS")
+
+        query = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = @p1 WHERE TRAN_NO = @p0"
+
 
         Try
             If e.ColumnIndex = DataGridView1.Columns("APPROVE").Index Then
                 If (MessageBox.Show("คุณต้องการที่จะอนุมัติการออกใบแจ้งหนี้จากเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    parameters.Add("@p0", "A")
+
+
+                    Dim IV_TRAN_NO As String = DocumentNumberHelper.getPN_DOC_RUNNING("001", user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "IV")
+                    Dim docRunning = New DOC_RUNNING
+                    docRunning.OU_CODE = "001"
+                    docRunning.DIV_CODE = user_div
+                    docRunning.BUDGET_YEAR = Integer.Parse(DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
+                    docRunning.PERIOD = 0
+                    docRunning.SUB_TYPE = "IV"
+                    docRunning.DOC_RUNNING_NO = IV_TRAN_NO
+                    docRunning.CR_BY = user_name
+                    docRunning.CR_DATE = DateTime.Now
+                    QueryHelper.insertModel("PN_DOC_RUNNING", docRunning)
+
+                    Dim pnH As PN_HEAD = CType(ModelHelper.convertDataRowToModel(New PN_HEAD, HEADDataTable.Rows(0)), PN_HEAD)
+                    pnH.TRAN_NO = IV_TRAN_NO
+                    pnH.PN_TRAN_NO = TRAN_NO
+                    pnH.TRAN_TYPE = "IV"
+                    pnH.POST_INVOICE_FLAG = "A"
+
+                    QueryHelper.insertModel("PN_HEAD", pnH)
+
+                    For Each row As DataRow In DETAILDataTable.Rows
+                        If String.IsNullOrEmpty(row.Item("TRAN_NO").ToString()) Then
+                            row.Item("TRAN_NO") = TRAN_NO
+                            Dim pnD As PN_DETAIL = CType(ModelHelper.convertDataRowToModel(New PN_DETAIL, row), PN_DETAIL)
+                            pnD.TRAN_NO = IV_TRAN_NO
+                            QueryHelper.insertModel("PN_DETAIL", pnD)
+                        Else
+                            Dim pnD As PN_DETAIL = CType(ModelHelper.convertDataRowToModel(New PN_DETAIL, row), PN_DETAIL)
+                            pnD.TRAN_NO = IV_TRAN_NO
+                            QueryHelper.insertModel("PN_DETAIL", pnD)
+                        End If
+                    Next
+
+                    For Each row As DataRow In ADDRESSDataTable.Rows
+                        Dim pnA As PN_ADDRESS = CType(ModelHelper.convertDataRowToModel(New PN_ADDRESS, row), PN_ADDRESS)
+                        pnA.TRAN_NO = IV_TRAN_NO
+                        QueryHelper.insertModel("PN_ADDRESS", pnA)
+                    Next
+
+                    parameters.Add("@p1", "A")
                     Try
                         executeWebSQL(query, parameters)
                     Catch ex As Exception
                         MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                     End Try
+
                     Me.Dispose()
                 End If
             End If
@@ -39,8 +93,7 @@
         Try
             If e.ColumnIndex = DataGridView1.Columns("REJECT").Index Then
                 If (MessageBox.Show("คุณไม่อนุมัติคำร้องขอออกใบแจ้งหนี้จากเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    query = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = NULL WHERE TRAN_NO = '" & TRAN_NO & "'"
-                    parameters.Add("@p0", "R")
+                    parameters.Add("@p1", "R")
                     Try
                         executeWebSQL(query, parameters)
                     Catch ex As Exception
