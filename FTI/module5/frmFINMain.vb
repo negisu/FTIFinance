@@ -222,7 +222,7 @@
             If fPN Is Nothing Then
                 fPN = New frmFINPaymentNotice
                 fPN.TRAN_TYPE = "I2"
-                fPN.IVTRAN_NOLabel.Text = TRAN_NO
+                fPN.TRAN_NO_REFLabel.Text = TRAN_NO
                 fPN.MdiParent = Me.MdiParent
                 fPN.WindowState = FormWindowState.Maximized
                 fPN.Show()
@@ -232,7 +232,7 @@
                     fPN = Nothing
                     fPN = New frmFINPaymentNotice
                     fPN.TRAN_TYPE = "I2"
-                    fPN.IVTRAN_NOLabel.Text = TRAN_NO
+                    fPN.TRAN_NO_REFLabel.Text = TRAN_NO
                     fPN.MdiParent = Me.MdiParent
                     fPN.WindowState = FormWindowState.Maximized
                     fPN.Show()

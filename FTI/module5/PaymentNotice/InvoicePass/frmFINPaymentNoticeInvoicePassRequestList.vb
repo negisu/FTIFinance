@@ -34,11 +34,11 @@
         If PermissionHelper.isAdmin() Then
 
         Else
-            query &= " PN_HEAD.DIV_CODE = @p9  AND TRAN_TYPE = 'PN'  "
+            query &= " PN_HEAD.DIV_CODE = @p9 "
             parameters.Add("@p9", user_div)
         End If
 
-        'query &= " AND CANCEL_FLAG IS NULL "
+        query &= " AND CANCEL_FLAG IS NULL  AND TRAN_TYPE = 'P1'  "
 
         If isRef.Checked And Not String.IsNullOrEmpty(RefTextBox.Text) Then
             Dim searchValue As String = RefTextBox.Text.Trim.Replace(" ", "%")
@@ -138,7 +138,7 @@
 
         For Each row As DataGridViewRow In DataGridView1.Rows
             If String.IsNullOrEmpty(row.Cells("POST_INVOICE_FLAG").Value.ToString()) Then
-                row.Cells("STATUS").Value = "ปกติ"
+                row.Cells("STATUS").Value = "ยังไม่มีการยื่นขอออกใบแจ้งหนี้"
                 row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#CCFFCC")
                 Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
                 buttonCell.Style.BackColor = Color.FromName("ControlLight")

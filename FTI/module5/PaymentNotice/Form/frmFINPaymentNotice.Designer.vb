@@ -23,7 +23,7 @@ Partial Class frmFINPaymentNotice
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -868,7 +868,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label26.Location = New System.Drawing.Point(227, 17)
+        Me.Label26.Location = New System.Drawing.Point(330, 17)
         Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(46, 20)
@@ -1148,7 +1148,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.TRAN_NOLabel.AutoSize = True
         Me.TRAN_NOLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TRAN_NOLabel.Location = New System.Drawing.Point(329, 17)
+        Me.TRAN_NOLabel.Location = New System.Drawing.Point(432, 17)
         Me.TRAN_NOLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.TRAN_NOLabel.Name = "TRAN_NOLabel"
         Me.TRAN_NOLabel.Size = New System.Drawing.Size(0, 20)
@@ -1778,8 +1778,8 @@ Partial Class frmFINPaymentNotice
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle1.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
@@ -1850,7 +1850,6 @@ Partial Class frmFINPaymentNotice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
@@ -1883,6 +1882,7 @@ Partial Class frmFINPaymentNotice
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSave)
         Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MinimumSize = New System.Drawing.Size(1300, 800)
         Me.Name = "frmFINPaymentNotice"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "บันทึกใบแจ้งชำระ"

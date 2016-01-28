@@ -872,7 +872,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         Dim pn As New PN_HEAD
         pn.OU_CODE = OU_CODE
         If TRAN_TYPE = "I2" Then
-            pn.IV_TRAN_NO = IVTRAN_NOLabel.Text
+            pn.IV_TRAN_NO = TRAN_NO_REFLabel.Text
         End If
         If isNew Then
             pn.DIV_CODE = user_div
@@ -1196,16 +1196,24 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
             Dim param As New Dictionary(Of String, String)
             param.Add("TRAN_NO", TRAN_NO)
-            If TRAN_TYPE = "PN" Then
+            If TRAN_TYPE = "P1" Then
                 param.Add("TRAN_NAME_TH", "ใบแจ้งชำระ")
                 param.Add("TRAN_NAME_EN", "Payment Notice")
-            Else
+            ElseIf TRAN_TYPE = "I1" Then
                 param.Add("TRAN_NAME_TH", "ใบแจ้งหนี้")
                 param.Add("TRAN_NAME_EN", "Invoice")
+            ElseIf TRAN_TYPE = "I2" Then
+                param.Add("TRAN_NAME_TH", "ใบลดหนี้")
+                param.Add("TRAN_NAME_EN", "Credit note")
             End If
 
             Dim f As New frmMainReports
-            f.reportPath = getParameters(5, "PN_REPORT")
+            If thai.Checked Then
+                f.reportPath = getParameters(5, "PN_REPORT")
+            Else
+                f.reportPath = getParameters(5, "PN_REPORT_EN")
+            End If
+
             f.reportParameters = param
             If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 '
@@ -1487,4 +1495,22 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         CR_TERMTextBox.Text = (TRAN_DATEPicker.Value - DUE_DATEPicker.Value).ToString("dd")
     End Sub
 
+    Private Sub previewIV_Click(sender As Object, e As EventArgs) Handles previewIV.Click
+        Dim f As New frmFINPaymentNotice
+        If TRAN_TYPE = "P1" Then
+            f.TRAN_TYPE = "I1"
+        Else
+            f.TRAN_TYPE = "P1"
+
+        End If
+        f.TRAN_NOLabel.Text = TRAN_NO_REFLabel.Text
+        f.LockAllInput()
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            
+        End If
+        f.Dispose()
+        f = Nothing
+
+
+    End Sub
 End Class

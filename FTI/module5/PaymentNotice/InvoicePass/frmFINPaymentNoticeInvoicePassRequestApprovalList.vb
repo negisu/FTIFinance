@@ -82,7 +82,18 @@
                         MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                     End Try
 
-                    Me.Dispose()
+                    parameters.Clear()
+                    parameters.Add("@p0", TRAN_NO)
+                    parameters.Add("@p1", IV_TRAN_NO)
+                    query = "UPDATE PN_HEAD SET IV_TRAN_NO = @p1 WHERE TRAN_NO = @p0"
+
+                    Try
+                        executeWebSQL(query, parameters)
+                    Catch ex As Exception
+                        MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
+                    End Try
+
+                    Me.frmFINPaymentNoticeCancleList_Load(sender, e)
                 End If
             End If
 
@@ -99,7 +110,7 @@
                     Catch ex As Exception
                         MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                     End Try
-                    Me.Dispose()
+                    Me.frmFINPaymentNoticeCancleList_Load(sender, e)
                 End If
             End If
 
@@ -150,7 +161,7 @@
         Dim buttonColumn As New DataGridViewButtonColumn()
         buttonColumn.HeaderText = ""
         buttonColumn.Name = "APPROVE"
-        buttonColumn.Text = "อนุมัติยกเลิก"
+        buttonColumn.Text = "อนุมัติออกใบแจ้งหนี้"
         buttonColumn.UseColumnTextForButtonValue = True
 
         Dim buttonColumn2 As New DataGridViewButtonColumn()

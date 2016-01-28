@@ -28,6 +28,7 @@
                     Catch ex As Exception
                         MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                     End Try
+                    Me.frmFINPaymentNoticeCancleList_Load(sender, e)
                 End If
             End If
 
@@ -50,6 +51,7 @@
                         Catch ex As Exception
                             MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                         End Try
+                        Me.frmFINPaymentNoticeCancleList_Load(sender, e)
                     End If
                 End If
             End If
