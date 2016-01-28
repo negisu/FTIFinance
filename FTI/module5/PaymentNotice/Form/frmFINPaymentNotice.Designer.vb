@@ -23,7 +23,7 @@ Partial Class frmFINPaymentNotice
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -109,25 +109,6 @@ Partial Class frmFINPaymentNotice
         Me.NOTETextBox = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.INNER_NOTETextBox = New System.Windows.Forms.TextBox()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TRAN_NO_REFLabel = New System.Windows.Forms.Label()
         Me.IVTRAN_NOLabel = New System.Windows.Forms.Label()
         Me.RCTRAN_NOLabel = New System.Windows.Forms.Label()
@@ -168,6 +149,25 @@ Partial Class frmFINPaymentNotice
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox5.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -229,7 +229,7 @@ Partial Class frmFINPaymentNotice
         '
         'TabPage1
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.TabPage1.BackColor = System.Drawing.Color.Transparent
         Me.TabPage1.Controls.Add(Me.Label36)
         Me.TabPage1.Controls.Add(Me.BRANCH_NAME_THTextBox)
         Me.TabPage1.Controls.Add(Me.ADDR1_TH)
@@ -284,7 +284,7 @@ Partial Class frmFINPaymentNotice
         '
         'TabPage2
         '
-        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.TabPage2.BackColor = System.Drawing.Color.Transparent
         Me.TabPage2.Controls.Add(Me.Label38)
         Me.TabPage2.Controls.Add(Me.BRANCH_NAME_ENTextBox)
         Me.TabPage2.Controls.Add(Me.ADDR1_EN)
@@ -531,7 +531,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.TAX_RATELabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TAX_RATELabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.TAX_RATELabel.ForeColor = System.Drawing.Color.DarkBlue
+        Me.TAX_RATELabel.ForeColor = System.Drawing.Color.MidnightBlue
         Me.TAX_RATELabel.Location = New System.Drawing.Point(106, 34)
         Me.TAX_RATELabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.TAX_RATELabel.Name = "TAX_RATELabel"
@@ -570,7 +570,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.VatLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.VatLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.VatLabel.ForeColor = System.Drawing.Color.DarkBlue
+        Me.VatLabel.ForeColor = System.Drawing.Color.MidnightBlue
         Me.VatLabel.Location = New System.Drawing.Point(195, 34)
         Me.VatLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.VatLabel.Name = "VatLabel"
@@ -583,7 +583,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.GrandTotalLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GrandTotalLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.GrandTotalLabel.ForeColor = System.Drawing.Color.DarkBlue
+        Me.GrandTotalLabel.ForeColor = System.Drawing.Color.MidnightBlue
         Me.GrandTotalLabel.Location = New System.Drawing.Point(189, 83)
         Me.GrandTotalLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.GrandTotalLabel.Name = "GrandTotalLabel"
@@ -637,7 +637,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.TopUpDiscountLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TopUpDiscountLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.TopUpDiscountLabel.ForeColor = System.Drawing.Color.DarkBlue
+        Me.TopUpDiscountLabel.ForeColor = System.Drawing.Color.MidnightBlue
         Me.TopUpDiscountLabel.Location = New System.Drawing.Point(195, 59)
         Me.TopUpDiscountLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.TopUpDiscountLabel.Name = "TopUpDiscountLabel"
@@ -677,7 +677,7 @@ Partial Class frmFINPaymentNotice
         '
         Me.SumLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.SumLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.SumLabel.ForeColor = System.Drawing.Color.DarkBlue
+        Me.SumLabel.ForeColor = System.Drawing.Color.MidnightBlue
         Me.SumLabel.Location = New System.Drawing.Point(195, 8)
         Me.SumLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SumLabel.Name = "SumLabel"
@@ -705,6 +705,7 @@ Partial Class frmFINPaymentNotice
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(168, 36)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
@@ -904,10 +905,10 @@ Partial Class frmFINPaymentNotice
         Me.Panel1.Controls.Add(Me.NumberReadingLabel)
         Me.Panel1.Controls.Add(Me.Label37)
         Me.Panel1.Controls.Add(Me.Label40)
-        Me.Panel1.Location = New System.Drawing.Point(361, 615)
+        Me.Panel1.Location = New System.Drawing.Point(312, 615)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(490, 39)
+        Me.Panel1.Size = New System.Drawing.Size(539, 39)
         Me.Panel1.TabIndex = 238
         '
         'NumberReadingLabel
@@ -915,10 +916,10 @@ Partial Class frmFINPaymentNotice
         Me.NumberReadingLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.NumberReadingLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.NumberReadingLabel.ForeColor = System.Drawing.Color.White
-        Me.NumberReadingLabel.Location = New System.Drawing.Point(176, 9)
+        Me.NumberReadingLabel.Location = New System.Drawing.Point(179, 9)
         Me.NumberReadingLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.NumberReadingLabel.Name = "NumberReadingLabel"
-        Me.NumberReadingLabel.Size = New System.Drawing.Size(310, 22)
+        Me.NumberReadingLabel.Size = New System.Drawing.Size(356, 22)
         Me.NumberReadingLabel.TabIndex = 270
         Me.NumberReadingLabel.Text = "-"
         Me.NumberReadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -942,7 +943,7 @@ Partial Class frmFINPaymentNotice
         Me.Label40.AutoSize = True
         Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Label40.ForeColor = System.Drawing.Color.White
-        Me.Label40.Location = New System.Drawing.Point(7, 10)
+        Me.Label40.Location = New System.Drawing.Point(10, 11)
         Me.Label40.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(161, 20)
@@ -1248,125 +1249,11 @@ Partial Class frmFINPaymentNotice
         'INNER_NOTETextBox
         '
         Me.INNER_NOTETextBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.INNER_NOTETextBox.Location = New System.Drawing.Point(471, 670)
+        Me.INNER_NOTETextBox.Location = New System.Drawing.Point(471, 661)
         Me.INNER_NOTETextBox.Multiline = True
         Me.INNER_NOTETextBox.Name = "INNER_NOTETextBox"
-        Me.INNER_NOTETextBox.Size = New System.Drawing.Size(381, 67)
+        Me.INNER_NOTETextBox.Size = New System.Drawing.Size(381, 76)
         Me.INNER_NOTETextBox.TabIndex = 276
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ลำดับที่"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "*รหัสสินค้า/บริการ"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 30
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ชื่อสินค้า"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 50
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.HeaderText = "*หน่วยงานเจ้าของเงิน"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.HeaderText = "*จำนวน"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 200
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.HeaderText = "*ราคา/หน่วย"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 200
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.HeaderText = "*จำนวน"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        DataGridViewCellStyle2.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.HeaderText = "มูลค่าสินค้า/บริการ"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.HeaderText = "ส่วนลด"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.HeaderText = "มูลค่าหลังหักส่วนลด"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.HeaderText = "ภาษีมูลค่าเพิ่ม"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.HeaderText = "ลำดับ"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.ReadOnly = True
-        Me.DataGridViewTextBoxColumn13.Width = 50
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.HeaderText = "ธนาคาร"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 70
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.HeaderText = "สาขาธนาคาร"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Width = 70
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.HeaderText = "เลขที่เช็ค/บัตรเครดิต"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Width = 120
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.HeaderText = "วันที่ตราสาร"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Width = 120
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.HeaderText = "*เลขที่บัญชี สอท."
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.HeaderText = "*จำนวนเงิน"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
         '
         'TRAN_NO_REFLabel
         '
@@ -1448,7 +1335,7 @@ Partial Class frmFINPaymentNotice
         '
         'Panel5
         '
-        Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.Controls.Add(Me.previewIV)
         Me.Panel5.Controls.Add(Me.previewRC)
         Me.Panel5.Controls.Add(Me.IVTRAN_NOLabel)
@@ -1462,7 +1349,7 @@ Partial Class frmFINPaymentNotice
         '
         'Panel6
         '
-        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.Panel6.BackColor = System.Drawing.Color.Transparent
         Me.Panel6.Controls.Add(Me.DUE_DATEPicker)
         Me.Panel6.Controls.Add(Me.TRAN_DATEPicker)
         Me.Panel6.Controls.Add(Me.TRAN_DATELabel)
@@ -1497,7 +1384,7 @@ Partial Class frmFINPaymentNotice
         '
         'Panel7
         '
-        Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.Panel7.BackColor = System.Drawing.Color.Transparent
         Me.Panel7.Controls.Add(Me.TAX_NOTextBox)
         Me.Panel7.Controls.Add(Me.MEMBER_CODETextBox)
         Me.Panel7.Controls.Add(Me.Label43)
@@ -1564,7 +1451,7 @@ Partial Class frmFINPaymentNotice
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.White
-        Me.Label27.Location = New System.Drawing.Point(4, 9)
+        Me.Label27.Location = New System.Drawing.Point(15, 10)
         Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(102, 20)
@@ -1580,10 +1467,10 @@ Partial Class frmFINPaymentNotice
         Me.Panel8.Controls.Add(Me.TopUpTextBox)
         Me.Panel8.Controls.Add(Me.Label30)
         Me.Panel8.Controls.Add(Me.Label27)
-        Me.Panel8.Location = New System.Drawing.Point(556, 567)
+        Me.Panel8.Location = New System.Drawing.Point(507, 567)
         Me.Panel8.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(295, 39)
+        Me.Panel8.Size = New System.Drawing.Size(344, 39)
         Me.Panel8.TabIndex = 286
         '
         'currLabel5
@@ -1592,7 +1479,7 @@ Partial Class frmFINPaymentNotice
         Me.currLabel5.AutoSize = True
         Me.currLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.currLabel5.ForeColor = System.Drawing.Color.White
-        Me.currLabel5.Location = New System.Drawing.Point(253, 9)
+        Me.currLabel5.Location = New System.Drawing.Point(305, 9)
         Me.currLabel5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.currLabel5.Name = "currLabel5"
         Me.currLabel5.Size = New System.Drawing.Size(35, 20)
@@ -1601,9 +1488,9 @@ Partial Class frmFINPaymentNotice
         '
         'TopUpTextBox
         '
-        Me.TopUpTextBox.Location = New System.Drawing.Point(140, 9)
+        Me.TopUpTextBox.Location = New System.Drawing.Point(184, 9)
         Me.TopUpTextBox.Name = "TopUpTextBox"
-        Me.TopUpTextBox.Size = New System.Drawing.Size(80, 22)
+        Me.TopUpTextBox.Size = New System.Drawing.Size(112, 22)
         Me.TopUpTextBox.TabIndex = 287
         Me.TopUpTextBox.Text = "0"
         Me.TopUpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -1629,7 +1516,7 @@ Partial Class frmFINPaymentNotice
         Me.Panel9.Controls.Add(Me.Label29)
         Me.Panel9.Controls.Add(Me.Label32)
         Me.Panel9.Controls.Add(Me.VAT_RATEComboBox)
-        Me.Panel9.Location = New System.Drawing.Point(361, 567)
+        Me.Panel9.Location = New System.Drawing.Point(312, 567)
         Me.Panel9.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(187, 39)
@@ -1640,6 +1527,7 @@ Partial Class frmFINPaymentNotice
         Me.Label35.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label35.AutoSize = True
         Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label35.ForeColor = System.Drawing.Color.White
         Me.Label35.Location = New System.Drawing.Point(159, 9)
         Me.Label35.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label35.Name = "Label35"
@@ -1724,7 +1612,7 @@ Partial Class frmFINPaymentNotice
         '
         'TabPage3
         '
-        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.TabPage3.BackColor = System.Drawing.Color.Transparent
         Me.TabPage3.Controls.Add(Me.ADDR1_TH2)
         Me.TabPage3.Controls.Add(Me.Label11)
         Me.TabPage3.Controls.Add(Me.ATTN_NAME_THTextBox2)
@@ -1777,7 +1665,7 @@ Partial Class frmFINPaymentNotice
         '
         'TabPage4
         '
-        Me.TabPage4.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.TabPage4.BackColor = System.Drawing.Color.Transparent
         Me.TabPage4.Controls.Add(Me.ADDR1_EN2)
         Me.TabPage4.Controls.Add(Me.ATTN_NAME_ENTextBox2)
         Me.TabPage4.Controls.Add(Me.Label17)
@@ -1843,6 +1731,120 @@ Partial Class frmFINPaymentNotice
         Me.GroupBox6.TabIndex = 235
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "ที่อยู่จัดส่ง"
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ลำดับที่"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.HeaderText = "*รหัสสินค้า/บริการ"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Width = 30
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.HeaderText = "ชื่อสินค้า"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Width = 50
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.HeaderText = "*หน่วยงานเจ้าของเงิน"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.HeaderText = "*จำนวน"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 200
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.HeaderText = "*ราคา/หน่วย"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 200
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.HeaderText = "*จำนวน"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        DataGridViewCellStyle1.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.HeaderText = "มูลค่าสินค้า/บริการ"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.HeaderText = "ส่วนลด"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.HeaderText = "มูลค่าหลังหักส่วนลด"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.HeaderText = "ภาษีมูลค่าเพิ่ม"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.HeaderText = "ลำดับ"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.ReadOnly = True
+        Me.DataGridViewTextBoxColumn13.Width = 50
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.HeaderText = "ธนาคาร"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Width = 70
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.HeaderText = "สาขาธนาคาร"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Width = 70
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.HeaderText = "เลขที่เช็ค/บัตรเครดิต"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.Width = 120
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.HeaderText = "วันที่ตราสาร"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.Width = 120
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.HeaderText = "*เลขที่บัญชี สอท."
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.HeaderText = "*จำนวนเงิน"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
         '
         'frmFINPaymentNotice
         '

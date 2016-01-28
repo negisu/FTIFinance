@@ -40,6 +40,7 @@
     Dim ex_rate As Double = 1.0
 
     Dim isDETAILGridViewCreated As Boolean = False
+    Dim numberStringFormat As String = "#,##0.00"
 
 
     <System.Diagnostics.DebuggerStepThrough()> _
@@ -102,11 +103,16 @@
     '==============================================================================================================================================='
 
     Private Sub frmFINPaymentNotice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If TRAN_TYPE = "IV" Then
+        If TRAN_TYPE = "I1" Then
             Me.Text = "บันทึกใบแจ้งหนี้"
             IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งชำระ"
             FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
             Me.BackColor = Color.LavenderBlush
+        ElseIf TRAN_TYPE = "I2" Then
+            Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
+            FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
+            Me.BackColor = Color.Ivory
+
         Else
 
         End If
@@ -267,13 +273,10 @@
         End With
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If isNew Then
-            TRAN_NO = DocumentNumberHelper.getPN_DOC_RUNNING(OU_CODE, user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), TRAN_TYPE)
-        End If
-
         If validatePN_DETAIL() And validateAddress() Then
-            If (MessageBox.Show("คุณต้องการที่จะบันทึกเอกสารหมายเลข " & TRAN_NO.ToString() & " ใช่หรือไม่?", "บันทึกเอกสาร", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If (MessageBox.Show("คุณต้องการที่จะบันทึกเอกสารใช่หรือไม่?", "บันทึกเอกสาร", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 If isNew Then
+                    TRAN_NO = DocumentNumberHelper.getPN_DOC_RUNNING(OU_CODE, user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), TRAN_TYPE, DateTime.Now.ToString("MM"))
                     TRAN_NOLabel.Text = TRAN_NO
                     insertDOC_RUNNING()
                 End If
@@ -296,7 +299,7 @@
 
     Private Sub btProdDel_Click(sender As Object, e As EventArgs) Handles btProdDel.Click
         If DetailGridView.RowCount > 0 Then
-            If (MessageBox.Show("คุณต้องการที่จะลบรายการ " & DetailGridView.CurrentRow.Cells("NOTE").Value.ToString() & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If (MessageBox.Show("คุณต้องการที่จะลบรายการ " & DetailGridView.CurrentRow.Cells("NOTE").Value.ToString() & " ใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 DetailGridView.Rows.Remove(DetailGridView.CurrentRow)
             End If
         Else
@@ -577,15 +580,15 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
 
         If Not CheckBox1.Checked Then
-            SumLabel.Text = Format(TOTAL, "#,##0.0000")
-            TopUpDiscountLabel.Text = Format(TOP_DISC_AMT, "#,##0.0000")
-            VatLabel.Text = Format(TOTAL_VAT, "#,##0.0000")
-            GrandTotalLabel.Text = Format(GRAND_AMT, "#,##0.0000")
+            SumLabel.Text = Format(TOTAL, numberStringFormat)
+            TopUpDiscountLabel.Text = Format(TOP_DISC_AMT, numberStringFormat)
+            VatLabel.Text = Format(TOTAL_VAT, numberStringFormat)
+            GrandTotalLabel.Text = Format(GRAND_AMT, numberStringFormat)
         Else
-            SumLabel.Text = Format((TOTAL * ex_rate), "#,##0.0000")
-            TopUpDiscountLabel.Text = Format((TOP_DISC_AMT * ex_rate), "#,##0.0000")
-            VatLabel.Text = Format((TOTAL_VAT * ex_rate), "#,##0.0000")
-            GrandTotalLabel.Text = Format((GRAND_AMT * ex_rate), "#,##0.0000")
+            SumLabel.Text = Format((TOTAL * ex_rate), numberStringFormat)
+            TopUpDiscountLabel.Text = Format((TOP_DISC_AMT * ex_rate), numberStringFormat)
+            VatLabel.Text = Format((TOTAL_VAT * ex_rate), numberStringFormat)
+            GrandTotalLabel.Text = Format((GRAND_AMT * ex_rate), numberStringFormat)
         End If
 
         Try
@@ -639,23 +642,22 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         f = Nothing
     End Sub
     Private Sub resetAddress()
-        ATTN_NAME_THTextBox2.Text = ""
-        ATTN_NAME_ENTextBox2.Text = ""
-        POST_CODETextBox.Text = ""
-        POST_CODETextBox2.Text = ""
-        ADDR1_TH.Text = ""
-        ADDR1_EN.Text = ""
-        ADDR1_TH2.Text = ""
-        ADDR1_EN2.Text = ""
-        TELEPHONETextBox.Text = ""
-        TELEPHONETextBox2.Text = ""
-        FAXTextBox.Text = ""
-        FAXTextBox2.Text = ""
+        ATTN_NAME_THTextBox2.Text = String.Empty
+        ATTN_NAME_ENTextBox2.Text = String.Empty
+        POST_CODETextBox.Text = String.Empty
+        POST_CODETextBox2.Text = String.Empty
+        ADDR1_TH.Text = String.Empty
+        ADDR1_EN.Text = String.Empty
+        ADDR1_TH2.Text = String.Empty
+        ADDR1_EN2.Text = String.Empty
+        TELEPHONETextBox.Text = String.Empty
+        TELEPHONETextBox2.Text = String.Empty
+        FAXTextBox.Text = String.Empty
+        FAXTextBox2.Text = String.Empty
     End Sub
 
     Private Function validateAddress() As Boolean
         Dim retVal As Boolean = True
-
 
         If thai.Checked Then
             If String.IsNullOrEmpty(ATTN_NAME_THTextBox2.Text.Trim()) Then
@@ -827,7 +829,6 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         BRANCH_NAME_ENTextBox.Text = ADDRESSDataTable.Rows(0).Item("BRANCH_NAME_EN").ToString()
         ADDR1_EN.Text = ADDRESSDataTable.Rows(0).Item("ADDR1_EN").ToString()
 
-
         ADDR1_TH.Text = ADDRESSDataTable.Rows(0).Item("ADDR1_TH").ToString()
 
         POST_CODETextBox.Text = ADDRESSDataTable.Rows(0).Item("POST_CODE").ToString()
@@ -870,6 +871,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
         Dim pn As New PN_HEAD
         pn.OU_CODE = OU_CODE
+        If TRAN_TYPE = "I2" Then
+            pn.IV_TRAN_NO = IVTRAN_NOLabel.Text
+        End If
         If isNew Then
             pn.DIV_CODE = user_div
             pn.CR_BY = user_name
@@ -956,44 +960,44 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
         End Try
 
-        Dim pn As New PN_ADDRESS
+        Dim pnA As New PN_ADDRESS
 
         If isNew Then
-            pn.CR_BY = user_name
-            pn.CR_DATE = DateTime.Now
+            pnA.CR_BY = user_name
+            pnA.CR_DATE = DateTime.Now
         End If
         'document
-        pn.TRAN_NO = TRAN_NO
-        pn.AR_CODE = AR_CODETextBox.Text
-        pn.ADDR_SEQ = 1
-        pn.ADDR1_EN = ADDR1_EN.Text
-        pn.ADDR1_TH = ADDR1_TH.Text
-        pn.ATTN_NAME_EN = "NO"
-        pn.ATTN_NAME_TH = "NO"
-        pn.POST_CODE = POST_CODETextBox.Text
-        pn.TELEPHONE = TELEPHONETextBox.Text
-        pn.FAX = FAXTextBox.Text
-        pn.UPD_BY = user_name
-        pn.UPD_DATE = DateTime.Now
-        pn.AR_CODE = AR_CODETextBox.Text
-        pn.BRANCH_NAME_TH = BRANCH_NAME_THTextBox.Text
-        pn.BRANCH_NAME_EN = BRANCH_NAME_ENTextBox.Text
+        pnA.TRAN_NO = TRAN_NO
+        pnA.AR_CODE = AR_CODETextBox.Text
+        pnA.ADDR_SEQ = 1
+        pnA.ADDR1_EN = ADDR1_EN.Text
+        pnA.ADDR1_TH = ADDR1_TH.Text
+        pnA.ATTN_NAME_EN = "NO"
+        pnA.ATTN_NAME_TH = "NO"
+        pnA.POST_CODE = POST_CODETextBox.Text
+        pnA.TELEPHONE = TELEPHONETextBox.Text
+        pnA.FAX = FAXTextBox.Text
+        pnA.UPD_BY = user_name
+        pnA.UPD_DATE = DateTime.Now
+        pnA.AR_CODE = AR_CODETextBox.Text
+        pnA.BRANCH_NAME_TH = BRANCH_NAME_THTextBox.Text
+        pnA.BRANCH_NAME_EN = BRANCH_NAME_ENTextBox.Text
 
         'delivery
-        QueryHelper.insertModel("PN_ADDRESS", pn)
-        pn.ADDR_SEQ = 2
-        pn.ADDR1_EN = ADDR1_EN2.Text
-        pn.ADDR1_TH = ADDR1_TH2.Text
-        pn.ATTN_NAME_EN = ATTN_NAME_ENTextBox2.Text
-        pn.ATTN_NAME_TH = ATTN_NAME_THTextBox2.Text
-        pn.POST_CODE = POST_CODETextBox2.Text
-        pn.TELEPHONE = TELEPHONETextBox2.Text
-        pn.FAX = FAXTextBox2.Text
-        pn.UPD_BY = user_name
-        pn.UPD_DATE = DateTime.Now
-        pn.AR_CODE = AR_CODETextBox.Text
+        QueryHelper.insertModel("PN_ADDRESS", pnA)
+        pnA.ADDR_SEQ = 2
+        pnA.ADDR1_EN = ADDR1_EN2.Text
+        pnA.ADDR1_TH = ADDR1_TH2.Text
+        pnA.ATTN_NAME_EN = ATTN_NAME_ENTextBox2.Text
+        pnA.ATTN_NAME_TH = ATTN_NAME_THTextBox2.Text
+        pnA.POST_CODE = POST_CODETextBox2.Text
+        pnA.TELEPHONE = TELEPHONETextBox2.Text
+        pnA.FAX = FAXTextBox2.Text
+        pnA.UPD_BY = user_name
+        pnA.UPD_DATE = DateTime.Now
+        pnA.AR_CODE = AR_CODETextBox.Text
 
-        QueryHelper.insertModel("PN_ADDRESS", pn)
+        QueryHelper.insertModel("PN_ADDRESS", pnA)
 
     End Sub
 
@@ -1121,7 +1125,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     Private Sub vatInclude_MouseUp(sender As Object, e As MouseEventArgs) Handles vatInclude.MouseUp
         If ((vatType <> "I") And (Not String.IsNullOrEmpty(vatType))) Then
-            If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 setVATType("I")
             End If
 
@@ -1130,7 +1134,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     Private Sub vatExclude_MouseUp(sender As Object, e As MouseEventArgs) Handles vatExclude.MouseUp
         If ((vatType <> "E") And (Not String.IsNullOrEmpty(vatType))) Then
-            If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 setVATType("E")
             End If
 
@@ -1139,7 +1143,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     Private Sub nonVat_MouseUp(sender As Object, e As MouseEventArgs) Handles nonVat.MouseUp
         If ((vatType <> "N") And (Not String.IsNullOrEmpty(vatType))) Then
-            If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 setVATType("N")
             End If
         End If
@@ -1199,7 +1203,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                 param.Add("TRAN_NAME_TH", "ใบแจ้งหนี้")
                 param.Add("TRAN_NAME_EN", "Invoice")
             End If
-            
+
             Dim f As New frmMainReports
             f.reportPath = getParameters(5, "PN_REPORT")
             f.reportParameters = param
@@ -1226,11 +1230,11 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     Private Sub frmFINPaymentNotice_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Not isLockAll Then
             If isNew Then
-                If (MessageBox.Show("การแก้ไขที่ยังไม่ได้บันทึกจะไม่ได้รับการบันทึก คุณต้องการที่จะปิดหน้าต่างนี้ ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No) Then
+                If (MessageBox.Show("การแก้ไขที่ยังไม่ได้บันทึกจะไม่ได้รับการบันทึก คุณต้องการที่จะปิดหน้าต่างนี้ ใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No) Then
                     e.Cancel = True
                 End If
             Else
-                If (MessageBox.Show("การแก้ไขใบแจ้งชำระยังไม่ถูกบันทึก คุณต้องการที่จะปิดหน้าต่างนี้ ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No) Then
+                If (MessageBox.Show("การแก้ไขใบแจ้งชำระยังไม่ถูกบันทึก คุณต้องการที่จะปิดหน้าต่างนี้ ใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No) Then
                     e.Cancel = True
                 End If
             End If

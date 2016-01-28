@@ -36,13 +36,13 @@
                 If (MessageBox.Show("คุณต้องการที่จะอนุมัติการออกใบแจ้งหนี้จากเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
 
 
-                    Dim IV_TRAN_NO As String = DocumentNumberHelper.getPN_DOC_RUNNING("001", user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "IV")
+                    Dim IV_TRAN_NO As String = DocumentNumberHelper.getPN_DOC_RUNNING("001", user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "I1", DateTime.Now.ToString("MM"))
                     Dim docRunning = New DOC_RUNNING
                     docRunning.OU_CODE = "001"
                     docRunning.DIV_CODE = user_div
                     docRunning.BUDGET_YEAR = Integer.Parse(DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
                     docRunning.PERIOD = 0
-                    docRunning.SUB_TYPE = "IV"
+                    docRunning.SUB_TYPE = "I1"
                     docRunning.DOC_RUNNING_NO = IV_TRAN_NO
                     docRunning.CR_BY = user_name
                     docRunning.CR_DATE = DateTime.Now
@@ -51,7 +51,7 @@
                     Dim pnH As PN_HEAD = CType(ModelHelper.convertDataRowToModel(New PN_HEAD, HEADDataTable.Rows(0)), PN_HEAD)
                     pnH.TRAN_NO = IV_TRAN_NO
                     pnH.PN_TRAN_NO = TRAN_NO
-                    pnH.TRAN_TYPE = "IV"
+                    pnH.TRAN_TYPE = "I1"
                     pnH.POST_INVOICE_FLAG = "A"
 
                     QueryHelper.insertModel("PN_HEAD", pnH)

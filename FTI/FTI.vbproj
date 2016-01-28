@@ -1246,12 +1246,6 @@
     <Compile Include="module5\Helper\NumberHelper.vb" />
     <Compile Include="module5\Helper\PermissionHelper.vb" />
     <Compile Include="module5\Helper\QueryHelper.vb" />
-    <Compile Include="module5\Invoice\Form\frmFINInvoice.Designer.vb">
-      <DependentUpon>frmFINInvoice.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\Invoice\Form\frmFINInvoice.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="module5\Model\FN_MASTER_RECEIPT.vb" />
     <Compile Include="module5\Model\IV_ADDRESS.vb" />
     <Compile Include="module5\Model\IV_DETAIL.vb" />
@@ -1336,12 +1330,6 @@
       <DependentUpon>frmFINDocumentList.vb</DependentUpon>
     </Compile>
     <Compile Include="module5\frmFINDocumentList.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\frmFINPaymentNoticeSearch.Designer.vb">
-      <DependentUpon>frmFINPaymentNoticeSearch.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\frmFINPaymentNoticeSearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="module5\Receipt\frmFINReceipt.Designer.vb">
@@ -1835,9 +1823,6 @@
     <EmbeddedResource Include="module5\frmFINTestFunction.resx">
       <DependentUpon>frmFINTestFunction.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module5\Invoice\Form\frmFINInvoice.resx">
-      <DependentUpon>frmFINInvoice.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="module5\PaymentNotice\Form\frmFINPaymentNotice.resx">
       <DependentUpon>frmFINPaymentNotice.vb</DependentUpon>
     </EmbeddedResource>
@@ -1873,9 +1858,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINDocumentList.resx">
       <DependentUpon>frmFINDocumentList.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="module5\PaymentNotice\frmFINPaymentNoticeSearch.resx">
-      <DependentUpon>frmFINPaymentNoticeSearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.resx">
       <DependentUpon>frmFINPaymentNoticeInvoicePassRequestList.vb</DependentUpon>

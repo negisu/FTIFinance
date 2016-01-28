@@ -35,7 +35,6 @@
 
     Friend fFMain As frmFINMain
     Friend fPN As frmFINPaymentNotice
-    Friend fIV As frmFINInvoice
     Friend fRC As frmFINReceipt
 
 End Module

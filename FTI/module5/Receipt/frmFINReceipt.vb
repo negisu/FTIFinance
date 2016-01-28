@@ -154,7 +154,7 @@
     End Sub
 
     Private Sub frmFINPaymentNotice_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        fIV = Nothing
+
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click

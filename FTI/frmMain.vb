@@ -1270,14 +1270,6 @@ Public Class frmMain
         f = Nothing
     End Sub
 
-    Private Sub กรอกขอมลดวยตนเองToolStripMenuItem1_Click(sender As Object, e As EventArgs)
-        Dim f As New frmFINInvoice
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            '
-        End If
-        f.Dispose()
-        f = Nothing
-    End Sub
 
     Private Sub ToolStripMenuItem12_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem12.Click
         If fFeeGS1 Is Nothing Then

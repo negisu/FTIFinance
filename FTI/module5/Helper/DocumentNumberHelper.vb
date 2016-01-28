@@ -31,9 +31,9 @@
     End Function
 
 
-    Public Shared Function getPN_DOC_RUNNING(OU_CODE As String, DIV_CODE As String, BUDGET_YEAR As String, SUB_TYPE As String) As String
+    Public Shared Function getPN_DOC_RUNNING(OU_CODE As String, DIV_CODE As String, BUDGET_YEAR As String, SUB_TYPE As String, BUDGET_PERIOD As String) As String
 
-        Dim searchValue As String = DIV_CODE & BUDGET_YEAR & SUB_TYPE
+        Dim searchValue As String = DIV_CODE & SUB_TYPE & BUDGET_YEAR & BUDGET_PERIOD
         searchValue = "%" & searchValue & "%"
 
         Dim parameters As New Dictionary(Of String, Object)
@@ -50,12 +50,12 @@
         dt = fillWebSQL(query, parameters, "PN_DOC_RUNNING")
 
         If dt.Rows.Count = 0 Then
-            Return searchValue.Replace("%", String.Empty) & "000000"
+            Return searchValue.Replace("%", String.Empty) & "0000"
         Else
             Dim DOC_RUNNING_NO As String = dt.Rows(0).Item("DOC_RUNNING_NO").ToString()
 
             Dim runningNumber As Integer = Integer.Parse(DOC_RUNNING_NO.Substring(DOC_RUNNING_NO.Length - 4, 4)) + 1
-            Return searchValue.Replace("%", String.Empty) & String.Format("{0:000000}", runningNumber)
+            Return searchValue.Replace("%", String.Empty) & String.Format("{0:0000}", runningNumber)
         End If
 
 

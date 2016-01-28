@@ -2,9 +2,15 @@
     Public TRAN_TYPE As String
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If TRAN_TYPE = "IV" Then
+        If TRAN_TYPE = "I1" Then
             Me.Text = "แก้ไขใบแจ้งหนี้"
             Label1.Text = "แก้ไขใบแจ้งหนี้"
+        ElseIf TRAN_TYPE = "I2" Then
+            Me.Text = "ออกใบลดยอดใบแจ้งหนี้"
+            Label1.Text = "ออกใบลดยอดใบแจ้งหนี้"
+            OK_Button.Text = "ออกใบลดยอดใบแจ้งหนี้"
+
+
         End If
         RefTextBox.Enabled = False
         FromDateTextBox.Enabled = False
@@ -42,7 +48,12 @@
         End If
 
         query &= " AND CANCEL_FLAG IS NULL AND TRAN_TYPE = @p10 "
-        parameters.Add("@p10", TRAN_TYPE)
+        If TRAN_TYPE = "I2" Then
+            parameters.Add("@p10", "I1")
+        Else
+            parameters.Add("@p10", TRAN_TYPE)
+        End If
+
         If isRef.Checked And Not String.IsNullOrEmpty(RefTextBox.Text) Then
             Dim searchValue As String = RefTextBox.Text.Trim.Replace(" ", "%")
             searchValue = "%" & searchValue & "%"

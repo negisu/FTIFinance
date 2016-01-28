@@ -41,11 +41,12 @@ Partial Class frmFINMain
         Me.PNRequestCancelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PNRequestInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.FindPNToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.รายงานคางชำระตามรหสสนคาToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ใบแจงหนToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddIVToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditIVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CancelRequestIVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ลดหนToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FindIVToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ใบเสรจToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.คนหาToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -54,7 +55,6 @@ Partial Class frmFINMain
         Me.อางองเอกสารToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ใบแจงชำระToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ใบแจงหนToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CancelRequestIVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -147,7 +147,7 @@ Partial Class frmFINMain
         '
         'ใบแจงชำระToolStripMenuItem2
         '
-        Me.ใบแจงชำระToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPNToolStripMenuItem, Me.EditPNToolStripMenuItem, Me.CancelRequestPNToolStripMenuItem, Me.InvoicePassToolStripMenuItem, Me.PNRequestCancelToolStripMenuItem, Me.PNRequestInvoiceToolStripMenuItem, Me.ToolStripSeparator1, Me.FindPNToolStripMenuItem, Me.รายงานคางชำระตามรหสสนคาToolStripMenuItem})
+        Me.ใบแจงชำระToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddPNToolStripMenuItem, Me.EditPNToolStripMenuItem, Me.CancelRequestPNToolStripMenuItem, Me.InvoicePassToolStripMenuItem, Me.PNRequestCancelToolStripMenuItem, Me.PNRequestInvoiceToolStripMenuItem, Me.ToolStripSeparator1, Me.รายงานคางชำระตามรหสสนคาToolStripMenuItem})
         Me.ใบแจงชำระToolStripMenuItem2.Name = "ใบแจงชำระToolStripMenuItem2"
         Me.ใบแจงชำระToolStripMenuItem2.Size = New System.Drawing.Size(191, 32)
         Me.ใบแจงชำระToolStripMenuItem2.Text = "ใบแจ้งชำระ"
@@ -194,13 +194,6 @@ Partial Class frmFINMain
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(318, 6)
         Me.ToolStripSeparator1.Visible = False
         '
-        'FindPNToolStripMenuItem
-        '
-        Me.FindPNToolStripMenuItem.Name = "FindPNToolStripMenuItem"
-        Me.FindPNToolStripMenuItem.Size = New System.Drawing.Size(321, 32)
-        Me.FindPNToolStripMenuItem.Text = "ค้นหา"
-        Me.FindPNToolStripMenuItem.Visible = False
-        '
         'รายงานคางชำระตามรหสสนคาToolStripMenuItem
         '
         Me.รายงานคางชำระตามรหสสนคาToolStripMenuItem.Name = "รายงานคางชำระตามรหสสนคาToolStripMenuItem"
@@ -210,7 +203,7 @@ Partial Class frmFINMain
         '
         'ใบแจงหนToolStripMenuItem2
         '
-        Me.ใบแจงหนToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddIVToolStripMenuItem1, Me.EditIVToolStripMenuItem, Me.CancelRequestIVToolStripMenuItem, Me.FindIVToolStripMenuItem1})
+        Me.ใบแจงหนToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddIVToolStripMenuItem1, Me.EditIVToolStripMenuItem, Me.CancelRequestIVToolStripMenuItem, Me.ลดหนToolStripMenuItem, Me.FindIVToolStripMenuItem1})
         Me.ใบแจงหนToolStripMenuItem2.Name = "ใบแจงหนToolStripMenuItem2"
         Me.ใบแจงหนToolStripMenuItem2.Size = New System.Drawing.Size(191, 32)
         Me.ใบแจงหนToolStripMenuItem2.Text = "ใบแจ้งหนี้"
@@ -226,6 +219,18 @@ Partial Class frmFINMain
         Me.EditIVToolStripMenuItem.Name = "EditIVToolStripMenuItem"
         Me.EditIVToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
         Me.EditIVToolStripMenuItem.Text = "แก้ไข"
+        '
+        'CancelRequestIVToolStripMenuItem
+        '
+        Me.CancelRequestIVToolStripMenuItem.Name = "CancelRequestIVToolStripMenuItem"
+        Me.CancelRequestIVToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
+        Me.CancelRequestIVToolStripMenuItem.Text = "ยกเลิก"
+        '
+        'ลดหนToolStripMenuItem
+        '
+        Me.ลดหนToolStripMenuItem.Name = "ลดหนToolStripMenuItem"
+        Me.ลดหนToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
+        Me.ลดหนToolStripMenuItem.Text = "ลดหนี้"
         '
         'FindIVToolStripMenuItem1
         '
@@ -280,32 +285,26 @@ Partial Class frmFINMain
         Me.ใบแจงหนToolStripMenuItem3.Size = New System.Drawing.Size(174, 32)
         Me.ใบแจงหนToolStripMenuItem3.Text = "ใบแจ้งหนี้"
         '
-        'CancelRequestIVToolStripMenuItem
-        '
-        Me.CancelRequestIVToolStripMenuItem.Name = "CancelRequestIVToolStripMenuItem"
-        Me.CancelRequestIVToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
-        Me.CancelRequestIVToolStripMenuItem.Text = "ยกเลิก"
-        '
         'frmFINMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8!, 16!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(982, 653)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.DoubleBuffered = True
+        Me.DoubleBuffered = true
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmFINMain"
         Me.Text = "frmFINMain"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(false)
+        Me.MenuStrip1.PerformLayout
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents tsFINANCE As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents คนหาเอกสารToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -314,7 +313,6 @@ Partial Class frmFINMain
     Friend WithEvents ReportByARToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator28 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ใบแจงชำระToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FindPNToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddPNToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PNRequestInvoiceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PNRequestCancelToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -339,4 +337,5 @@ Partial Class frmFINMain
     Friend WithEvents InvoicePassToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditIVToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CancelRequestIVToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ลดหนToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
