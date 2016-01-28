@@ -39,6 +39,8 @@
     Dim isChanged As Boolean = False
     Dim ex_rate As Double = 1.0
 
+    Dim isDETAILGridViewCreated As Boolean = False
+
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub Form1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
@@ -104,6 +106,7 @@
             Me.Text = "บันทึกใบแจ้งหนี้"
             IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งชำระ"
             FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
+            Me.BackColor = Color.LavenderBlush
         Else
 
         End If
@@ -115,6 +118,7 @@
         AR_NAMETextBox.Select()
         If Not PermissionHelper.isAdmin() Then lockNonAdminInput()
         isChanged = False
+        isDETAILGridViewCreated = True
 
     End Sub
 
@@ -306,7 +310,9 @@
     Private Sub DETAILGridView_DataError(ByVal sender As Object, _
 ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
-
+        If Not isDETAILGridViewCreated Then
+            Return
+        End If
         Call MsgBox("คุณใส่ข้อมูลไม่ถูกต้อง กรุณากรอกเป็นตัวเลข", 0, "พบข้อผิดพลาด")
         DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = DBNull.Value
         DetailGridView.Refresh()
@@ -314,7 +320,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     Private Sub DETAILGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DetailGridView.CellValueChanged
 
-        If Not DetailGridView.IsHandleCreated Then
+        If Not isDETAILGridViewCreated Then
             Return
         End If
 
@@ -732,28 +738,30 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         parameters.Add("@p0", TRAN_NO)
 
         HEADDataTable = fillWebSQL(query, parameters, "PN_HEAD")
+        If isNew Then
+            HEADDataTable.Rows.Add()
+        End If
+
+
     End Sub
     Private Sub getHEAD()
         getHEADDatatable()
-        If isNew Then
-            HEADDataTable.Rows.Add()
 
-            For Each columnName As String In numberColumns
-                Try
-                    HEADDataTable.Rows(0).Item(columnName) = 0
-                Catch ex As Exception
-                End Try
-            Next
-
+        For Each columnName As String In numberColumns
             Try
-                'VAT_RATE = CDec(VAT_RATEComboBox.SelectedValue)
+                HEADDataTable.Rows(0).Item(columnName) = 0
             Catch ex As Exception
-
             End Try
+        Next
 
-            TAX_RATELabel.Text = Format(VAT_RATE, "0.00")
-            Return
-        End If
+        Try
+            'VAT_RATE = CDec(VAT_RATEComboBox.SelectedValue)
+        Catch ex As Exception
+
+        End Try
+
+        TAX_RATELabel.Text = Format(VAT_RATE, "0.00")
+
         If String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("CANCEL_FLAG").ToString()) Then
             DocumentStatusLabel.Text = "ปกติ"
         Else
@@ -920,9 +928,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.TOP_DISC_AMT = TOP_DISC_AMT
         pn.GRAND_AMT = GRAND_AMT
         pn.GRAND_AMT_VAT = GRAND_AMT_VAT
-        pn.GRAND_AMT_INC_VAT = pn.GRAND_AMT_INC_VAT
+        pn.GRAND_AMT_INC_VAT = GRAND_AMT_INC_VAT
 
-        pn.BAL_AMT = GRAND_AMT_INC_VAT
+        pn.BAL_AMT = GRAND_AMT
 
         pn.NOTE = NOTETextBox.Text
         pn.INNER_NOTE = INNER_NOTETextBox.Text
@@ -1184,7 +1192,14 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
             Dim param As New Dictionary(Of String, String)
             param.Add("TRAN_NO", TRAN_NO)
-
+            If TRAN_TYPE = "PN" Then
+                param.Add("TRAN_NAME_TH", "ใบแจ้งชำระ")
+                param.Add("TRAN_NAME_EN", "Payment Notice")
+            Else
+                param.Add("TRAN_NAME_TH", "ใบแจ้งหนี้")
+                param.Add("TRAN_NAME_EN", "Invoice")
+            End If
+            
             Dim f As New frmMainReports
             f.reportPath = getParameters(5, "PN_REPORT")
             f.reportParameters = param
@@ -1322,11 +1337,13 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub VAT_RATEComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles VAT_RATEComboBox.SelectedIndexChanged
+        If Not VAT_RATEComboBox.IsHandleCreated Then Return
         isChanged = True
         VatLabel.Text = Format(VAT_RATE, "0.00")
     End Sub
 
     Private Sub CR_TERMTextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles CR_TERMTextBox.KeyUp
+        If Not CType(sender, TextBox).IsHandleCreated Then Return
         If e.KeyCode = Keys.Enter Then
             CR_TERMTextBox.ValidateText()
             SelectARButton.Select()
@@ -1394,6 +1411,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If Not CheckBox1.IsHandleCreated Then
+            Return
+        End If
         EX_RATETextBox.Enabled = CheckBox1.Checked
 
         If CheckBox1.Checked Then
@@ -1414,6 +1434,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub thai_MouseUp(sender As Object, e As MouseEventArgs) Handles thai.MouseUp
+        If Not thai.IsHandleCreated Then
+            Return
+        End If
         TabControl1.SelectedIndex = 0
         TabControl2.SelectedIndex = 0
         DetailGridView.Columns("NOTE").Visible = True
@@ -1422,6 +1445,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub eng_MouseUp(sender As Object, e As MouseEventArgs) Handles eng.MouseUp
+        If Not eng.IsHandleCreated Then
+            Return
+        End If
         TabControl1.SelectedIndex = 1
         TabControl2.SelectedIndex = 1
         DetailGridView.Columns("NOTE").Visible = False
@@ -1444,10 +1470,16 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub TRAN_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles TRAN_DATEPicker.ValueChanged
+        If Not TRAN_DATEPicker.IsHandleCreated Then
+            Return
+        End If
         DUE_DATEPicker.MinDate = TRAN_DATEPicker.Value
     End Sub
 
     Private Sub DUE_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles DUE_DATEPicker.ValueChanged
+        If Not DUE_DATEPicker.IsHandleCreated Then
+            Return
+        End If
         CR_TERMTextBox.Text = (TRAN_DATEPicker.Value - DUE_DATEPicker.Value).ToString("dd")
     End Sub
 
