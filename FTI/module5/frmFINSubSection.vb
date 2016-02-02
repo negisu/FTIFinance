@@ -5,6 +5,8 @@ Public Class frmFINSubSection
     Dim ds As DataSet
     Dim parameters As New Dictionary(Of String, Object)
     Dim query As String
+    Public TRAN_TYPE As String
+
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         If DataGridView1.CurrentRow IsNot Nothing Then
@@ -31,7 +33,6 @@ Public Class frmFINSubSection
     End Sub
 
     Private Sub getIV_SUB_SECTION()
-        'dv = New DataView(dt)
         Dim searchValue As String = TextBox1.Text.Trim.Replace(" ", "%")
         searchValue = "%" & searchValue & "%"
 
@@ -39,7 +40,7 @@ Public Class frmFINSubSection
         parameters.Add("@p0", searchValue)
 
         Dim query As String = String.Empty
-        query &= "SELECT TOP 100  * "
+        query &= "SELECT TOP 50  * "
         query &= "FROM            IV_SUB_SECTION "
         query &= "LEFT JOIN SU_DIVISION ON IV_SUB_SECTION.DIV_CODE_INC=SU_DIVISION.DIV_CODE "
         query &= "LEFT JOIN PL_ACTIVITY ON IV_SUB_SECTION.ATV_CODE_INC=PL_ACTIVITY.ATV_CODE "
@@ -55,6 +56,12 @@ Public Class frmFINSubSection
             query &= " AND IV_SUB_SECTION.DIV_CODE_INC = @p1 "
             parameters.Add("@p1", user_div)
 
+        End If
+
+        If TRAN_TYPE = "P1" Then
+            query &= " AND IV_SUB_SECTION.FLAG_PN = 1 "
+        Else
+            query &= " AND IV_SUB_SECTION.FLAG_IV = 1 "
         End If
 
         If Not String.IsNullOrEmpty(VATType) Then

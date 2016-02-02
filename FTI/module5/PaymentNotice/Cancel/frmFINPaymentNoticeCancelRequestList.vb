@@ -2,7 +2,7 @@
     Public TRAN_TYPE As String
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If TRAN_TYPE = "IV" Then
+        If TRAN_TYPE = "I1" Then
             Me.Text = "ยกเลิกใบแจ้งหนี้"
             Label1.Text = "ยกเลิกใบแจ้งหนี้"
         End If
@@ -204,7 +204,7 @@
                 row.Cells("CANCEL_REASON").ReadOnly = False
             End If
         Next
-
+        DataGridView1.ClearSelection()
     End Sub
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click

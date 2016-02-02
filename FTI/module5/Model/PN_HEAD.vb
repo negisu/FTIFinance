@@ -63,6 +63,8 @@
     Public POST_RECEIPT_FLAG As String
     Public INNER_NOTE As String
     Public CANCEL_REJECT_REASON As String
+    Public POST_INVOICE_REJECT_REASON As String
+
 
 
 End Class

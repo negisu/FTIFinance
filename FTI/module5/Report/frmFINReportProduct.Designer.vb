@@ -25,7 +25,6 @@ Partial Class frmFINReportProduct
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.DocTypeComboBox = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.KeyWordTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -45,9 +44,25 @@ Partial Class frmFINReportProduct
         Me.btFind = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton5 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton6 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -58,52 +73,42 @@ Partial Class frmFINReportProduct
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(16, 157)
+        Me.DataGridView1.Location = New System.Drawing.Point(16, 283)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(954, 433)
+        Me.DataGridView1.Size = New System.Drawing.Size(954, 307)
         Me.DataGridView1.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 9)
+        Me.Label1.Location = New System.Drawing.Point(6, 3)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(463, 31)
+        Me.Label1.Size = New System.Drawing.Size(166, 31)
         Me.Label1.TabIndex = 11
-        Me.Label1.Text = "รายงานค้างชำระตามรหัสสินค้า (ใบแจ้งชำระ)"
+        Me.Label1.Text = "รายงานเอกสาร"
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.DocTypeComboBox)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.KeyWordTextBox)
         Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Location = New System.Drawing.Point(16, 61)
+        Me.GroupBox2.Location = New System.Drawing.Point(217, 37)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(587, 52)
+        Me.GroupBox2.Size = New System.Drawing.Size(435, 80)
         Me.GroupBox2.TabIndex = 157
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "ขอบเขตการค้นหา"
         '
-        'DocTypeComboBox
-        '
-        Me.DocTypeComboBox.FormattingEnabled = True
-        Me.DocTypeComboBox.Items.AddRange(New Object() {"ใบแจ้งชำระ", "ใบแจ้งหนี้"})
-        Me.DocTypeComboBox.Location = New System.Drawing.Point(147, 59)
-        Me.DocTypeComboBox.Name = "DocTypeComboBox"
-        Me.DocTypeComboBox.Size = New System.Drawing.Size(334, 24)
-        Me.DocTypeComboBox.TabIndex = 168
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 64)
+        Me.Label6.Location = New System.Drawing.Point(12, 50)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(88, 17)
@@ -112,10 +117,10 @@ Partial Class frmFINReportProduct
         '
         'KeyWordTextBox
         '
-        Me.KeyWordTextBox.Location = New System.Drawing.Point(104, 21)
+        Me.KeyWordTextBox.Location = New System.Drawing.Point(148, 21)
         Me.KeyWordTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.KeyWordTextBox.Name = "KeyWordTextBox"
-        Me.KeyWordTextBox.Size = New System.Drawing.Size(478, 22)
+        Me.KeyWordTextBox.Size = New System.Drawing.Size(277, 22)
         Me.KeyWordTextBox.TabIndex = 3
         '
         'Label3
@@ -138,7 +143,7 @@ Partial Class frmFINReportProduct
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.isToDate)
         Me.GroupBox1.Controls.Add(Me.isFromDate)
-        Me.GroupBox1.Location = New System.Drawing.Point(611, 61)
+        Me.GroupBox1.Location = New System.Drawing.Point(620, 123)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
@@ -239,7 +244,7 @@ Partial Class frmFINReportProduct
         '
         Me.SortColumnComboBox.FormattingEnabled = True
         Me.SortColumnComboBox.Items.AddRange(New Object() {"รหัสรายการ", "ชื่อรายการ", "จำนวนรายการตกค้าง"})
-        Me.SortColumnComboBox.Location = New System.Drawing.Point(120, 119)
+        Me.SortColumnComboBox.Location = New System.Drawing.Point(120, 250)
         Me.SortColumnComboBox.Name = "SortColumnComboBox"
         Me.SortColumnComboBox.Size = New System.Drawing.Size(170, 24)
         Me.SortColumnComboBox.TabIndex = 160
@@ -247,7 +252,7 @@ Partial Class frmFINReportProduct
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(27, 122)
+        Me.Label2.Location = New System.Drawing.Point(27, 253)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(54, 17)
@@ -257,7 +262,7 @@ Partial Class frmFINReportProduct
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(298, 121)
+        Me.Label5.Location = New System.Drawing.Point(298, 252)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(92, 17)
@@ -268,7 +273,7 @@ Partial Class frmFINReportProduct
         '
         Me.SortDirectionComboBox.FormattingEnabled = True
         Me.SortDirectionComboBox.Items.AddRange(New Object() {"ไม่เรียง", "เรียงจากน้อยไปมาก", "เรียงจากมากไปน้อย"})
-        Me.SortDirectionComboBox.Location = New System.Drawing.Point(423, 118)
+        Me.SortDirectionComboBox.Location = New System.Drawing.Point(423, 249)
         Me.SortDirectionComboBox.Name = "SortDirectionComboBox"
         Me.SortDirectionComboBox.Size = New System.Drawing.Size(175, 24)
         Me.SortDirectionComboBox.TabIndex = 163
@@ -333,6 +338,136 @@ Partial Class frmFINReportProduct
         Me.Cancel_Button.Text = "ปิด"
         Me.Cancel_Button.UseVisualStyleBackColor = False
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.RadioButton2)
+        Me.GroupBox3.Controls.Add(Me.RadioButton1)
+        Me.GroupBox3.Location = New System.Drawing.Point(16, 37)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(194, 80)
+        Me.GroupBox3.TabIndex = 169
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "ออกรายงานตาม"
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(14, 24)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(59, 21)
+        Me.RadioButton1.TabIndex = 0
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "สินค้า"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(14, 52)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(62, 21)
+        Me.RadioButton2.TabIndex = 1
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "ลูกหนี้"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.RadioButton3)
+        Me.GroupBox4.Controls.Add(Me.RadioButton4)
+        Me.GroupBox4.Location = New System.Drawing.Point(16, 123)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(194, 80)
+        Me.GroupBox4.TabIndex = 170
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "สถานะเอกสาร"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.RadioButton5)
+        Me.GroupBox5.Controls.Add(Me.RadioButton6)
+        Me.GroupBox5.Location = New System.Drawing.Point(217, 123)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(194, 80)
+        Me.GroupBox5.TabIndex = 171
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "สถานะหนี้"
+        '
+        'RadioButton3
+        '
+        Me.RadioButton3.AutoSize = True
+        Me.RadioButton3.Location = New System.Drawing.Point(14, 49)
+        Me.RadioButton3.Name = "RadioButton3"
+        Me.RadioButton3.Size = New System.Drawing.Size(63, 21)
+        Me.RadioButton3.TabIndex = 173
+        Me.RadioButton3.TabStop = True
+        Me.RadioButton3.Text = "ยกเลิก"
+        Me.RadioButton3.UseVisualStyleBackColor = True
+        '
+        'RadioButton4
+        '
+        Me.RadioButton4.AutoSize = True
+        Me.RadioButton4.Location = New System.Drawing.Point(14, 21)
+        Me.RadioButton4.Name = "RadioButton4"
+        Me.RadioButton4.Size = New System.Drawing.Size(53, 21)
+        Me.RadioButton4.TabIndex = 172
+        Me.RadioButton4.TabStop = True
+        Me.RadioButton4.Text = "ปกติ"
+        Me.RadioButton4.UseVisualStyleBackColor = True
+        '
+        'RadioButton5
+        '
+        Me.RadioButton5.AutoSize = True
+        Me.RadioButton5.Location = New System.Drawing.Point(14, 49)
+        Me.RadioButton5.Name = "RadioButton5"
+        Me.RadioButton5.Size = New System.Drawing.Size(91, 21)
+        Me.RadioButton5.TabIndex = 175
+        Me.RadioButton5.TabStop = True
+        Me.RadioButton5.Text = "ไมค้างชำระ"
+        Me.RadioButton5.UseVisualStyleBackColor = True
+        '
+        'RadioButton6
+        '
+        Me.RadioButton6.AutoSize = True
+        Me.RadioButton6.Location = New System.Drawing.Point(14, 21)
+        Me.RadioButton6.Name = "RadioButton6"
+        Me.RadioButton6.Size = New System.Drawing.Size(76, 21)
+        Me.RadioButton6.TabIndex = 174
+        Me.RadioButton6.TabStop = True
+        Me.RadioButton6.Text = "ค้างชำระ"
+        Me.RadioButton6.UseVisualStyleBackColor = True
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.CheckBox2)
+        Me.GroupBox6.Controls.Add(Me.CheckBox1)
+        Me.GroupBox6.Location = New System.Drawing.Point(419, 123)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(194, 80)
+        Me.GroupBox6.TabIndex = 172
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "ประเภทเอกสาร"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(6, 21)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(92, 21)
+        Me.CheckBox1.TabIndex = 173
+        Me.CheckBox1.Text = "ใบแจ้งชำระ"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(6, 48)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(83, 21)
+        Me.CheckBox2.TabIndex = 174
+        Me.CheckBox2.Text = "ใบแจ้งหนี้"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
         'frmFINReportProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -340,6 +475,10 @@ Partial Class frmFINReportProduct
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.ClientSize = New System.Drawing.Size(982, 653)
+        Me.Controls.Add(Me.GroupBox6)
+        Me.Controls.Add(Me.GroupBox5)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btFind)
@@ -354,12 +493,20 @@ Partial Class frmFINReportProduct
         Me.Name = "frmFINReportProduct"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmFINReportProduct"
-        CType(Me.DataGridView1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        Me.ResumeLayout(false)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        Me.ResumeLayout(False)
         Me.PerformLayout
 
 End Sub
@@ -381,9 +528,20 @@ End Sub
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents SortDirectionComboBox As System.Windows.Forms.ComboBox
-    Friend WithEvents DocTypeComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents btFind As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton5 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton6 As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 End Class

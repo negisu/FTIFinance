@@ -247,4 +247,24 @@
         f.Dispose()
         f = Nothing
     End Sub
+
+    Private Sub คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem.Click
+        Dim f As New frmFINPaymentNoticeInvoicePassRequestApprovalListAccount
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+        End If
+
+        f.Dispose()
+        f = Nothing
+    End Sub
+
+    Private Sub IVSUBSECTIONMANAGEToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IVSUBSECTIONMANAGEToolStripMenuItem.Click
+        Dim f As New frmFINSubSectionManage
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+        End If
+
+        f.Dispose()
+        f = Nothing
+    End Sub
 End Class

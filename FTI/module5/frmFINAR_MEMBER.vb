@@ -54,7 +54,7 @@ Public Class frmFINAR_MEMBER
         parameters.Add("@p0", searchValue)
 
         Dim query As String = String.Empty
-        query &= "SELECT TOP 1000  * "
+        query &= "SELECT TOP 40  * "
         query &= "FROM            MB_MEMBER "
         query &= "LEFT JOIN MB_COMP_PERSON ON MB_MEMBER.COMP_PERSON_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
         query &= "LEFT JOIN MB_MEMBER_STATUS ON MB_MEMBER.MEMBER_STATUS_CODE = MB_MEMBER_STATUS.MEMBER_STATUS_CODE  AND MB_MEMBER_STATUS.MODULE = '1' "

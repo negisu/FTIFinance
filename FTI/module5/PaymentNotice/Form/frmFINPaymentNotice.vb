@@ -54,6 +54,7 @@
     Private Sub btProdAdd_Click(sender As Object, e As EventArgs) Handles btProdAdd.Click
         Dim f As New frmFINSubSection
         f.VATType = getVATType()
+        f.TRAN_TYPE = TRAN_TYPE
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim selectedRow As DataGridViewRow = f.DataGridView1.CurrentRow
             Dim newProductRow As DataRow = DETAILDataTable.NewRow()
@@ -112,19 +113,12 @@
             Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
             FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
             Me.BackColor = Color.Ivory
-
-        Else
-
         End If
 
         initForm()
         loadForm()
-        ' Display User Information
-        calculateSum()
-        AR_NAMETextBox.Select()
-        If Not PermissionHelper.isAdmin() Then lockNonAdminInput()
-        isChanged = False
-        isDETAILGridViewCreated = True
+
+
 
     End Sub
 
@@ -181,7 +175,20 @@
                 getADDRESS()
             Catch
             End Try
+
+            If TRAN_TYPE = "IV2" Then
+                TRAN_NO_REFLabel.Text = TRAN_NO
+                TRAN_NO = String.Empty
+                TRAN_NOLabel.Text = "AUTO"
+                isNew = True
+            End If
         End If
+
+        calculateSum()
+        AR_NAMETextBox.Select()
+        If Not PermissionHelper.isAdmin() Then lockNonAdminInput()
+        isChanged = False
+        isDETAILGridViewCreated = True
 
 
     End Sub
@@ -250,20 +257,20 @@
             .Columns("U_PRICE_INC_VAT").DefaultCellStyle.BackColor = Color.White
             .Columns("DISC_AMT_INC_VAT").DefaultCellStyle.BackColor = Color.White
 
-            .Columns("SEQ").DisplayIndex = 0
-            .Columns("SUB_SECTION_CODE").DisplayIndex = 1
-            .Columns("NOTE").DisplayIndex = 2
-            .Columns("NOTE_EN").DisplayIndex = 3
-            .Columns("DIV_NAME").DisplayIndex = 4
-            .Columns("QTY").DisplayIndex = 5
-            .Columns("U_PRICE").DisplayIndex = 6
-            .Columns("U_PRICE_INC_VAT").DisplayIndex = 7
-            .Columns("NET_U_PRICE_INC_VAT").DisplayIndex = 8
-            .Columns("DISC_AMT").DisplayIndex = 9
-            .Columns("DISC_AMT_INC_VAT").DisplayIndex = 10
-            .Columns("TOTAL").DisplayIndex = 11
-            .Columns("TOTAL_VAT").DisplayIndex = 12
-            .Columns("SUM_TOTAL").DisplayIndex = 13
+            .Columns("SEQ").DisplayIndex = 1
+            .Columns("SUB_SECTION_CODE").DisplayIndex = 2
+            .Columns("NOTE").DisplayIndex = 3
+            .Columns("NOTE_EN").DisplayIndex = 4
+            .Columns("DIV_NAME").DisplayIndex = 5
+            .Columns("QTY").DisplayIndex = 6
+            .Columns("U_PRICE").DisplayIndex = 7
+            .Columns("U_PRICE_INC_VAT").DisplayIndex = 8
+            .Columns("NET_U_PRICE_INC_VAT").DisplayIndex = 9
+            .Columns("DISC_AMT").DisplayIndex = 10
+            .Columns("DISC_AMT_INC_VAT").DisplayIndex = 11
+            .Columns("TOTAL").DisplayIndex = 12
+            .Columns("TOTAL_VAT").DisplayIndex = 13
+            .Columns("SUM_TOTAL").DisplayIndex = 14
 
             .Columns("QTY").ReadOnly = False
             .Columns("NOTE_EN").ReadOnly = False
@@ -271,6 +278,14 @@
             .Columns("U_PRICE_INC_VAT").ReadOnly = False
             .Columns("DISC_AMT_INC_VAT").ReadOnly = False
         End With
+
+        If TRAN_TYPE = "IV2" Then
+            Dim gridCheckbox As New DataGridViewCheckBoxColumn
+            gridCheckbox.Name = "SELECTED"
+            gridCheckbox.HeaderText = "เลือก"
+            DetailGridView.Columns.Add(gridCheckbox)
+        End If
+
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If validatePN_DETAIL() And validateAddress() Then
@@ -768,6 +783,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             DocumentStatusLabel.Text = "ปกติ"
         Else
             DocumentStatusLabel.Text = "ยกเลิกหรืออยู่ในขั้นตอนการยกเลิก"
+            Panel3.BackColor = Color.Red
         End If
 
 
@@ -788,12 +804,14 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         Catch ex As Exception
 
         End Try
-        If TRAN_TYPE = "PN" Then
+        If TRAN_TYPE = "P1" Then
             If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()) Then
                 TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()
+                LockAllInput()
+
             End If
 
-        Else
+        ElseIf TRAN_TYPE = "I1" Then
             If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()) Then
                 TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()
             End If
@@ -941,7 +959,17 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.TAX_ID = TAX_NOTextBox.Text
         pn.EX_RATE = ex_rate
         pn.CURR_CODE = CurrencyComboBox.Text
+        If HEADDataTable.Rows(0).Item("CANCEL_FLAG").ToString() = "R" Then
+            pn.CANCEL_FLAG = String.Empty
+            pn.CANCEL_REJECT_REASON = String.Empty
+            pn.CANCEL_REASON = String.Empty
+            pn.CANCEL_BY = String.Empty
+        End If
 
+        If HEADDataTable.Rows(0).Item("POST_INVOICE_FLAG").ToString() = "R" Then
+            pn.POST_INVOICE_FLAG = String.Empty
+            pn.POST_INVOICE_REJECT_REASON = String.Empty
+        End If
         QueryHelper.insertModel("PN_HEAD", pn)
         getHEADDatatable()
 
@@ -1310,6 +1338,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             If TypeOf ctl Is DataGridView Then
                 DirectCast(ctl, DataGridView).Enabled = False
             End If
+            If TypeOf ctl Is DateTimePicker Then
+                DirectCast(ctl, DateTimePicker).Enabled = False
+            End If
 
             'Get the next control.
             ctl = Me.GetNextControl(ctl, True)
@@ -1426,14 +1457,15 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         If Not CheckBox1.IsHandleCreated Then
             Return
         End If
+        Dim defaultCurrency = "บาท"
         EX_RATETextBox.Enabled = CheckBox1.Checked
 
         If CheckBox1.Checked Then
-            currLabel1.Text = "บาท"
-            currLabel2.Text = "บาท"
-            currLabel3.Text = "บาท"
-            currLabel4.Text = "บาท"
-            currLabel5.Text = "บาท"
+            currLabel1.Text = defaultCurrency
+            currLabel2.Text = defaultCurrency
+            currLabel3.Text = defaultCurrency
+            currLabel4.Text = defaultCurrency
+            currLabel5.Text = defaultCurrency
         Else
             currLabel1.Text = CurrencyComboBox.Text
             currLabel2.Text = CurrencyComboBox.Text

@@ -307,7 +307,7 @@ Partial Class frmFINPaymentNoticeInvoicePassRequestList
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmFINPaymentNoticeInvoicePassRequestList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ยกเลิกใบแจ้งชำระ"
+        Me.Text = "ออกใบแจ้งหนี้้"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()

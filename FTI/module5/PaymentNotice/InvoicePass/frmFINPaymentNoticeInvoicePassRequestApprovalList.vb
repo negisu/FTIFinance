@@ -34,66 +34,14 @@
         Try
             If e.ColumnIndex = DataGridView1.Columns("APPROVE").Index Then
                 If (MessageBox.Show("คุณต้องการที่จะอนุมัติการออกใบแจ้งหนี้จากเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-
-
-                    Dim IV_TRAN_NO As String = DocumentNumberHelper.getPN_DOC_RUNNING("001", user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "I1", DateTime.Now.ToString("MM"))
-                    Dim docRunning = New DOC_RUNNING
-                    docRunning.OU_CODE = "001"
-                    docRunning.DIV_CODE = user_div
-                    docRunning.BUDGET_YEAR = Integer.Parse(DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
-                    docRunning.PERIOD = 0
-                    docRunning.SUB_TYPE = "I1"
-                    docRunning.DOC_RUNNING_NO = IV_TRAN_NO
-                    docRunning.CR_BY = user_name
-                    docRunning.CR_DATE = DateTime.Now
-                    QueryHelper.insertModel("PN_DOC_RUNNING", docRunning)
-
-                    Dim pnH As PN_HEAD = CType(ModelHelper.convertDataRowToModel(New PN_HEAD, HEADDataTable.Rows(0)), PN_HEAD)
-                    pnH.TRAN_NO = IV_TRAN_NO
-                    pnH.PN_TRAN_NO = TRAN_NO
-                    pnH.TRAN_TYPE = "I1"
-                    pnH.POST_INVOICE_FLAG = "A"
-
-                    QueryHelper.insertModel("PN_HEAD", pnH)
-
-                    For Each row As DataRow In DETAILDataTable.Rows
-                        If String.IsNullOrEmpty(row.Item("TRAN_NO").ToString()) Then
-                            row.Item("TRAN_NO") = TRAN_NO
-                            Dim pnD As PN_DETAIL = CType(ModelHelper.convertDataRowToModel(New PN_DETAIL, row), PN_DETAIL)
-                            pnD.TRAN_NO = IV_TRAN_NO
-                            QueryHelper.insertModel("PN_DETAIL", pnD)
-                        Else
-                            Dim pnD As PN_DETAIL = CType(ModelHelper.convertDataRowToModel(New PN_DETAIL, row), PN_DETAIL)
-                            pnD.TRAN_NO = IV_TRAN_NO
-                            QueryHelper.insertModel("PN_DETAIL", pnD)
-                        End If
-                    Next
-
-                    For Each row As DataRow In ADDRESSDataTable.Rows
-                        Dim pnA As PN_ADDRESS = CType(ModelHelper.convertDataRowToModel(New PN_ADDRESS, row), PN_ADDRESS)
-                        pnA.TRAN_NO = IV_TRAN_NO
-                        QueryHelper.insertModel("PN_ADDRESS", pnA)
-                    Next
-
-                    parameters.Add("@p1", "A")
+                    parameters.Add("@p1", "Q")
                     Try
                         executeWebSQL(query, parameters)
                     Catch ex As Exception
                         MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                     End Try
-
-                    parameters.Clear()
-                    parameters.Add("@p0", TRAN_NO)
-                    parameters.Add("@p1", IV_TRAN_NO)
-                    query = "UPDATE PN_HEAD SET IV_TRAN_NO = @p1 WHERE TRAN_NO = @p0"
-
-                    Try
-                        executeWebSQL(query, parameters)
-                    Catch ex As Exception
-                        MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
-                    End Try
-
                     Me.frmFINPaymentNoticeCancleList_Load(sender, e)
+
                 End If
             End If
 
@@ -103,14 +51,21 @@
 
         Try
             If e.ColumnIndex = DataGridView1.Columns("REJECT").Index Then
-                If (MessageBox.Show("คุณไม่อนุมัติคำร้องขอออกใบแจ้งหนี้จากเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    parameters.Add("@p1", "R")
-                    Try
-                        executeWebSQL(query, parameters)
-                    Catch ex As Exception
-                        MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
-                    End Try
-                    Me.frmFINPaymentNoticeCancleList_Load(sender, e)
+                If (MessageBox.Show("คุณไม่อนุมัติคำร้องขอยกเลิกเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+                    Dim myValue As String
+                    myValue = InputBox("กรุณากรอกเหตุผลในการไม่อนุมัติ", "กรุณากรอกข้อมูล", "ไม่ได้กรอกเหตุผลในการไม่อนุมัติ")
+                    If String.IsNullOrEmpty(myValue) Then
+                        Call MsgBox("คุณยกเลิกการทำรายการ", MsgBoxStyle.Information, "แจ้งเตือน")
+                    Else
+                        query = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = NULL , POST_INVOICE_REJECT_REASON = @p0  WHERE TRAN_NO = '" & TRAN_NO & "'"
+                        parameters.Add("@p0", myValue)
+                        Try
+                            executeWebSQL(query, parameters)
+                        Catch ex As Exception
+                            MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
+                        End Try
+                        Me.frmFINPaymentNoticeCancleList_Load(sender, e)
+                    End If
                 End If
             End If
 
@@ -218,6 +173,7 @@
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         DataGridView1.AutoResizeColumns()
         DataGridView1.Refresh()
+        DataGridView1.ClearSelection()
     End Sub
 
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click

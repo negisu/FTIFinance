@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmFINPaymentNoticeInvoicePassRequestApprovalList
+Partial Class frmFINPaymentNoticeInvoicePassRequestApprovalListAccount
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -35,9 +35,9 @@ Partial Class frmFINPaymentNoticeInvoicePassRequestApprovalList
         Me.Label9.Location = New System.Drawing.Point(16, 11)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(428, 31)
+        Me.Label9.Size = New System.Drawing.Size(450, 31)
         Me.Label9.TabIndex = 158
-        Me.Label9.Text = "รายการคำร้องออกใบแจ้งหนี้ภายในแผนก"
+        Me.Label9.Text = "รายการคำร้องออกใบแจ้งหนี้จากแผนกต่างๆ"
         '
         'DataGridView1
         '
@@ -73,7 +73,7 @@ Partial Class frmFINPaymentNoticeInvoicePassRequestApprovalList
         Me.Cancel_Button.Text = "ปิด"
         Me.Cancel_Button.UseVisualStyleBackColor = False
         '
-        'frmFINPaymentNoticeInvoicePassRequestApprovalList
+        'frmFINPaymentNoticeInvoicePassRequestApprovalListAccount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -84,13 +84,13 @@ Partial Class frmFINPaymentNoticeInvoicePassRequestApprovalList
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label9)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "frmFINPaymentNoticeInvoicePassRequestApprovalList"
-        Me.Text = "รายการคำร้องออกใบแจ้งหนี้ภายในแผนก"
-        CType(Me.DataGridView1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        Me.Name = "frmFINPaymentNoticeInvoicePassRequestApprovalListAccount"
+        Me.Text = "รายการคำร้องออกใบแจ้งหนี้"
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button

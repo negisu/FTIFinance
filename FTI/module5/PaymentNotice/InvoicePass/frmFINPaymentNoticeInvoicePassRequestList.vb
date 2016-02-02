@@ -135,6 +135,7 @@
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         DataGridView1.AutoResizeColumns()
         DataGridView1.Refresh()
+        DataGridView1.ClearSelection()
 
         For Each row As DataGridViewRow In DataGridView1.Rows
             If String.IsNullOrEmpty(row.Cells("POST_INVOICE_FLAG").Value.ToString()) Then
@@ -143,8 +144,8 @@
                 Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
                 buttonCell.Style.BackColor = Color.FromName("ControlLight")
             Else
-                If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "P" Then
-                    row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้"
+                If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "Q" Then
+                    row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้โดย ผ.อ."
                     row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FFFFCC")
                     Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
                     checkBoxCell.Style.BackColor = Color.FromName("ControlLight")
@@ -154,7 +155,16 @@
 
 
                 Else
-                    If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "A" Then
+                    If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "P" Then
+                        row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้ โดย แผนกการเงิน"
+                        row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FFFFCC")
+                        Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
+                        checkBoxCell.Style.BackColor = Color.FromName("ControlLight")
+                        checkBoxCell.ReadOnly = True
+                        Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
+                        buttonCell.Style.BackColor = ColorTranslator.FromHtml("#FFCC99")
+
+                    ElseIf row.Cells("POST_INVOICE_FLAG").Value.ToString() = "A" Then
                         row.Cells("STATUS").Value = "ออกใบแจ้งหนี้แล้ว"
                         row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FF6699")
                         Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
@@ -164,6 +174,7 @@
                         Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
                         checkBoxCell.Style.BackColor = Color.FromName("ControlLight")
                         checkBoxCell.ReadOnly = True
+
 
                     End If
                 End If
@@ -183,7 +194,7 @@
                     If isCancel Then
                         Dim query As String = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = @p0  WHERE TRAN_NO = @p1"
                         Dim parameters As New Dictionary(Of String, Object)
-                        parameters.Add("@p0", "P")
+                        parameters.Add("@p0", "Q")
                         parameters.Add("@p1", row.Cells("TRAN_NO").Value)
 
                         Try

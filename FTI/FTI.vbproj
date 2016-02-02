@@ -369,6 +369,11 @@
     <Compile Include="frmMainBusType.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FTIDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FTIDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="module1\frmFTICommitteeGroupsDetails.Designer.vb">
       <DependentUpon>frmFTICommitteeGroupsDetails.vb</DependentUpon>
     </Compile>
@@ -1229,6 +1234,12 @@
     <Compile Include="module5\frmFINAR_MEMBER.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="module5\frmFINSubSectionManage.Designer.vb">
+      <DependentUpon>frmFINSubSectionManage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINSubSectionManage.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="module5\frmFINSubSectionRemain.Designer.vb">
       <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>
     </Compile>
@@ -1254,6 +1265,12 @@
     <Compile Include="module5\Model\PN_DETAIL.vb" />
     <Compile Include="module5\Model\DOC_RUNNING.vb" />
     <Compile Include="module5\Model\PN_HEAD.vb" />
+    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.Designer.vb">
+      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.Designer.vb">
       <DependentUpon>frmFINPaymentNoticeInvoicePassRequestList.vb</DependentUpon>
     </Compile>
@@ -1412,6 +1429,17 @@
     <Content Include="Reports\module1\rdlc5.3.25.07.FTInewApplyMonths.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="FTIDataSet.xsc">
+      <DependentUpon>FTIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FTIDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FTIDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FTIDataSet.xss">
+      <DependentUpon>FTIDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\shopping-money-box-icon1.png" />
     <None Include="Resources\City-Post-Office-icon.png" />
     <None Include="Resources\สภาอุตสาหกรรมแห่งประเทศไทย.png" />
@@ -1817,6 +1845,9 @@
     <EmbeddedResource Include="module5\frmFINAR_MEMBER.resx">
       <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINSubSectionManage.resx">
+      <DependentUpon>frmFINSubSectionManage.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINSubSectionRemain.resx">
       <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>
     </EmbeddedResource>
@@ -1849,6 +1880,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module5\PaymentNotice\Cancel\frmFINPaymentNoticeCancelRequestApprovalList.resx">
       <DependentUpon>frmFINPaymentNoticeCancelRequestApprovalList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.resx">
+      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\Search\Edit\frmFINEditList.resx">
       <DependentUpon>frmFINEditList.vb</DependentUpon>
