@@ -11,15 +11,6 @@
         f = Nothing
     End Sub
 
-    Private Sub ReportByARToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportByARToolStripMenuItem.Click
-        Dim f As New frmFINReportAR
-
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-
-        End If
-        f.Dispose()
-        f = Nothing
-    End Sub
 
     Private Sub AddPNToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddPNToolStripMenuItem.Click
         If fPN Is Nothing Then

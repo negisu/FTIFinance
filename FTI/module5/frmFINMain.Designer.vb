@@ -23,7 +23,6 @@ Partial Class frmFINMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.tsFINANCE = New System.Windows.Forms.ToolStripMenuItem()
         Me.คนหาเอกสารToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -66,23 +65,13 @@ Partial Class frmFINMain
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.Control
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBox1, Me.tsFINANCE})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsFINANCE})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(982, 47)
+        Me.MenuStrip1.Size = New System.Drawing.Size(982, 36)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'ToolStripTextBox1
-        '
-        Me.ToolStripTextBox1.BackColor = System.Drawing.SystemColors.Control
-        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.ReadOnly = True
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(150, 43)
-        Me.ToolStripTextBox1.Text = "การเงินรับ"
-        Me.ToolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tsFINANCE
         '
@@ -91,8 +80,8 @@ Partial Class frmFINMain
         Me.tsFINANCE.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.tsFINANCE.Name = "tsFINANCE"
         Me.tsFINANCE.ShowShortcutKeys = False
-        Me.tsFINANCE.Size = New System.Drawing.Size(110, 43)
-        Me.tsFINANCE.Text = "เมนูหลัก"
+        Me.tsFINANCE.Size = New System.Drawing.Size(122, 32)
+        Me.tsFINANCE.Text = "การเงินรับ"
         '
         'คนหาเอกสารToolStripMenuItem
         '
@@ -301,9 +290,9 @@ Partial Class frmFINMain
         '
         'frmFINMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8!, 16!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.BackColor = System.Drawing.SystemColors.HotTrack
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(982, 653)
@@ -347,7 +336,6 @@ End Sub
     Friend WithEvents CancelRequestPNToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents รายงานคางชำระตามรหสสนคาToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripTextBox1 As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents InvoicePassToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditIVToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CancelRequestIVToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

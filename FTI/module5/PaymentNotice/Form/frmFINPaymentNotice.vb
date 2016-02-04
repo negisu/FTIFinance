@@ -461,6 +461,11 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                 Catch
                 End Try
 
+                Try
+                    DETAILDataTable.Rows(e.RowIndex).Item("BAL_AMT") = DETAILDataTable.Rows(e.RowIndex).Item("SUM_TOTAL")
+                Catch
+                End Try
+
             ElseIf vatInclude.Checked Then
                 Try
                     DETAILDataTable.Rows(e.RowIndex).Item("QTY") = Double.Parse(DetailGridView.Rows(e.RowIndex).Cells("QTY").Value.ToString())
@@ -517,6 +522,10 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                 Catch
                 End Try
 
+                Try
+                    DETAILDataTable.Rows(e.RowIndex).Item("BAL_AMT") = DETAILDataTable.Rows(e.RowIndex).Item("SUM_TOTAL")
+                Catch
+                End Try
 
             ElseIf nonVat.Checked Then
 

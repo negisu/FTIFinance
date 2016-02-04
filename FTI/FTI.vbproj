@@ -1367,12 +1367,6 @@
     <Compile Include="module5\Receipt\frmFINReceiptSearch.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="module5\Report\frmFINReportAR.Designer.vb">
-      <DependentUpon>frmFINReportAR.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\Report\frmFINReportAR.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="module5\Report\frmFINReportProduct.Designer.vb">
       <DependentUpon>frmFINReportProduct.vb</DependentUpon>
     </Compile>
@@ -1904,9 +1898,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module5\Receipt\frmFINReceiptSearch.resx">
       <DependentUpon>frmFINReceiptSearch.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="module5\Report\frmFINReportAR.resx">
-      <DependentUpon>frmFINReportAR.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\Report\frmFINReportProduct.resx">
       <DependentUpon>frmFINReportProduct.vb</DependentUpon>
