@@ -144,7 +144,7 @@
                 Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
                 buttonCell.Style.BackColor = Color.FromName("ControlLight")
             Else
-                If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "Q" Then
+                If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "P" Then
                     row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้โดย ผ.อ."
                     row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FFFFCC")
                     Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
@@ -155,7 +155,7 @@
 
 
                 Else
-                    If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "P" Then
+                    If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "Q" Then
                         row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้ โดย แผนกการเงิน"
                         row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FFFFCC")
                         Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
@@ -194,7 +194,7 @@
                     If isCancel Then
                         Dim query As String = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = @p0  WHERE TRAN_NO = @p1"
                         Dim parameters As New Dictionary(Of String, Object)
-                        parameters.Add("@p0", "Q")
+                        parameters.Add("@p0", "P")
                         parameters.Add("@p1", row.Cells("TRAN_NO").Value)
 
                         Try
