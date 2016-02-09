@@ -240,6 +240,7 @@ Partial Class frmFINReportProduct
         'isSubSection
         '
         Me.isSubSection.AutoSize = True
+        Me.isSubSection.Checked = True
         Me.isSubSection.Location = New System.Drawing.Point(14, 24)
         Me.isSubSection.Name = "isSubSection"
         Me.isSubSection.Size = New System.Drawing.Size(59, 21)
@@ -258,7 +259,7 @@ Partial Class frmFINReportProduct
         Me.GroupBox4.Size = New System.Drawing.Size(208, 80)
         Me.GroupBox4.TabIndex = 170
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "สถานะเอกสาร"
+        Me.GroupBox4.Text = "สถานะเอกสาร(ประมวลผล)"
         '
         'IsCancel
         '
@@ -290,7 +291,7 @@ Partial Class frmFINReportProduct
         Me.GroupBox5.Size = New System.Drawing.Size(208, 80)
         Me.GroupBox5.TabIndex = 171
         Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "สถานะหนี้"
+        Me.GroupBox5.Text = "สถานะหนี้(ประมวลผล)"
         '
         'IsPaid
         '
