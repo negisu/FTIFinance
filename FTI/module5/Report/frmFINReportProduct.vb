@@ -118,15 +118,14 @@
         Dim SUB_SECTION_CODE_LIST As New List(Of String)
 
         For Each item As DataGridViewRow In DataGridView1.SelectedRows
-            SUB_SECTION_CODE_LIST.Add(item.Cells("SUB_SECTION_CODE").Value.ToString())
+            SUB_SECTION_CODE_LIST.Add("'" & item.Cells("SUB_SECTION_CODE").Value.ToString() & "'")
         Next
 
         Dim teststring = SUB_SECTION_CODE_LIST.ToArray.ToString()
         Dim parameters As New Dictionary(Of String, Object)
-        Dim query As String = " SELECT TOP 1000 IV_SUB_SECTION.SUB_SECTION_CODE, IV_SUB_SECTION.SUB_SECTION_NAME, COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT "
+        Dim query As String = " SELECT * "
         query &= " FROM PN_DETAIL INNER JOIN IV_SUB_SECTION ON IV_SUB_SECTION.SUB_SECTION_CODE = PN_DETAIL.SUB_SECTION_CODE INNER JOIN  PN_HEAD ON PN_DETAIL.TRAN_NO = PN_HEAD.TRAN_NO"
-        query &= " WHERE IV_SUB_SECTION.SUB_SECTION_CODE IN @p0 "
-        parameters.Add("@p0", SUB_SECTION_CODE_LIST.ToArray)
+        query &= " WHERE IV_SUB_SECTION.SUB_SECTION_CODE IN (" & String.Join(",", SUB_SECTION_CODE_LIST) & ") "
 
 
         If PermissionHelper.isAdmin() Then
@@ -142,7 +141,7 @@
         parameters.Add("@p2", FROM_DATEPicker.Value)
         parameters.Add("@p3", TO_DATEPicker.Value)
 
-        query &= " GROUP BY IV_SUB_SECTION.SUB_SECTION_CODE, IV_SUB_SECTION.SUB_SECTION_NAME "
+        query &= " ORDER BY  IV_SUB_SECTION.SUB_SECTION_CODE "
 
 
 

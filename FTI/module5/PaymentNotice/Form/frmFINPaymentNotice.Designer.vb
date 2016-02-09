@@ -23,7 +23,7 @@ Partial Class frmFINPaymentNotice
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -168,6 +168,7 @@ Partial Class frmFINPaymentNotice
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox5.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -377,7 +378,7 @@ Partial Class frmFINPaymentNotice
         'POST_CODETextBox
         '
         Me.POST_CODETextBox.Culture = New System.Globalization.CultureInfo("en-US")
-        Me.POST_CODETextBox.Location = New System.Drawing.Point(8, 689)
+        Me.POST_CODETextBox.Location = New System.Drawing.Point(74, 718)
         Me.POST_CODETextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.POST_CODETextBox.Mask = "00000"
         Me.POST_CODETextBox.Name = "POST_CODETextBox"
@@ -1778,8 +1779,8 @@ Partial Class frmFINPaymentNotice
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle5.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
@@ -1846,6 +1847,27 @@ Partial Class frmFINPaymentNotice
         Me.DataGridViewTextBoxColumn19.HeaderText = "*จำนวนเงิน"
         Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
         '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button1.BackgroundImage = Global.FTI.My.Resources.Resources.imgBGbtn
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Button1.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.Button1.Image = Global.FTI.My.Resources.Resources.imgNew
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(15, 615)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(135, 39)
+        Me.Button1.TabIndex = 288
+        Me.Button1.Text = "ออกใบเสร็จ"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'frmFINPaymentNotice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1854,6 +1876,7 @@ Partial Class frmFINPaymentNotice
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1282, 753)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.Panel7)
@@ -2069,4 +2092,5 @@ Partial Class frmFINPaymentNotice
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
