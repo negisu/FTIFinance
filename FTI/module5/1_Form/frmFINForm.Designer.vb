@@ -23,7 +23,7 @@ Partial Class frmFINForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -168,6 +168,7 @@ Partial Class frmFINForm
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -391,6 +392,7 @@ Partial Class frmFINForm
         Me.btnSave.BackgroundImage = Global.FTI.My.Resources.Resources.ic_save_white_24dp_2x
         Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.btnSave.FlatAppearance.BorderSize = 0
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btnSave.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -409,6 +411,7 @@ Partial Class frmFINForm
         Me.btnClose.BackgroundImage = Global.FTI.My.Resources.Resources.ic_clear_white_24dp_2x
         Me.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.btnClose.FlatAppearance.BorderSize = 0
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -427,6 +430,7 @@ Partial Class frmFINForm
         Me.PrintButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_print_white_24dp_2x
         Me.PrintButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PrintButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.PrintButton.FlatAppearance.BorderSize = 0
         Me.PrintButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.PrintButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.PrintButton.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -444,6 +448,7 @@ Partial Class frmFINForm
         Me.btProdDel.BackgroundImage = Global.FTI.My.Resources.Resources.ic_remove_circle_white_24dp_2x
         Me.btProdDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btProdDel.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.btProdDel.FlatAppearance.BorderSize = 0
         Me.btProdDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btProdDel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.btProdDel.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -461,6 +466,7 @@ Partial Class frmFINForm
         Me.btProdAdd.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
         Me.btProdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btProdAdd.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.btProdAdd.FlatAppearance.BorderSize = 0
         Me.btProdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btProdAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.btProdAdd.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -1129,6 +1135,7 @@ Partial Class frmFINForm
         Me.SelectARButton.BackColor = System.Drawing.Color.SlateGray
         Me.SelectARButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
         Me.SelectARButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.SelectARButton.FlatAppearance.BorderSize = 0
         Me.SelectARButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SelectARButton.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.SelectARButton.Location = New System.Drawing.Point(294, 6)
@@ -1473,6 +1480,7 @@ Partial Class frmFINForm
         '
         Me.Panel9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel9.BackColor = System.Drawing.Color.SlateGray
+        Me.Panel9.Controls.Add(Me.Button3)
         Me.Panel9.Controls.Add(Me.Button1)
         Me.Panel9.Controls.Add(Me.PreviewButton)
         Me.Panel9.Controls.Add(Me.TRAN_NO_REFLabel)
@@ -1491,6 +1499,7 @@ Partial Class frmFINForm
         Me.Button1.BackColor = System.Drawing.Color.SlateGray
         Me.Button1.BackgroundImage = Global.FTI.My.Resources.Resources.ic_pageview_white_24dp_2x
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.Button1.Location = New System.Drawing.Point(328, 65)
@@ -1505,6 +1514,7 @@ Partial Class frmFINForm
         Me.PreviewButton.BackColor = System.Drawing.Color.SlateGray
         Me.PreviewButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_pageview_white_24dp_2x
         Me.PreviewButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PreviewButton.FlatAppearance.BorderSize = 0
         Me.PreviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.PreviewButton.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.PreviewButton.Location = New System.Drawing.Point(328, 32)
@@ -1618,8 +1628,8 @@ Partial Class frmFINForm
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle4.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
@@ -1712,6 +1722,7 @@ Partial Class frmFINForm
         Me.Button2.BackgroundImage = Global.FTI.My.Resources.Resources.ic_clear_white_24dp_2x
         Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.Button2.FlatAppearance.BorderSize = 0
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -1804,6 +1815,24 @@ Partial Class frmFINForm
         Me.Label30.Size = New System.Drawing.Size(56, 25)
         Me.Label30.TabIndex = 302
         Me.Label30.Text = "ยกเลิก"
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.SlateGray
+        Me.Button3.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Button3.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.Button3.Location = New System.Drawing.Point(295, 65)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(25, 25)
+        Me.Button3.TabIndex = 303
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button3.UseVisualStyleBackColor = False
         '
         'frmFINForm
         '
@@ -2025,4 +2054,5 @@ Partial Class frmFINForm
     Friend WithEvents Label27 As System.Windows.Forms.Label
     Friend WithEvents Label29 As System.Windows.Forms.Label
     Friend WithEvents Label30 As System.Windows.Forms.Label
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

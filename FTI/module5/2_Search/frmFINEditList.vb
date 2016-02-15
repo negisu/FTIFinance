@@ -38,16 +38,17 @@
 
     Private Sub btFind_Click(sender As Object, e As EventArgs) Handles btFind.Click
         Dim parameters As New Dictionary(Of String, Object)
-        Dim query As String = "SELECT TOP 100 * FROM PN_HEAD LEFT JOIN AR_MEMBER2 ON PN_HEAD.AR_CODE = AR_MEMBER2.AR_CODE LEFT JOIN SU_DIVISION ON PN_HEAD.DIV_CODE = SU_DIVISION.DIV_CODE WHERE "
+        Dim query As String = "SELECT PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE,SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH,SUM(PN_DETAIL.BAL_AMT) as SUM_BAL_AMT,SUM(PN_DETAIL.PAY_AMT) as SUM_PAY_AMT ,SUM(PN_DETAIL.SUM_TOTAL) as SUM_SUM_TOTAL FROM PN_DETAIL "
+        query &= "LEFT JOIN PN_HEAD ON PN_HEAD.TRAN_NO = PN_DETAIL.TRAN_NO "
+        query &= "LEFT JOIN MB_COMP_PERSON ON PN_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
+        query &= "LEFT JOIN SU_DIVISION ON PN_HEAD.DIV_CODE = SU_DIVISION.DIV_CODE WHERE "
 
-        If PermissionHelper.isAdmin() Then
-
-        Else
+        If Not PermissionHelper.isAdmin() Then
             query &= " PN_HEAD.DIV_CODE = @p9 "
             parameters.Add("@p9", user_div)
         End If
 
-        query &= " AND CANCEL_FLAG IS NULL AND TRAN_TYPE = @p10 "
+        query &= " AND PN_HEAD.CANCEL_FLAG IS NULL AND PN_HEAD.TRAN_TYPE = @p10 "
         If TRAN_TYPE = "I2" Then
             parameters.Add("@p10", "I1")
         Else
@@ -75,39 +76,43 @@
         If query.Substring(query.Length - 5, 5) = "WHERE" Then
             query = query.Replace("WHERE", String.Empty)
         End If
-        DataGridView1.DataSource = fillWebSQL(query, parameters, "PN_HEAD")
+
+        query &= " GROUP BY PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE, SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH "
+        query &= " ORDER BY TRAN_DATE "
+
+        DataGridView1.DataSource = fillWebSQL(query, parameters, "PN_DETAIL")
 
         For i As Integer = 0 To DataGridView1.ColumnCount - 1
-            DataGridView1.Columns(i).Visible = False
+            With DataGridView1.Columns(i)
+                .ReadOnly = True
+                .Visible = False
+            End With
         Next
 
         DataGridView1.Columns("DIV_NAME").HeaderText = "หน่วยงาน"
         DataGridView1.Columns("TRAN_DATE").HeaderText = "วันที่ทำรายการ"
         DataGridView1.Columns("TRAN_NO").HeaderText = "เลขที่เอกสาร"
-        DataGridView1.Columns("FULL_NAME").HeaderText = "ชื่อผู้จ่ายเงิน"
-        DataGridView1.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
-        DataGridView1.Columns("NOTE").HeaderText = "หมายเหตุ"
+        DataGridView1.Columns("COMP_PERSON_NAME_TH").HeaderText = "ชื่อผู้จ่ายเงิน"
+        DataGridView1.Columns("SUM_SUM_TOTAL").HeaderText = "ยอดรวม"
+        DataGridView1.Columns("SUM_PAY_AMT").HeaderText = "ยอดชำระ"
+        DataGridView1.Columns("SUM_BAL_AMT").HeaderText = "ยอดค้างชำระ"
 
         DataGridView1.Columns("DIV_NAME").DisplayIndex = 3
         DataGridView1.Columns("TRAN_DATE").DisplayIndex = 0
         DataGridView1.Columns("TRAN_NO").DisplayIndex = 1
-        DataGridView1.Columns("FULL_NAME").DisplayIndex = 2
-        DataGridView1.Columns("BAL_AMT").DisplayIndex = 4
-        DataGridView1.Columns("NOTE").DisplayIndex = 5
+        DataGridView1.Columns("COMP_PERSON_NAME_TH").DisplayIndex = 2
+        DataGridView1.Columns("SUM_SUM_TOTAL").DisplayIndex = 4
+        DataGridView1.Columns("SUM_PAY_AMT").DisplayIndex = 5
+        DataGridView1.Columns("SUM_BAL_AMT").DisplayIndex = 6
 
         DataGridView1.Columns("DIV_NAME").Visible = True
         DataGridView1.Columns("TRAN_DATE").Visible = True
         DataGridView1.Columns("TRAN_NO").Visible = True
-        DataGridView1.Columns("FULL_NAME").Visible = True
-        DataGridView1.Columns("BAL_AMT").Visible = True
-        DataGridView1.Columns("NOTE").Visible = True
+        DataGridView1.Columns("COMP_PERSON_NAME_TH").Visible = True
+        DataGridView1.Columns("SUM_SUM_TOTAL").Visible = True
+        DataGridView1.Columns("SUM_PAY_AMT").Visible = True
+        DataGridView1.Columns("SUM_BAL_AMT").Visible = True
 
-        DataGridView1.Columns("DIV_NAME").ReadOnly = True
-        DataGridView1.Columns("TRAN_DATE").ReadOnly = True
-        DataGridView1.Columns("TRAN_NO").ReadOnly = True
-        DataGridView1.Columns("FULL_NAME").ReadOnly = True
-        DataGridView1.Columns("BAL_AMT").ReadOnly = True
-        DataGridView1.Columns("NOTE").ReadOnly = True
 
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         DataGridView1.AutoResizeColumns()

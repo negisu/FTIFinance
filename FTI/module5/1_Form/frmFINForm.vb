@@ -965,28 +965,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.VAT_TYPE = getVATType()
         pn.VAT_RATE = VAT_RATE
 
-        pn.U_PRICE = U_PRICE
-        pn.U_PRICE_VAT = U_PRICE_VAT
-        pn.U_PRICE_INC_VAT = U_PRICE_INC_VAT
-
-        pn.NET_U_PRICE = NET_U_PRICE
-        pn.NET_U_PRICE_VAT = NET_U_PRICE_VAT
-        pn.NET_U_PRICE_INC_VAT = NET_U_PRICE_INC_VAT
-
-        pn.DISC_AMT = DISC_AMT
-        pn.DISC_AMT_VAT = DISC_AMT_VAT
-        pn.DISC_AMT_INC_VAT = DISC_AMT_INC_VAT
-
-        pn.TOTAL = TOTAL
-        pn.TOTAL_VAT = TOTAL_VAT
-        pn.SUM_TOTAL = SUM_TOTAL
-
         pn.TOP_DISC_AMT = TOP_DISC_AMT
-        pn.GRAND_AMT = GRAND_AMT
-        pn.GRAND_AMT_VAT = GRAND_AMT_VAT
-        pn.GRAND_AMT_INC_VAT = GRAND_AMT_INC_VAT
-
-        pn.BAL_AMT = GRAND_AMT
 
         pn.NOTE = NOTETextBox.Text
         pn.INNER_NOTE = INNER_NOTETextBox.Text
