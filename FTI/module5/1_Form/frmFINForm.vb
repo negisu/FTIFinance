@@ -1,13 +1,11 @@
-﻿Public Class frmFINReceipt
+﻿Public Class frmFINForm
     Public TRAN_TYPE As String
-    Dim ds As DataSet
     Dim MB_COMP_PERSON_ADDRESS As DataTable
     Dim ADDRESSDataTable As DataTable
     Dim HEADDataTable As DataTable
     Dim DETAILDataTable As DataTable
 
     Dim OU_CODE As String = "001"
-    Dim tempTRAN_NO As String
     Dim TRAN_NO As String
     Dim VAT_RATE As Double = 7.0
     Dim vatType As String
@@ -58,12 +56,14 @@
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim selectedRow As DataGridViewRow = f.DataGridView1.CurrentRow
             Dim newProductRow As DataRow = DETAILDataTable.NewRow()
-
+            'refactor to array
+            '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             newProductRow("SUB_SECTION_CODE") = selectedRow.Cells("SUB_SECTION_CODE").Value
             newProductRow("NOTE") = selectedRow.Cells("SUB_SECTION_NAME").Value
             newProductRow("NOTE_EN") = selectedRow.Cells("SUB_SECTION_NAME_EN").Value
             newProductRow("DIV_CODE") = selectedRow.Cells("DIV_CODE").Value
             newProductRow("DIV_NAME") = selectedRow.Cells("DIV_NAME").Value
+
             newProductRow("BUDGET_YEAR") = DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
             newProductRow("QTY") = "1"
             newProductRow("DISC_AMT_INC_VAT") = "0.00"
@@ -106,20 +106,26 @@
     Private Sub frmFINPaymentNotice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If TRAN_TYPE = "I1" Then
             Me.Text = "บันทึกใบแจ้งหนี้"
-            ' IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งชำระ"
+            IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งชำระ"
             FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
             Me.BackColor = Color.LavenderBlush
+            Panel10.BackColor = Color.Plum
+            Panel1.BackColor = Color.Plum
         ElseIf TRAN_TYPE = "I2" Then
             Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
             FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
             Me.BackColor = Color.Ivory
+            Panel10.BackColor = Color.PaleGoldenrod
+            Panel1.BackColor = Color.PaleGoldenrod
+        ElseIf TRAN_TYPE = "R1" Then
+            Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
+            FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
+            Me.BackColor = Color.MistyRose
+            Panel10.BackColor = Color.Salmon
+            Panel1.BackColor = Color.Salmon
         End If
-
         initForm()
         loadForm()
-
-
-
     End Sub
 
     Sub DetailGridView_CellFormatting(ByVal sender As Object, _
@@ -131,8 +137,6 @@
     Private Sub frmFINPaymentNotice_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         fPN = Nothing
     End Sub
-
-
     Private Sub initForm()
         isNew = String.IsNullOrEmpty(TRAN_NOLabel.Text)
 
@@ -142,7 +146,7 @@
         CurrencyComboBox.SelectedIndex = 0
         AR_CODETextBox.Text = Nothing
         AR_NAMETextBox.Text = Nothing
-        ds = Nothing
+
         ADDRESSDataTable = New DataTable
         HEADDataTable = New DataTable
         DETAILDataTable = New DataTable
@@ -177,7 +181,7 @@
             End Try
 
             If TRAN_TYPE = "IV2" Then
-                'TRAN_NO_REFLabel.Text = TRAN_NO
+                TRAN_NO_REFLabel.Text = TRAN_NO
                 TRAN_NO = String.Empty
                 TRAN_NOLabel.Text = "AUTO"
                 isNew = True
@@ -236,11 +240,10 @@
             .Columns("TOTAL_VAT").Visible = True
             .Columns("SUM_TOTAL").Visible = True
 
-            .Columns("SEQ").HeaderText = "ลำดับที่"
-            .Columns("SUB_SECTION_CODE").HeaderText = "รหัสสินค้า"
-            .Columns("NOTE").HeaderText = "ชื่อรายการ"
+            .Columns("SEQ").HeaderText = "ลำดับ"
+            .Columns("SUB_SECTION_CODE").HeaderText = "รหัส"
+            .Columns("NOTE").HeaderText = "ชื่อ"
             .Columns("NOTE_EN").HeaderText = "Name"
-            .Columns("DIV_NAME").HeaderText = "หน่วยงาน"
             .Columns("QTY").HeaderText = "จำนวน"
             .Columns("U_PRICE").HeaderText = "ราคาต่อหน่วย"
             .Columns("U_PRICE_INC_VAT").HeaderText = "ราคาต่อหน่วยรวมภาษีมูลค่าเพิ่ม"
@@ -250,6 +253,8 @@
             .Columns("TOTAL").HeaderText = "ยอดรวมหลังหักส่วนลด"
             .Columns("TOTAL_VAT").HeaderText = "ภาษีมูลค่าเพิ่ม"
             .Columns("SUM_TOTAL").HeaderText = "ยอดรวมรวมภาษีมูลค่าเพิ่มหลังหักส่วนลด"
+            .Columns("BAL_AMT").HeaderText = "ยอดคงค้าง"
+            .Columns("PAY_AMT").HeaderText = "ยอดชำระ"
 
             .Columns("QTY").DefaultCellStyle.BackColor = Color.White
             .Columns("NOTE").DefaultCellStyle.BackColor = Color.White
@@ -605,12 +610,12 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
         If Not CheckBox1.Checked Then
             SumLabel.Text = Format(TOTAL, numberStringFormat)
-            TopUpDiscountLabel.Text = Format(TOP_DISC_AMT, numberStringFormat)
+            ' TopUpDiscountLabel.Text = Format(TOP_DISC_AMT, numberStringFormat)
             VatLabel.Text = Format(TOTAL_VAT, numberStringFormat)
             GrandTotalLabel.Text = Format(GRAND_AMT, numberStringFormat)
         Else
             SumLabel.Text = Format((TOTAL * ex_rate), numberStringFormat)
-            TopUpDiscountLabel.Text = Format((TOP_DISC_AMT * ex_rate), numberStringFormat)
+            '  TopUpDiscountLabel.Text = Format((TOP_DISC_AMT * ex_rate), numberStringFormat)
             VatLabel.Text = Format((TOTAL_VAT * ex_rate), numberStringFormat)
             GrandTotalLabel.Text = Format((GRAND_AMT * ex_rate), numberStringFormat)
         End If
@@ -815,19 +820,19 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         End Try
         If TRAN_TYPE = "P1" Then
             If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()) Then
-                'TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()
+                TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()
                 LockAllInput()
 
             End If
 
         ElseIf TRAN_TYPE = "I1" Then
             If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()) Then
-                'TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()
+                TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("PN_TRAN_NO").ToString()
             End If
 
         End If
         If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("RC_TRAN_NO").ToString()) Then
-            'RC_TRAN_NO_REFLabel.Text = HEADDataTable.Rows(0).Item("RC_TRAN_NO").ToString()
+            getRefRC()
         End If
 
         CR_TERMTextBox.Text = HEADDataTable.Rows(0).Item("CR_TERM").ToString()
@@ -842,7 +847,27 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         setVATType(VATType)
 
     End Sub
+    Private Sub getRefRC()
 
+        Dim query As String = "SELECT * FROM PN_HEAD  WHERE PN_TRAN_NO = @p0 AND TRAN_TYPE = 'R1' "
+        Dim parameters As New Dictionary(Of String, Object)
+        parameters.Add("@p0", TRAN_NO)
+        REF__RCGridView.DataSource = fillWebSQL(query, parameters, "PN_HEAD")
+
+        For i As Integer = 0 To DetailGridView.ColumnCount - 1
+            With REF__RCGridView.Columns(i)
+                .Visible = False
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .ReadOnly = True
+            End With
+        Next
+
+        REF__RCGridView.Columns("TRAN_NO").Visible = True
+        REF__RCGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        REF__RCGridView.AutoResizeColumns()
+        REF__RCGridView.Refresh()
+        REF__RCGridView.Update()
+    End Sub
     Private Sub getADDRESS()
         Dim parameters As New Dictionary(Of String, Object)
         Dim query As String = String.Empty
@@ -899,7 +924,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         Dim pn As New PN_HEAD
         pn.OU_CODE = OU_CODE
         If TRAN_TYPE = "I2" Then
-            ' pn.IV_TRAN_NO = TRAN_NO_REFLabel.Text
+            pn.IV_TRAN_NO = TRAN_NO_REFLabel.Text
         End If
         If isNew Then
             pn.DIV_CODE = user_div
@@ -1093,7 +1118,6 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         currLabel2.Text = CurrencyComboBox.Text
         currLabel3.Text = CurrencyComboBox.Text
         currLabel4.Text = CurrencyComboBox.Text
-        currLabel5.Text = CurrencyComboBox.Text
         isChanged = True
 
         If CurrencyComboBox.SelectedIndex > 0 Then
@@ -1323,37 +1347,11 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     Public Sub LockAllInput()
         'Get the first control.
-        Dim ctl As Control = Me.GetNextControl(Me, True)
 
-        While Not ctl Is Nothing
-            If TypeOf ctl Is TextBox Then
-                DirectCast(ctl, TextBox).ReadOnly = True
-            End If
-            If TypeOf ctl Is RichTextBox Then
-                DirectCast(ctl, RichTextBox).ReadOnly = True
-            End If
-            If TypeOf ctl Is MaskedTextBox Then
-                DirectCast(ctl, MaskedTextBox).ReadOnly = True
-            End If
-            If TypeOf ctl Is RadioButton Then
-                DirectCast(ctl, RadioButton).Enabled = False
-            End If
-            If TypeOf ctl Is ComboBox Then
-                DirectCast(ctl, ComboBox).Enabled = False
-            End If
-            If TypeOf ctl Is Button Then
-                DirectCast(ctl, Button).Enabled = False
-            End If
-            If TypeOf ctl Is DataGridView Then
-                DirectCast(ctl, DataGridView).Enabled = False
-            End If
-            If TypeOf ctl Is DateTimePicker Then
-                DirectCast(ctl, DateTimePicker).Enabled = False
-            End If
+        For Each control As Control In Me.Controls
+            control.Enabled = False
+        Next
 
-            'Get the next control.
-            ctl = Me.GetNextControl(ctl, True)
-        End While
         isLockAll = True
         btnClose.Enabled = True
         PrintButton.Enabled = True
@@ -1474,13 +1472,11 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             currLabel2.Text = defaultCurrency
             currLabel3.Text = defaultCurrency
             currLabel4.Text = defaultCurrency
-            currLabel5.Text = defaultCurrency
         Else
             currLabel1.Text = CurrencyComboBox.Text
             currLabel2.Text = CurrencyComboBox.Text
             currLabel3.Text = CurrencyComboBox.Text
             currLabel4.Text = CurrencyComboBox.Text
-            currLabel5.Text = CurrencyComboBox.Text
             EX_RATETextBox.Text = "1"
             ex_rate = 1
         End If
@@ -1534,5 +1530,32 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             Return
         End If
         CR_TERMTextBox.Text = (TRAN_DATEPicker.Value - DUE_DATEPicker.Value).ToString("dd")
+    End Sub
+
+    Private Sub previewIV_Click(sender As Object, e As EventArgs) Handles PreviewButton.Click
+        Dim f As New frmFINForm
+        If TRAN_TYPE = "P1" Then
+            f.TRAN_TYPE = "I1"
+        Else
+            f.TRAN_TYPE = "P1"
+
+        End If
+        f.TRAN_NOLabel.Text = TRAN_NO_REFLabel.Text
+        f.LockAllInput()
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+        End If
+        f.Dispose()
+        f = Nothing
+
+
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+
+        If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะดำเนินการใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            DETAILDataTable.Rows.Clear()
+        End If
+
     End Sub
 End Class

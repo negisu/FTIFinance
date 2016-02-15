@@ -115,7 +115,7 @@ Partial Class frmFINMain
         '
         Me.ReportByProductToolStripMenuItem.Name = "ReportByProductToolStripMenuItem"
         Me.ReportByProductToolStripMenuItem.Size = New System.Drawing.Size(512, 32)
-        Me.ReportByProductToolStripMenuItem.Text = "5.5.16.3 รายงานค้างชำระตามรหัสสินค้า"
+        Me.ReportByProductToolStripMenuItem.Text = "รายงานตามรหัสสินค้าและรหัสสมาชิก"
         '
         'ReportByARToolStripMenuItem
         '
@@ -242,13 +242,13 @@ Partial Class frmFINMain
         Me.ใบเสรจToolStripMenuItem2.Name = "ใบเสรจToolStripMenuItem2"
         Me.ใบเสรจToolStripMenuItem2.Size = New System.Drawing.Size(328, 32)
         Me.ใบเสรจToolStripMenuItem2.Text = "ใบเสร็จ"
-        Me.ใบเสรจToolStripMenuItem2.Visible = False
         '
         'คนหาToolStripMenuItem2
         '
         Me.คนหาToolStripMenuItem2.Name = "คนหาToolStripMenuItem2"
-        Me.คนหาToolStripMenuItem2.Size = New System.Drawing.Size(135, 32)
+        Me.คนหาToolStripMenuItem2.Size = New System.Drawing.Size(181, 32)
         Me.คนหาToolStripMenuItem2.Text = "ค้นหา"
+        Me.คนหาToolStripMenuItem2.Visible = False
         '
         'เพมToolStripMenuItem2
         '

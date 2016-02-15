@@ -4,6 +4,7 @@
     Public DIV_CODE As String
     Public SUB_TYPE As String
     Public TRAN_NO As String
+    Public RC_TRAN_NO As String
     Public SEQ As Integer
     Public SUB_SECTION_CODE As String
     Public QTY As Integer

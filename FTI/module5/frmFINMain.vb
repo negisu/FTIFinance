@@ -2,19 +2,18 @@
 
     Private Sub ReportByProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportByProductToolStripMenuItem.Click
         Dim f As New frmFINReportProduct
+        
+        f.MdiParent = Me.MdiParent
+        f.WindowState = FormWindowState.Maximized
+        f.Show()
+        f.Focus()
 
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-
-        End If
-
-        f.Dispose()
-        f = Nothing
     End Sub
 
 
     Private Sub AddPNToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddPNToolStripMenuItem.Click
         If fPN Is Nothing Then
-            fPN = New frmFINPaymentNotice
+            fPN = New frmFINForm
             fPN.TRAN_TYPE = "P1"
             fPN.MdiParent = Me.MdiParent
             fPN.WindowState = FormWindowState.Maximized
@@ -28,7 +27,7 @@
 
     Private Sub AddIVToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddIVToolStripMenuItem1.Click
         If fPN Is Nothing Then
-            fPN = New frmFINPaymentNotice
+            fPN = New frmFINForm
             fPN.TRAN_TYPE = "I1"
             fPN.MdiParent = Me.MdiParent
             fPN.WindowState = FormWindowState.Maximized
@@ -106,7 +105,7 @@
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
             If fPN Is Nothing Then
-                fPN = New frmFINPaymentNotice
+                fPN = New frmFINForm
                 fPN.TRAN_TYPE = "P1"
                 fPN.TRAN_NOLabel.Text = TRAN_NO
                 fPN.MdiParent = Me.MdiParent
@@ -116,7 +115,7 @@
                 If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                     fPN.Dispose()
                     fPN = Nothing
-                    fPN = New frmFINPaymentNotice
+                    fPN = New frmFINForm
                     fPN.TRAN_TYPE = "P1"
                     fPN.TRAN_NOLabel.Text = TRAN_NO
                     fPN.MdiParent = Me.MdiParent
@@ -167,7 +166,7 @@
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
             If fPN Is Nothing Then
-                fPN = New frmFINPaymentNotice
+                fPN = New frmFINForm
                 fPN.TRAN_TYPE = "I1"
                 fPN.TRAN_NOLabel.Text = TRAN_NO
                 fPN.MdiParent = Me.MdiParent
@@ -177,7 +176,7 @@
                 If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                     fPN.Dispose()
                     fPN = Nothing
-                    fPN = New frmFINPaymentNotice
+                    fPN = New frmFINForm
                     fPN.TRAN_TYPE = "I1"
                     fPN.TRAN_NOLabel.Text = TRAN_NO
                     fPN.MdiParent = Me.MdiParent
@@ -211,7 +210,7 @@
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
             If fPN Is Nothing Then
-                fPN = New frmFINPaymentNotice
+                fPN = New frmFINForm
                 fPN.TRAN_TYPE = "I2"
                 fPN.TRAN_NO_REFLabel.Text = TRAN_NO
                 fPN.MdiParent = Me.MdiParent
@@ -221,7 +220,7 @@
                 If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                     fPN.Dispose()
                     fPN = Nothing
-                    fPN = New frmFINPaymentNotice
+                    fPN = New frmFINForm
                     fPN.TRAN_TYPE = "I2"
                     fPN.TRAN_NO_REFLabel.Text = TRAN_NO
                     fPN.MdiParent = Me.MdiParent

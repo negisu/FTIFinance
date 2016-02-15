@@ -75,7 +75,7 @@
         Try
             If e.ColumnIndex = DataGridView1.Columns("PREVIEW").Index Then
                 If fPN Is Nothing Then
-                    fPN = New frmFINPaymentNotice
+                    fPN = New frmFINForm
                     fPN.TRAN_NOLabel.Text = TRAN_NO
                     'fPN.MdiParent = Me.MdiParent
                     fPN.WindowState = FormWindowState.Maximized
@@ -85,7 +85,7 @@
                     If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                         fPN.Dispose()
                         fPN = Nothing
-                        fPN = New frmFINPaymentNotice
+                        fPN = New frmFINForm
                         fPN.TRAN_NOLabel.Text = TRAN_NO
                         'fPN.MdiParent = Me.MdiParent
                         fPN.WindowState = FormWindowState.Maximized

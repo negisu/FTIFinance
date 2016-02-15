@@ -1,6 +1,12 @@
-﻿Public Class frmFINPaymentNoticeInvoicePassRequestList
+﻿Public Class frmFINPaymentNoticeCancelRequestList
+    Public TRAN_TYPE As String
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If TRAN_TYPE = "I1" Then
+            Me.Text = "ยกเลิกใบแจ้งหนี้"
+            Label1.Text = "ยกเลิกใบแจ้งหนี้"
+        End If
+
         RefTextBox.Enabled = False
         FromDateTextBox.Enabled = False
         ToDateTextBox.Enabled = False
@@ -38,7 +44,9 @@
             parameters.Add("@p9", user_div)
         End If
 
-        query &= " AND CANCEL_FLAG IS NULL  AND TRAN_TYPE = 'P1'  "
+        query &= " AND TRAN_TYPE = @p10 "
+        parameters.Add("@p10", TRAN_TYPE)
+        'query &= " AND CANCEL_FLAG IS NULL "
 
         If isRef.Checked And Not String.IsNullOrEmpty(RefTextBox.Text) Then
             Dim searchValue As String = RefTextBox.Text.Trim.Replace(" ", "%")
@@ -68,7 +76,7 @@
         Next
 
         Dim gridCheckbox As New DataGridViewCheckBoxColumn
-        gridCheckbox.Name = "PASS_REQUEST"
+        gridCheckbox.Name = "CANCEL_REQUEST"
 
 
         Dim restoreButtonColumn As New DataGridViewButtonColumn()
@@ -102,18 +110,23 @@
         DataGridView1.Columns("FULL_NAME").HeaderText = "ชื่อผู้จ่ายเงิน"
         DataGridView1.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
         DataGridView1.Columns("NOTE").HeaderText = "หมายเหตุ"
-        DataGridView1.Columns("PASS_REQUEST").HeaderText = "ออกใบแจ้งหนี้"
+        DataGridView1.Columns("CANCEL_REQUEST").HeaderText = "ยกเลิก"
+
+        DataGridView1.Columns("CANCEL_REASON").HeaderText = "เหตุผลที่ต้องการยกเลิก"
+        DataGridView1.Columns("CANCEL_REJECT_REASON").HeaderText = "เหตุผลที่ไม่อนุมัติยกเลิก"
 
         DataGridView1.Columns("PREVIEW").DisplayIndex = 0
         DataGridView1.Columns("STATUS").DisplayIndex = 1
         DataGridView1.Columns("RESTORE").DisplayIndex = 2
-        DataGridView1.Columns("PASS_REQUEST").DisplayIndex = 3
-        DataGridView1.Columns("TRAN_DATE").DisplayIndex = 4
-        DataGridView1.Columns("TRAN_NO").DisplayIndex = 5
-        DataGridView1.Columns("FULL_NAME").DisplayIndex = 6
-        DataGridView1.Columns("DIV_NAME").DisplayIndex = 7
-        DataGridView1.Columns("BAL_AMT").DisplayIndex = 8
-        DataGridView1.Columns("NOTE").DisplayIndex = 9
+        DataGridView1.Columns("CANCEL_REQUEST").DisplayIndex = 3
+        DataGridView1.Columns("CANCEL_REASON").DisplayIndex = 4
+        DataGridView1.Columns("CANCEL_REJECT_REASON").DisplayIndex = 5
+        DataGridView1.Columns("TRAN_DATE").DisplayIndex = 6
+        DataGridView1.Columns("TRAN_NO").DisplayIndex = 7
+        DataGridView1.Columns("FULL_NAME").DisplayIndex = 8
+        DataGridView1.Columns("DIV_NAME").DisplayIndex = 9
+        DataGridView1.Columns("BAL_AMT").DisplayIndex = 10
+        DataGridView1.Columns("NOTE").DisplayIndex = 11
 
 
         DataGridView1.Columns("DIV_NAME").Visible = True
@@ -122,6 +135,8 @@
         DataGridView1.Columns("FULL_NAME").Visible = True
         DataGridView1.Columns("BAL_AMT").Visible = True
         DataGridView1.Columns("NOTE").Visible = True
+        DataGridView1.Columns("CANCEL_REASON").Visible = True
+        DataGridView1.Columns("CANCEL_REJECT_REASON").Visible = True
 
         DataGridView1.Columns("DIV_NAME").ReadOnly = True
         DataGridView1.Columns("TRAN_DATE").ReadOnly = True
@@ -129,79 +144,105 @@
         DataGridView1.Columns("FULL_NAME").ReadOnly = True
         DataGridView1.Columns("BAL_AMT").ReadOnly = True
         DataGridView1.Columns("NOTE").ReadOnly = True
+        DataGridView1.Columns("CANCEL_REASON").ReadOnly = True
+        DataGridView1.Columns("CANCEL_REJECT_REASON").ReadOnly = True
 
 
 
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         DataGridView1.AutoResizeColumns()
         DataGridView1.Refresh()
-        DataGridView1.ClearSelection()
 
         For Each row As DataGridViewRow In DataGridView1.Rows
-            If String.IsNullOrEmpty(row.Cells("POST_INVOICE_FLAG").Value.ToString()) Then
-                row.Cells("STATUS").Value = "ยังไม่มีการยื่นขอออกใบแจ้งหนี้"
-                row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#CCFFCC")
-                Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
-                buttonCell.Style.BackColor = Color.FromName("ControlLight")
+            If String.IsNullOrEmpty(row.Cells("CANCEL_FLAG").Value.ToString()) Then
+                If String.IsNullOrEmpty(row.Cells("CANCEL_REJECT_REASON").Value.ToString()) Then
+                    row.Cells("STATUS").Value = "ปกติ"
+                    row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#CCFFCC")
+                    Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
+                    buttonCell.Style.BackColor = Color.FromName("ControlLight")
+                Else
+                    row.Cells("STATUS").Value = "ไม่อนุมัติยกเลิก"
+                    row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#CCFFFF")
+                    Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
+                    buttonCell.Style.BackColor = Color.FromName("ControlLight")
+                End If
+
+
             Else
-                If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "P" Then
-                    row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้โดย ผ.อ."
+                If row.Cells("CANCEL_FLAG").Value.ToString() = "P" Then
+                    row.Cells("STATUS").Value = "รออนุมัติคำร้องยกเลิก"
                     row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FFFFCC")
-                    Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
+                    Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("CANCEL_REQUEST"), DataGridViewCheckBoxCell)
+                    Dim textBoxCell As DataGridViewTextBoxCell = CType(row.Cells("CANCEL_REASON"), DataGridViewTextBoxCell)
                     checkBoxCell.Style.BackColor = Color.FromName("ControlLight")
                     checkBoxCell.ReadOnly = True
+                    textBoxCell.Style.BackColor = Color.FromName("ControlLight")
                     Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
                     buttonCell.Style.BackColor = ColorTranslator.FromHtml("#FFCC99")
 
 
                 Else
-                    If row.Cells("POST_INVOICE_FLAG").Value.ToString() = "Q" Then
-                        row.Cells("STATUS").Value = "รออนุมัติออกใบแจ้งหนี้ โดย แผนกการเงิน"
-                        row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FFFFCC")
-                        Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
-                        checkBoxCell.Style.BackColor = Color.FromName("ControlLight")
-                        checkBoxCell.ReadOnly = True
-                        Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
-                        buttonCell.Style.BackColor = ColorTranslator.FromHtml("#FFCC99")
-
-                    ElseIf row.Cells("POST_INVOICE_FLAG").Value.ToString() = "A" Then
-                        row.Cells("STATUS").Value = "ออกใบแจ้งหนี้แล้ว"
+                    If row.Cells("CANCEL_FLAG").Value.ToString() = "A" Then
+                        row.Cells("STATUS").Value = "อนุมัติคำร้องยกเลิก"
                         row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#FF6699")
                         Dim buttonCell As DataGridViewButtonCell = CType(row.Cells("RESTORE"), DataGridViewButtonCell)
                         buttonCell.Style.BackColor = Color.FromName("ControlLight")
 
 
-                        Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("PASS_REQUEST"), DataGridViewCheckBoxCell)
+                        Dim checkBoxCell As DataGridViewCheckBoxCell = CType(row.Cells("CANCEL_REQUEST"), DataGridViewCheckBoxCell)
+                        Dim textBoxCell As DataGridViewTextBoxCell = CType(row.Cells("CANCEL_REASON"), DataGridViewTextBoxCell)
                         checkBoxCell.Style.BackColor = Color.FromName("ControlLight")
                         checkBoxCell.ReadOnly = True
-
+                        textBoxCell.Style.BackColor = Color.FromName("ControlLight")
 
                     End If
                 End If
 
             End If
-        Next
 
+            If String.IsNullOrEmpty(row.Cells("CANCEL_REASON").Value.ToString()) Then
+                row.Cells("CANCEL_REASON").ReadOnly = False
+            End If
+        Next
+        DataGridView1.ClearSelection()
     End Sub
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
         If DataGridView1.CurrentRow IsNot Nothing Then
+            For Each row As DataGridViewRow In DataGridView1.Rows
+                Dim isCancel As Boolean = Convert.ToBoolean(row.Cells("CANCEL_REQUEST").Value)
+                If isCancel Then
+                    Try
+                        Dim str As String = row.Cells("CANCEL_REASON").Value.ToString()
+                    Catch ex As Exception
+                        Call MsgBox("คุณยังกรอกเหตุผลไม่ครบ", 0, "พบข้อผิดพลาด")
+                        Return
+                    End Try
+                End If
+            Next
 
-            If (MessageBox.Show("คุณต้องการที่จะยื่นคำร้องออกใบแจ้งหนี้จากเอกสารที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If (MessageBox.Show("คุณต้องการที่จะยกเลิกเอกสารที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 For Each row As DataGridViewRow In DataGridView1.Rows
-                    Dim isCancel As Boolean = Convert.ToBoolean(row.Cells("PASS_REQUEST").Value)
+                    Dim isCancel As Boolean = Convert.ToBoolean(row.Cells("CANCEL_REQUEST").Value)
                     If isCancel Then
-                        Dim query As String = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = @p0  WHERE TRAN_NO = @p1"
+                        Dim query As String = "UPDATE PN_HEAD SET CANCEL_FLAG = @p0, CANCEL_REASON = @p1, CANCEL_BY = @p2 WHERE TRAN_NO = @p3"
                         Dim parameters As New Dictionary(Of String, Object)
-                        parameters.Add("@p0", "P")
-                        parameters.Add("@p1", row.Cells("TRAN_NO").Value)
-
+                        Dim cancleReason As String = row.Cells("CANCEL_REASON").Value.ToString()
+                        If TRAN_TYPE = "PN" Then
+                            parameters.Add("@p0", "P")
+                        Else
+                            parameters.Add("@p0", "A")    
+                        End If
+                        parameters.Add("@p1", cancleReason)
+                        parameters.Add("@p2", user_name)
+                        parameters.Add("@p3", row.Cells("TRAN_NO").Value)
                         Try
                             executeWebSQL(query, parameters)
                         Catch ex As Exception
                             MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                         End Try
+
 
                     End If
                 Next
@@ -223,7 +264,7 @@
 
         Try
             If e.ColumnIndex = DataGridView1.Columns("RESTORE").Index Then
-                If DataGridView1.Rows(e.RowIndex).Cells("POST_INVOICE_FLAG").Value.ToString() = "A" Or String.IsNullOrEmpty(DataGridView1.Rows(e.RowIndex).Cells("POST_INVOICE_FLAG").Value.ToString()) Then Return
+                If DataGridView1.Rows(e.RowIndex).Cells("CANCEL_FLAG").Value.ToString() = "A" Or String.IsNullOrEmpty(DataGridView1.Rows(e.RowIndex).Cells("CANCEL_FLAG").Value.ToString()) Then Return
             End If
         Catch ex As Exception
 
@@ -232,7 +273,7 @@
         Dim TRAN_NO As String = DataGridView1.Rows(e.RowIndex).Cells("TRAN_NO").Value.ToString()
         Dim parameters As New Dictionary(Of String, Object)
         Dim query As String
-        query = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = NULL WHERE TRAN_NO = '" & TRAN_NO & "'"
+        query = "UPDATE PN_HEAD SET CANCEL_FLAG = NULL , CANCEL_REASON = NULL WHERE TRAN_NO = '" & TRAN_NO & "'"
 
         parameters.Clear()
 
@@ -289,6 +330,7 @@
         ToDateTextBox.Text = DateTime.Now.ToString("{dd/MM/yyyy}", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
         DataGridView1.Columns.Clear()
     End Sub
+
     Private Sub FromDateTextBox_TypeValidationCompleted(sender As Object, e As TypeValidationEventArgs) Handles FromDateTextBox.TypeValidationCompleted
 
         Try
@@ -317,5 +359,9 @@
             ToDateTextBox.Text = DateTime.Now.ToString("{dd/MM/yyyy}", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
         End Try
 
+    End Sub
+
+    Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
+        Me.Dispose()
     End Sub
 End Class
