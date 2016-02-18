@@ -1,35 +1,35 @@
 ﻿Public Class frmFINReportProduct
-
     Private Sub search_Click(sender As Object, e As EventArgs) Handles btFind.Click
+        Try
+            DataGridView2.DataSource = Nothing
+            DataGridView2.Refresh()
+        Catch ex As Exception
 
-        searchPN()
-
+        End Try
+        search()
     End Sub
 
 
-    Private Sub searchPN()
+    Private Sub search()
 
         Dim searchValue As String = KeyWordTextBox.Text.Trim.Replace(" ", "%")
         searchValue = "%" & searchValue & "%"
         Dim parameters As New Dictionary(Of String, Object)
-        Dim query As String = " SELECT TOP 1000 IV_SUB_SECTION.SUB_SECTION_CODE, IV_SUB_SECTION.SUB_SECTION_NAME, COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT "
+        Dim query As String = " SELECT TOP 1000 IV_SUB_SECTION.SUB_SECTION_CODE, IV_SUB_SECTION.SUB_SECTION_NAME, COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT  "
         If IsAR.Checked Then
-            query = " SELECT TOP 1000 MB_COMP_PERSON.COMP_PERSON_NAME_TH, MB_MEMBER.MEMBER_CODE, COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT "
+            query = " SELECT TOP 1000 MB_COMP_PERSON.COMP_PERSON_NAME_TH, PN_HEAD.MB_MEMBER_CODE, COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT "
         End If
         query &= " FROM PN_DETAIL INNER JOIN IV_SUB_SECTION ON IV_SUB_SECTION.SUB_SECTION_CODE = PN_DETAIL.SUB_SECTION_CODE INNER JOIN  PN_HEAD ON PN_DETAIL.TRAN_NO = PN_HEAD.TRAN_NO "
-        query &= " LEFT JOIN MB_MEMBER ON PN_HEAD.AR_CODE = MB_MEMBER.COMP_PERSON_CODE "
-        query &= " LEFT JOIN MB_COMP_PERSON ON MB_MEMBER.COMP_PERSON_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
-        query &= " LEFT JOIN MB_MEMBER_STATUS ON MB_MEMBER.MEMBER_STATUS_CODE = MB_MEMBER_STATUS.MEMBER_STATUS_CODE  AND MB_MEMBER_STATUS.MODULE = '1' "
-        query &= " LEFT JOIN MB_MEMBER_MAIN_GROUP ON MB_MEMBER.MEMBER_MAIN_GROUP_CODE = MB_MEMBER_MAIN_GROUP.MEMBER_MAIN_GROUP_CODE "
+        query &= " LEFT JOIN MB_COMP_PERSON ON PN_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
         If IsAR.Checked Then
-            query &= " WHERE (MB_MEMBER.MEMBER_CODE LIKE @p0 "
+            query &= " WHERE (PN_HEAD.MB_MEMBER_CODE LIKE @p0 "
             query &= " OR MB_COMP_PERSON.COMP_PERSON_NAME_TH LIKE @p0 "
             query &= " OR MB_COMP_PERSON.COMP_PERSON_NAME_EN LIKE @p0 "
             query &= " OR MB_COMP_PERSON.COMP_PERSON_CODE LIKE @p0) "
         Else
             query &= " WHERE IV_SUB_SECTION.SUB_SECTION_NAME LIKE @p0 "
         End If
-        
+
 
         parameters.Add("@p0", searchValue)
 
@@ -75,16 +75,16 @@
 
         If isSubSection.Checked Then
             query &= " GROUP BY IV_SUB_SECTION.SUB_SECTION_CODE, IV_SUB_SECTION.SUB_SECTION_NAME "
-            DataGridView1.DataSource = fillWebSQL(query, parameters, "IV_SUB_SECTION")
+            DataGridView1.DataSource = fillWebSQL(query, parameters, "PN_DETAIL")
             DataGridView1.Columns("SUB_SECTION_CODE").HeaderText = "รหัสรายการ"
             DataGridView1.Columns("SUB_SECTION_NAME").HeaderText = "ชื่อรายการ"
         Else
-            query &= " GROUP BY MB_COMP_PERSON.COMP_PERSON_NAME_TH, MB_MEMBER.MEMBER_CODE"
-            DataGridView1.DataSource = fillWebSQL(query, parameters, "MB_MEMBER")
+            query &= " GROUP BY MB_COMP_PERSON.COMP_PERSON_NAME_TH, PN_HEAD.MB_MEMBER_CODE"
+            DataGridView1.DataSource = fillWebSQL(query, parameters, "PN_DETAIL")
             DataGridView1.Columns("COMP_PERSON_NAME_TH").HeaderText = "ชื่อลูกหนี้"
-            DataGridView1.Columns("MEMBER_CODE").HeaderText = "รหัสสมาชิก"
+            DataGridView1.Columns("MB_MEMBER_CODE").HeaderText = "รหัสสมาชิก"
         End If
-        
+
         DataGridView1.Columns("CNT").HeaderText = "จำนวนรายการ"
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         DataGridView1.AutoResizeColumns()
@@ -94,7 +94,10 @@
     End Sub
 
     Private Sub frmFINReportProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         TO_DATEPicker.MinDate = FROM_DATEPicker.Value
+        FROM_DATEPicker.Value = New Date(FROM_DATEPicker.Value.Year, FROM_DATEPicker.Value.Month, FROM_DATEPicker.Value.Day, 0, 0, 0)
+        TO_DATEPicker.Value = New Date(TO_DATEPicker.Value.Year, TO_DATEPicker.Value.Month, TO_DATEPicker.Value.Day, 23, 59, 59)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
@@ -125,6 +128,8 @@
     Private Sub TRAN_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles FROM_DATEPicker.ValueChanged
         If Not FROM_DATEPicker.IsHandleCreated Then
             Return
+        Else
+            FROM_DATEPicker.Value = New Date(FROM_DATEPicker.Value.Year, FROM_DATEPicker.Value.Month, FROM_DATEPicker.Value.Day, 0, 0, 0)
         End If
         TO_DATEPicker.MinDate = FROM_DATEPicker.Value
     End Sub
@@ -231,8 +236,8 @@
         If DataGridView1.SelectedRows.Count = 0 Then Return
         Dim param As New Dictionary(Of String, String)
 
-        param.Add("FROM_DATE", FROM_DATEPicker.Value.ToString("MM/dd/yyyy", New System.Globalization.CultureInfo("en-US").DateTimeFormat))
-        param.Add("TO_DATE", TO_DATEPicker.Value.ToString("MM/dd/yyyy", New System.Globalization.CultureInfo("en-US").DateTimeFormat))
+        param.Add("FROM_DATE", FROM_DATEPicker.Value.ToString(New System.Globalization.CultureInfo("en-US").DateTimeFormat))
+        param.Add("TO_DATE", TO_DATEPicker.Value.ToString(New System.Globalization.CultureInfo("en-US").DateTimeFormat))
         Dim SEARCH_CODE_LIST As New List(Of String)
 
         If PermissionHelper.isAdmin() Then
@@ -293,5 +298,14 @@
 
     Private Sub frmFINReportProduct_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Me.Dispose()
+    End Sub
+
+    Private Sub TO_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles TO_DATEPicker.ValueChanged
+        If Not FROM_DATEPicker.IsHandleCreated Then
+            Return
+        Else
+            TO_DATEPicker.Value = New Date(TO_DATEPicker.Value.Year, TO_DATEPicker.Value.Month, TO_DATEPicker.Value.Day, 23, 59, 59)
+        End If
+
     End Sub
 End Class

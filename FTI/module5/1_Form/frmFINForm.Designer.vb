@@ -23,7 +23,7 @@ Partial Class frmFINForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -110,7 +110,6 @@ Partial Class frmFINForm
         Me.DUE_DATEPicker = New System.Windows.Forms.DateTimePicker()
         Me.TRAN_DATEPicker = New System.Windows.Forms.DateTimePicker()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.TAX_NOTextBox = New System.Windows.Forms.TextBox()
         Me.MEMBER_CODETextBox = New System.Windows.Forms.TextBox()
         Me.Label41 = New System.Windows.Forms.Label()
@@ -131,6 +130,8 @@ Partial Class frmFINForm
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.AddIVButton = New System.Windows.Forms.Button()
+        Me.AddRCButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PreviewButton = New System.Windows.Forms.Button()
         Me.TRAN_NO_REFLabel = New System.Windows.Forms.Label()
@@ -159,16 +160,11 @@ Partial Class frmFINForm
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FormTitleLabel = New System.Windows.Forms.Label()
         Me.Panel10 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.PullButton = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.NewButton = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -208,7 +204,7 @@ Partial Class frmFINForm
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(447, 4)
+        Me.TabControl1.Location = New System.Drawing.Point(481, 4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(419, 127)
@@ -325,7 +321,7 @@ Partial Class frmFINForm
         '
         'FAXTextBox
         '
-        Me.FAXTextBox.Location = New System.Drawing.Point(753, 134)
+        Me.FAXTextBox.Location = New System.Drawing.Point(787, 134)
         Me.FAXTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.FAXTextBox.Name = "FAXTextBox"
         Me.FAXTextBox.Size = New System.Drawing.Size(100, 22)
@@ -335,7 +331,7 @@ Partial Class frmFINForm
         '
         Me.Label59.AutoSize = True
         Me.Label59.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label59.Location = New System.Drawing.Point(685, 135)
+        Me.Label59.Location = New System.Drawing.Point(719, 135)
         Me.Label59.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label59.Name = "Label59"
         Me.Label59.Size = New System.Drawing.Size(55, 20)
@@ -346,7 +342,7 @@ Partial Class frmFINForm
         '
         Me.Label52.AutoSize = True
         Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label52.Location = New System.Drawing.Point(452, 135)
+        Me.Label52.Location = New System.Drawing.Point(486, 135)
         Me.Label52.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(62, 20)
@@ -355,7 +351,7 @@ Partial Class frmFINForm
         '
         'TELEPHONETextBox
         '
-        Me.TELEPHONETextBox.Location = New System.Drawing.Point(533, 134)
+        Me.TELEPHONETextBox.Location = New System.Drawing.Point(567, 134)
         Me.TELEPHONETextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.TELEPHONETextBox.Name = "TELEPHONETextBox"
         Me.TELEPHONETextBox.Size = New System.Drawing.Size(100, 22)
@@ -389,17 +385,17 @@ Partial Class frmFINForm
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSave.BackColor = System.Drawing.Color.SlateGray
-        Me.btnSave.BackgroundImage = Global.FTI.My.Resources.Resources.ic_save_white_24dp_2x
-        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnSave.BackgroundImage = Global.FTI.My.Resources.Resources.saveCustomButton
+        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
         Me.btnSave.FlatAppearance.BorderSize = 0
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btnSave.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.btnSave.Location = New System.Drawing.Point(1124, 681)
+        Me.btnSave.Location = New System.Drawing.Point(1079, 681)
         Me.btnSave.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(30, 30)
+        Me.btnSave.Size = New System.Drawing.Size(120, 32)
         Me.btnSave.TabIndex = 157
         Me.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSave.UseVisualStyleBackColor = False
@@ -408,17 +404,17 @@ Partial Class frmFINForm
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnClose.BackColor = System.Drawing.Color.DeepPink
-        Me.btnClose.BackgroundImage = Global.FTI.My.Resources.Resources.ic_clear_white_24dp_2x
-        Me.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnClose.BackgroundImage = Global.FTI.My.Resources.Resources.cancelCustomButton
+        Me.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
         Me.btnClose.FlatAppearance.BorderSize = 0
         Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.btnClose.Location = New System.Drawing.Point(1234, 681)
+        Me.btnClose.Location = New System.Drawing.Point(1215, 681)
         Me.btnClose.Margin = New System.Windows.Forms.Padding(4)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(30, 30)
+        Me.btnClose.Size = New System.Drawing.Size(120, 32)
         Me.btnClose.TabIndex = 163
         Me.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnClose.UseVisualStyleBackColor = False
@@ -426,7 +422,7 @@ Partial Class frmFINForm
         'PrintButton
         '
         Me.PrintButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PrintButton.BackColor = System.Drawing.Color.SlateGray
+        Me.PrintButton.BackColor = System.Drawing.Color.Black
         Me.PrintButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_print_white_24dp_2x
         Me.PrintButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PrintButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
@@ -434,53 +430,55 @@ Partial Class frmFINForm
         Me.PrintButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.PrintButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.PrintButton.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.PrintButton.Location = New System.Drawing.Point(921, 681)
+        Me.PrintButton.Location = New System.Drawing.Point(925, 681)
         Me.PrintButton.Margin = New System.Windows.Forms.Padding(4)
         Me.PrintButton.Name = "PrintButton"
-        Me.PrintButton.Size = New System.Drawing.Size(30, 30)
+        Me.PrintButton.Size = New System.Drawing.Size(45, 32)
         Me.PrintButton.TabIndex = 171
         Me.PrintButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.PrintButton.UseVisualStyleBackColor = False
         '
         'btProdDel
         '
+        Me.btProdDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btProdDel.BackColor = System.Drawing.Color.SlateGray
-        Me.btProdDel.BackgroundImage = Global.FTI.My.Resources.Resources.ic_remove_circle_white_24dp_2x
-        Me.btProdDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btProdDel.BackgroundImage = Global.FTI.My.Resources.Resources.removeCustomButton
+        Me.btProdDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btProdDel.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
         Me.btProdDel.FlatAppearance.BorderSize = 0
         Me.btProdDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btProdDel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.btProdDel.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.btProdDel.Location = New System.Drawing.Point(15, 315)
+        Me.btProdDel.Location = New System.Drawing.Point(1232, 214)
         Me.btProdDel.Margin = New System.Windows.Forms.Padding(4)
         Me.btProdDel.Name = "btProdDel"
-        Me.btProdDel.Size = New System.Drawing.Size(30, 30)
+        Me.btProdDel.Size = New System.Drawing.Size(100, 27)
         Me.btProdDel.TabIndex = 239
         Me.btProdDel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btProdDel.UseVisualStyleBackColor = False
         '
         'btProdAdd
         '
+        Me.btProdAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btProdAdd.BackColor = System.Drawing.Color.SlateGray
-        Me.btProdAdd.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
-        Me.btProdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btProdAdd.BackgroundImage = Global.FTI.My.Resources.Resources.addCustomButton
+        Me.btProdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btProdAdd.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
         Me.btProdAdd.FlatAppearance.BorderSize = 0
         Me.btProdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btProdAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.btProdAdd.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.btProdAdd.Location = New System.Drawing.Point(15, 259)
+        Me.btProdAdd.Location = New System.Drawing.Point(1128, 214)
         Me.btProdAdd.Margin = New System.Windows.Forms.Padding(4)
         Me.btProdAdd.Name = "btProdAdd"
-        Me.btProdAdd.Size = New System.Drawing.Size(30, 30)
+        Me.btProdAdd.Size = New System.Drawing.Size(100, 27)
         Me.btProdAdd.TabIndex = 238
         Me.btProdAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btProdAdd.UseVisualStyleBackColor = False
         '
         'DETAIL
         '
-        Me.DETAIL.BackColor = System.Drawing.Color.LightSlateGray
+        Me.DETAIL.BackColor = System.Drawing.Color.SteelBlue
         Me.DETAIL.Controls.Add(Me.TAX_RATELabel)
         Me.DETAIL.Controls.Add(Me.TopUpTextBox)
         Me.DETAIL.Controls.Add(Me.currLabel4)
@@ -707,13 +705,13 @@ Partial Class frmFINForm
         Me.DetailGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DetailGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DetailGridView.GridColor = System.Drawing.SystemColors.Control
-        Me.DetailGridView.Location = New System.Drawing.Point(52, 259)
+        Me.DetailGridView.Location = New System.Drawing.Point(15, 259)
         Me.DetailGridView.Margin = New System.Windows.Forms.Padding(4)
         Me.DetailGridView.MultiSelect = False
         Me.DetailGridView.Name = "DetailGridView"
         Me.DetailGridView.RowHeadersVisible = False
         Me.DetailGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DetailGridView.Size = New System.Drawing.Size(1276, 234)
+        Me.DetailGridView.Size = New System.Drawing.Size(1317, 234)
         Me.DetailGridView.TabIndex = 236
         '
         'Label18
@@ -786,12 +784,12 @@ Partial Class frmFINForm
         'Panel3
         '
         Me.Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel3.BackColor = System.Drawing.Color.LightSlateGray
+        Me.Panel3.BackColor = System.Drawing.Color.SteelBlue
         Me.Panel3.Controls.Add(Me.PrintStatusLabel)
         Me.Panel3.Controls.Add(Me.DocumentStatusLabel)
         Me.Panel3.Controls.Add(Me.Label18)
         Me.Panel3.Controls.Add(Me.Label28)
-        Me.Panel3.Location = New System.Drawing.Point(932, 9)
+        Me.Panel3.Location = New System.Drawing.Point(936, 10)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(396, 63)
@@ -859,7 +857,7 @@ Partial Class frmFINForm
         'Panel2
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.LightSlateGray
+        Me.Panel2.BackColor = System.Drawing.Color.SteelBlue
         Me.Panel2.Controls.Add(Me.CheckBox1)
         Me.Panel2.Controls.Add(Me.Label35)
         Me.Panel2.Controls.Add(Me.EX_RATETextBox)
@@ -872,7 +870,7 @@ Partial Class frmFINForm
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.CurrencyComboBox)
         Me.Panel2.Controls.Add(Me.Label19)
-        Me.Panel2.Location = New System.Drawing.Point(932, 107)
+        Me.Panel2.Location = New System.Drawing.Point(936, 107)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(396, 100)
@@ -1078,7 +1076,7 @@ Partial Class frmFINForm
         Me.TRAN_NOLabel.AutoSize = True
         Me.TRAN_NOLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
         Me.TRAN_NOLabel.ForeColor = System.Drawing.Color.White
-        Me.TRAN_NOLabel.Location = New System.Drawing.Point(114, 4)
+        Me.TRAN_NOLabel.Location = New System.Drawing.Point(125, 6)
         Me.TRAN_NOLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.TRAN_NOLabel.Name = "TRAN_NOLabel"
         Me.TRAN_NOLabel.Size = New System.Drawing.Size(0, 20)
@@ -1087,7 +1085,7 @@ Partial Class frmFINForm
         '
         'AR_CODETextBox
         '
-        Me.AR_CODETextBox.BackColor = System.Drawing.Color.LemonChiffon
+        Me.AR_CODETextBox.BackColor = System.Drawing.Color.Cornsilk
         Me.AR_CODETextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AR_CODETextBox.Location = New System.Drawing.Point(121, 7)
         Me.AR_CODETextBox.Margin = New System.Windows.Forms.Padding(4)
@@ -1099,12 +1097,12 @@ Partial Class frmFINForm
         'Panel4
         '
         Me.Panel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel4.BackColor = System.Drawing.Color.LightSlateGray
+        Me.Panel4.BackColor = System.Drawing.Color.SteelBlue
         Me.Panel4.Controls.Add(Me.eng)
         Me.Panel4.Controls.Add(Me.thai)
         Me.Panel4.Controls.Add(Me.Label25)
         Me.Panel4.Controls.Add(Me.nonVat)
-        Me.Panel4.Location = New System.Drawing.Point(932, 73)
+        Me.Panel4.Location = New System.Drawing.Point(936, 73)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(396, 36)
         Me.Panel4.TabIndex = 269
@@ -1133,15 +1131,15 @@ Partial Class frmFINForm
         'SelectARButton
         '
         Me.SelectARButton.BackColor = System.Drawing.Color.SlateGray
-        Me.SelectARButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
+        Me.SelectARButton.BackgroundImage = Global.FTI.My.Resources.Resources.selectCustomButton
         Me.SelectARButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.SelectARButton.FlatAppearance.BorderSize = 0
         Me.SelectARButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SelectARButton.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.SelectARButton.Location = New System.Drawing.Point(294, 6)
+        Me.SelectARButton.Location = New System.Drawing.Point(294, 4)
         Me.SelectARButton.Margin = New System.Windows.Forms.Padding(4)
         Me.SelectARButton.Name = "SelectARButton"
-        Me.SelectARButton.Size = New System.Drawing.Size(25, 25)
+        Me.SelectARButton.Size = New System.Drawing.Size(100, 27)
         Me.SelectARButton.TabIndex = 272
         Me.SelectARButton.UseVisualStyleBackColor = False
         '
@@ -1244,7 +1242,6 @@ Partial Class frmFINForm
         Me.Panel7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel7.BackColor = System.Drawing.Color.Transparent
-        Me.Panel7.Controls.Add(Me.Label10)
         Me.Panel7.Controls.Add(Me.TAX_NOTextBox)
         Me.Panel7.Controls.Add(Me.MEMBER_CODETextBox)
         Me.Panel7.Controls.Add(Me.Label41)
@@ -1259,18 +1256,9 @@ Partial Class frmFINForm
         Me.Panel7.Size = New System.Drawing.Size(553, 95)
         Me.Panel7.TabIndex = 285
         '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(323, 10)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(29, 17)
-        Me.Label10.TabIndex = 294
-        Me.Label10.Text = "เพิ่ม"
-        '
         'TAX_NOTextBox
         '
-        Me.TAX_NOTextBox.BackColor = System.Drawing.Color.LemonChiffon
+        Me.TAX_NOTextBox.BackColor = System.Drawing.Color.Cornsilk
         Me.TAX_NOTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TAX_NOTextBox.Location = New System.Drawing.Point(121, 61)
         Me.TAX_NOTextBox.Margin = New System.Windows.Forms.Padding(4)
@@ -1281,7 +1269,7 @@ Partial Class frmFINForm
         '
         'MEMBER_CODETextBox
         '
-        Me.MEMBER_CODETextBox.BackColor = System.Drawing.Color.LemonChiffon
+        Me.MEMBER_CODETextBox.BackColor = System.Drawing.Color.Cornsilk
         Me.MEMBER_CODETextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MEMBER_CODETextBox.Location = New System.Drawing.Point(121, 34)
         Me.MEMBER_CODETextBox.Margin = New System.Windows.Forms.Padding(4)
@@ -1471,16 +1459,17 @@ Partial Class frmFINForm
         Me.Panel8.Controls.Add(Me.TELEPHONETextBox)
         Me.Panel8.Controls.Add(Me.Label24)
         Me.Panel8.Controls.Add(Me.TELEPHONETextBox2)
-        Me.Panel8.Location = New System.Drawing.Point(12, 513)
+        Me.Panel8.Location = New System.Drawing.Point(12, 500)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(873, 163)
+        Me.Panel8.Size = New System.Drawing.Size(903, 163)
         Me.Panel8.TabIndex = 290
         '
         'Panel9
         '
         Me.Panel9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel9.BackColor = System.Drawing.Color.SlateGray
-        Me.Panel9.Controls.Add(Me.Button3)
+        Me.Panel9.BackColor = System.Drawing.Color.SteelBlue
+        Me.Panel9.Controls.Add(Me.AddIVButton)
+        Me.Panel9.Controls.Add(Me.AddRCButton)
         Me.Panel9.Controls.Add(Me.Button1)
         Me.Panel9.Controls.Add(Me.PreviewButton)
         Me.Panel9.Controls.Add(Me.TRAN_NO_REFLabel)
@@ -1494,9 +1483,45 @@ Partial Class frmFINForm
         Me.Panel9.Size = New System.Drawing.Size(360, 197)
         Me.Panel9.TabIndex = 291
         '
+        'AddIVButton
+        '
+        Me.AddIVButton.BackColor = System.Drawing.Color.SteelBlue
+        Me.AddIVButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
+        Me.AddIVButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.AddIVButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.AddIVButton.FlatAppearance.BorderSize = 0
+        Me.AddIVButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddIVButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.AddIVButton.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.AddIVButton.Location = New System.Drawing.Point(295, 32)
+        Me.AddIVButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.AddIVButton.Name = "AddIVButton"
+        Me.AddIVButton.Size = New System.Drawing.Size(25, 25)
+        Me.AddIVButton.TabIndex = 304
+        Me.AddIVButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.AddIVButton.UseVisualStyleBackColor = False
+        '
+        'AddRCButton
+        '
+        Me.AddRCButton.BackColor = System.Drawing.Color.SteelBlue
+        Me.AddRCButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
+        Me.AddRCButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.AddRCButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.AddRCButton.FlatAppearance.BorderSize = 0
+        Me.AddRCButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddRCButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.AddRCButton.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.AddRCButton.Location = New System.Drawing.Point(295, 65)
+        Me.AddRCButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.AddRCButton.Name = "AddRCButton"
+        Me.AddRCButton.Size = New System.Drawing.Size(25, 25)
+        Me.AddRCButton.TabIndex = 303
+        Me.AddRCButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.AddRCButton.UseVisualStyleBackColor = False
+        '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.SlateGray
+        Me.Button1.BackColor = System.Drawing.Color.SteelBlue
         Me.Button1.BackgroundImage = Global.FTI.My.Resources.Resources.ic_pageview_white_24dp_2x
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button1.FlatAppearance.BorderSize = 0
@@ -1511,7 +1536,7 @@ Partial Class frmFINForm
         '
         'PreviewButton
         '
-        Me.PreviewButton.BackColor = System.Drawing.Color.SlateGray
+        Me.PreviewButton.BackColor = System.Drawing.Color.SteelBlue
         Me.PreviewButton.BackgroundImage = Global.FTI.My.Resources.Resources.ic_pageview_white_24dp_2x
         Me.PreviewButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PreviewButton.FlatAppearance.BorderSize = 0
@@ -1529,7 +1554,7 @@ Partial Class frmFINForm
         Me.TRAN_NO_REFLabel.AutoSize = True
         Me.TRAN_NO_REFLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
         Me.TRAN_NO_REFLabel.ForeColor = System.Drawing.Color.White
-        Me.TRAN_NO_REFLabel.Location = New System.Drawing.Point(114, 35)
+        Me.TRAN_NO_REFLabel.Location = New System.Drawing.Point(118, 35)
         Me.TRAN_NO_REFLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.TRAN_NO_REFLabel.Name = "TRAN_NO_REFLabel"
         Me.TRAN_NO_REFLabel.Size = New System.Drawing.Size(36, 20)
@@ -1542,11 +1567,11 @@ Partial Class frmFINForm
         Me.REF__RCGridView.AllowUserToAddRows = False
         Me.REF__RCGridView.AllowUserToDeleteRows = False
         Me.REF__RCGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.REF__RCGridView.Location = New System.Drawing.Point(8, 92)
+        Me.REF__RCGridView.Location = New System.Drawing.Point(8, 103)
         Me.REF__RCGridView.Name = "REF__RCGridView"
         Me.REF__RCGridView.ReadOnly = True
         Me.REF__RCGridView.RowTemplate.Height = 24
-        Me.REF__RCGridView.Size = New System.Drawing.Size(345, 93)
+        Me.REF__RCGridView.Size = New System.Drawing.Size(345, 82)
         Me.REF__RCGridView.TabIndex = 293
         '
         'TabControl3
@@ -1554,7 +1579,7 @@ Partial Class frmFINForm
         Me.TabControl3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl3.Controls.Add(Me.TabPage5)
         Me.TabControl3.Controls.Add(Me.TabPage6)
-        Me.TabControl3.Location = New System.Drawing.Point(917, 500)
+        Me.TabControl3.Location = New System.Drawing.Point(921, 500)
         Me.TabControl3.Name = "TabControl3"
         Me.TabControl3.SelectedIndex = 0
         Me.TabControl3.Size = New System.Drawing.Size(415, 171)
@@ -1628,8 +1653,8 @@ Partial Class frmFINForm
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle1.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
@@ -1699,8 +1724,10 @@ Partial Class frmFINForm
         'FormTitleLabel
         '
         Me.FormTitleLabel.AutoSize = True
+        Me.FormTitleLabel.BackColor = System.Drawing.Color.Transparent
         Me.FormTitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.FormTitleLabel.Location = New System.Drawing.Point(4, 2)
+        Me.FormTitleLabel.ForeColor = System.Drawing.Color.White
+        Me.FormTitleLabel.Location = New System.Drawing.Point(4, 3)
         Me.FormTitleLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.FormTitleLabel.Name = "FormTitleLabel"
         Me.FormTitleLabel.Size = New System.Drawing.Size(205, 29)
@@ -1709,62 +1736,24 @@ Partial Class frmFINForm
         '
         'Panel10
         '
+        Me.Panel10.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel10.BackColor = System.Drawing.Color.DarkTurquoise
+        Me.Panel10.BackgroundImage = Global.FTI.My.Resources.Resources.tabbg
+        Me.Panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel10.Controls.Add(Me.NewButton)
         Me.Panel10.Controls.Add(Me.FormTitleLabel)
         Me.Panel10.Location = New System.Drawing.Point(15, 5)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(553, 38)
         Me.Panel10.TabIndex = 289
         '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.DeepPink
-        Me.Button2.BackgroundImage = Global.FTI.My.Resources.Resources.ic_clear_white_24dp_2x
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Button2.Location = New System.Drawing.Point(15, 446)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(30, 30)
-        Me.Button2.TabIndex = 293
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(16, 293)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(29, 17)
-        Me.Label12.TabIndex = 295
-        Me.Label12.Text = "เพิ่ม"
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(19, 349)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(23, 17)
-        Me.Label20.TabIndex = 296
-        Me.Label20.Text = "ลบ"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(17, 480)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(27, 17)
-        Me.Label22.TabIndex = 297
-        Me.Label22.Text = "ล้าง"
-        '
         'Label23
         '
         Me.Label23.AutoSize = True
+        Me.Label23.BackColor = System.Drawing.Color.Transparent
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label23.ForeColor = System.Drawing.Color.White
         Me.Label23.Location = New System.Drawing.Point(3, 1)
         Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label23.Name = "Label23"
@@ -1777,62 +1766,54 @@ Partial Class frmFINForm
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.DarkTurquoise
+        Me.Panel1.BackgroundImage = Global.FTI.My.Resources.Resources.tabbg
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Controls.Add(Me.PullButton)
         Me.Panel1.Controls.Add(Me.Label23)
         Me.Panel1.Location = New System.Drawing.Point(15, 214)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1313, 29)
+        Me.Panel1.Size = New System.Drawing.Size(1109, 27)
         Me.Panel1.TabIndex = 299
         '
-        'Label27
+        'PullButton
         '
-        Me.Label27.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label27.AutoSize = True
-        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(954, 686)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(47, 25)
-        Me.Label27.TabIndex = 300
-        Me.Label27.Text = "พิมพ์"
+        Me.PullButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PullButton.BackColor = System.Drawing.Color.Transparent
+        Me.PullButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PullButton.Location = New System.Drawing.Point(920, 1)
+        Me.PullButton.Name = "PullButton"
+        Me.PullButton.Size = New System.Drawing.Size(186, 26)
+        Me.PullButton.TabIndex = 299
+        Me.PullButton.Text = "ดึงข้อมูลรายการ"
+        Me.PullButton.UseVisualStyleBackColor = False
+        Me.PullButton.Visible = False
         '
-        'Label29
+        'Button2
         '
-        Me.Label29.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label29.AutoSize = True
-        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(1157, 686)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(58, 25)
-        Me.Label29.TabIndex = 301
-        Me.Label29.Text = "บันทึก"
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Button2.BackgroundImage = Global.FTI.My.Resources.Resources.res_partner_375208
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(12, 679)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(106, 32)
+        Me.Button2.TabIndex = 300
+        Me.Button2.UseVisualStyleBackColor = False
         '
-        'Label30
+        'NewButton
         '
-        Me.Label30.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label30.AutoSize = True
-        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(1266, 686)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(56, 25)
-        Me.Label30.TabIndex = 302
-        Me.Label30.Text = "ยกเลิก"
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.SlateGray
-        Me.Button3.BackgroundImage = Global.FTI.My.Resources.Resources.ic_add_circle_white_24dp_2x
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.Button3.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Button3.Location = New System.Drawing.Point(295, 65)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(25, 25)
-        Me.Button3.TabIndex = 303
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.NewButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NewButton.BackgroundImage = Global.FTI.My.Resources.Resources.newCustomButton
+        Me.NewButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.NewButton.FlatAppearance.BorderSize = 0
+        Me.NewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.NewButton.Location = New System.Drawing.Point(445, 7)
+        Me.NewButton.Name = "NewButton"
+        Me.NewButton.Size = New System.Drawing.Size(100, 27)
+        Me.NewButton.TabIndex = 301
+        Me.NewButton.UseVisualStyleBackColor = True
         '
         'frmFINForm
         '
@@ -1842,15 +1823,11 @@ Partial Class frmFINForm
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1348, 721)
-        Me.Controls.Add(Me.Label30)
-        Me.Controls.Add(Me.Label29)
-        Me.Controls.Add(Me.Label27)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label22)
-        Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.btProdAdd)
         Me.Controls.Add(Me.TabControl3)
+        Me.Controls.Add(Me.btProdDel)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.Panel8)
@@ -1859,8 +1836,6 @@ Partial Class frmFINForm
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.btProdDel)
-        Me.Controls.Add(Me.btProdAdd)
         Me.Controls.Add(Me.DetailGridView)
         Me.Controls.Add(Me.PrintButton)
         Me.Controls.Add(Me.btnClose)
@@ -1907,7 +1882,6 @@ Partial Class frmFINForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnSave As System.Windows.Forms.Button
@@ -2044,15 +2018,11 @@ Partial Class frmFINForm
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents FormTitleLabel As System.Windows.Forms.Label
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Label27 As System.Windows.Forms.Label
-    Friend WithEvents Label29 As System.Windows.Forms.Label
-    Friend WithEvents Label30 As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents AddRCButton As System.Windows.Forms.Button
+    Friend WithEvents AddIVButton As System.Windows.Forms.Button
+    Friend WithEvents PullButton As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents NewButton As System.Windows.Forms.Button
 End Class

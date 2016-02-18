@@ -118,82 +118,118 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\btnLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping-money-box-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping-money-box-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="สภาอุตสาหกรรมแห่งประเทศไทย" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\สภาอุตสาหกรรมแห่งประเทศไทย.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logoLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\logoLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\imgDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnExit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\btnExit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="City-Post-Office-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\City-Post-Office-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="imgAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\imgAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_save_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_save_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tabbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tabbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancel-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bgSplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\bgSplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_add_black_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_add_black_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_clear_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_clear_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgBGbtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\imgBGbtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\imgNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="imgSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\imgSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_add_circle_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_add_circle_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bgLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\bgLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_remove_circle_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_remove_circle_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_print_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_print_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_add_black_24dp_1x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_add_black_24dp_1x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\imgClear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="สภาอุตสาหกรรมแห่งประเทศไทย" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\สภาอุตสาหกรรมแห่งประเทศไทย.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="imgSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\imgSave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\imgSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancelCustomButton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancelCustomButton1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\bgLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BGs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\BGs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_pageview_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_pageview_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\imgClear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_save_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_save_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancelCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancelCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_remove_circle_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_remove_circle_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="City-Post-Office-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\City-Post-Office-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgSplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\bgSplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_add_black_24dp_1x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_add_black_24dp_1x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\imgDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\btnLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="selectCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_clear_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_clear_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping-money-box-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping-money-box-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_print_white_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_print_white_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reportCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reportCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\imgNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exportCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exportCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgBGbtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\imgBGbtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="searchCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\searchCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_add_black_24dp_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_add_black_24dp_2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="removeCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\removeCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saveCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="res_partner_375208" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\res_partner_375208.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnExit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\btnExit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newCustomButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newCustomButton.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -100,7 +100,7 @@
         DataGridView1.Columns("TRAN_DATE").HeaderText = "วันที่ทำรายการ"
         DataGridView1.Columns("TRAN_NO").HeaderText = "เลขที่เอกสาร"
         DataGridView1.Columns("FULL_NAME").HeaderText = "ชื่อผู้จ่ายเงิน"
-        DataGridView1.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
+        'DataGridView1.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
         DataGridView1.Columns("NOTE").HeaderText = "หมายเหตุ"
         DataGridView1.Columns("PASS_REQUEST").HeaderText = "ออกใบแจ้งหนี้"
 
@@ -112,7 +112,7 @@
         DataGridView1.Columns("TRAN_NO").DisplayIndex = 5
         DataGridView1.Columns("FULL_NAME").DisplayIndex = 6
         DataGridView1.Columns("DIV_NAME").DisplayIndex = 7
-        DataGridView1.Columns("BAL_AMT").DisplayIndex = 8
+        'DataGridView1.Columns("BAL_AMT").DisplayIndex = 8
         DataGridView1.Columns("NOTE").DisplayIndex = 9
 
 
@@ -120,14 +120,14 @@
         DataGridView1.Columns("TRAN_DATE").Visible = True
         DataGridView1.Columns("TRAN_NO").Visible = True
         DataGridView1.Columns("FULL_NAME").Visible = True
-        DataGridView1.Columns("BAL_AMT").Visible = True
+        'DataGridView1.Columns("BAL_AMT").Visible = True
         DataGridView1.Columns("NOTE").Visible = True
 
         DataGridView1.Columns("DIV_NAME").ReadOnly = True
         DataGridView1.Columns("TRAN_DATE").ReadOnly = True
         DataGridView1.Columns("TRAN_NO").ReadOnly = True
         DataGridView1.Columns("FULL_NAME").ReadOnly = True
-        DataGridView1.Columns("BAL_AMT").ReadOnly = True
+        'DataGridView1.Columns("BAL_AMT").ReadOnly = True
         DataGridView1.Columns("NOTE").ReadOnly = True
 
 

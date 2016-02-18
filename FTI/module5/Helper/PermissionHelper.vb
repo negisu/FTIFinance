@@ -7,4 +7,13 @@
             Return False
         End If
     End Function
+
+    Public Shared Function isPres() As Boolean
+        If user_div = "AAA-AA" Or _
+            user_div = "112-99" Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Class

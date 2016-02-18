@@ -1281,8 +1281,6 @@ Public Class frmMain
             'focus opening form
             fFeeGS1.Show()
             fFeeGS1.Focus()
-            fRC.Show()
-            fRC.Focus()
         End If
     End Sub
 

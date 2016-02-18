@@ -11,7 +11,6 @@
     Dim vatType As String
     Dim isNew As Boolean = True
 
-
     Dim U_PRICE As Double
     Dim U_PRICE_VAT As Double
     Dim U_PRICE_INC_VAT As Double
@@ -102,27 +101,30 @@
     '==============================================================================================================================================='
     '==============================================================================================================================================='
     '==============================================================================================================================================='
-
     Private Sub frmFINPaymentNotice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If TRAN_TYPE = "I1" Then
             Me.Text = "บันทึกใบแจ้งหนี้"
-            IVTRAN_NOLabel.Text = "เลขที่ใบแจ้งชำระ"
+            IVTRAN_NOLabel.Text = "ใบแจ้งชำระ"
             FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
             Me.BackColor = Color.LavenderBlush
             Panel10.BackColor = Color.Plum
             Panel1.BackColor = Color.Plum
+            AddIVButton.Visible = False
         ElseIf TRAN_TYPE = "I2" Then
             Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
             FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
             Me.BackColor = Color.Ivory
             Panel10.BackColor = Color.PaleGoldenrod
             Panel1.BackColor = Color.PaleGoldenrod
+            AddIVButton.Visible = False
         ElseIf TRAN_TYPE = "R1" Then
             Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
             FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
             Me.BackColor = Color.MistyRose
             Panel10.BackColor = Color.Salmon
             Panel1.BackColor = Color.Salmon
+            AddIVButton.Visible = False
+            PullButton.Visible = True
         End If
         initForm()
         loadForm()
@@ -180,7 +182,7 @@
             Catch
             End Try
 
-            If TRAN_TYPE = "IV2" Then
+            If TRAN_TYPE = "I2" Then
                 TRAN_NO_REFLabel.Text = TRAN_NO
                 TRAN_NO = String.Empty
                 TRAN_NOLabel.Text = "AUTO"
@@ -203,9 +205,9 @@
         Dim query As String = "SELECT TOP 0 * FROM PN_DETAIL INNER JOIN IV_SUB_SECTION ON PN_DETAIL.SUB_SECTION_CODE = IV_SUB_SECTION.SUB_SECTION_CODE INNER JOIN SU_DIVISION ON IV_SUB_SECTION.DIV_CODE_INC = SU_DIVISION.DIV_CODE "
         DETAILDataTable = fillWebSQL(query, Nothing, "PN_DETAIL")
         DetailGridView.Columns.Clear()
-        Dim primaryKey(1) As DataColumn
-        primaryKey(0) = DETAILDataTable.Columns("SUB_SECTION_CODE")
-        DETAILDataTable.PrimaryKey = primaryKey
+        'Dim primaryKey(1) As DataColumn
+        'primaryKey(0) = DETAILDataTable.Columns("SUB_SECTION_CODE")
+        'DETAILDataTable.PrimaryKey = primaryKey
         DetailGridView.DataSource = DETAILDataTable
 
         For i As Integer = 0 To DetailGridView.ColumnCount - 1
@@ -284,7 +286,7 @@
             .Columns("DISC_AMT_INC_VAT").ReadOnly = False
         End With
 
-        If TRAN_TYPE = "IV2" Then
+        If TRAN_TYPE = "I2" Then
             Dim gridCheckbox As New DataGridViewCheckBoxColumn
             gridCheckbox.Name = "SELECTED"
             gridCheckbox.HeaderText = "เลือก"
@@ -312,7 +314,7 @@
 
             End If
         Else
-            Call MsgBox("คุณใส่ข้อมูลไม่ครบ กรุณาตรวจสอบใหม่อีกครั้ง", 0, "พบข้อผิดพลาด")
+            Call MsgBox("ข้อมูลบังคับใส่ไม่ครบ กรุณาตรวจสอบใหม่อีกครั้ง", 0, "พบข้อผิดพลาด")
         End If
 
     End Sub
@@ -798,6 +800,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         Else
             DocumentStatusLabel.Text = "ยกเลิกหรืออยู่ในขั้นตอนการยกเลิก"
             Panel3.BackColor = Color.Red
+            LockAllInput()
         End If
 
 
@@ -834,6 +837,8 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("RC_TRAN_NO").ToString()) Then
             getRefRC()
         End If
+
+
 
         CR_TERMTextBox.Text = HEADDataTable.Rows(0).Item("CR_TERM").ToString()
         AR_CODETextBox.Text = HEADDataTable.Rows(0).Item("AR_CODE").ToString()
@@ -1013,8 +1018,8 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pnA.ADDR_SEQ = 1
         pnA.ADDR1_EN = ADDR1_EN.Text
         pnA.ADDR1_TH = ADDR1_TH.Text
-        pnA.ATTN_NAME_EN = "NO"
-        pnA.ATTN_NAME_TH = "NO"
+        pnA.ATTN_NAME_EN = "NO_ATTN_NAME"
+        pnA.ATTN_NAME_TH = "NO_ATTN_NAME"
         pnA.POST_CODE = POST_CODETextBox.Text
         pnA.TELEPHONE = TELEPHONETextBox.Text
         pnA.FAX = FAXTextBox.Text
@@ -1054,6 +1059,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         End Try
 
         For Each row As DataRow In DETAILDataTable.Rows
+            If TRAN_TYPE.Contains("R") Then
+                row.Item("RC_TRAN_NO") = TRAN_NO
+            End If
             If String.IsNullOrEmpty(row.Item("TRAN_NO").ToString()) Then
                 row.Item("TRAN_NO") = TRAN_NO
                 Dim pnD As PN_DETAIL = CType(ModelHelper.convertDataRowToModel(New PN_DETAIL, row), PN_DETAIL)
@@ -1063,7 +1071,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                 QueryHelper.insertModel("PN_DETAIL", pnD)
             End If
         Next
-
+        
     End Sub
 
     Private Sub insertDOC_RUNNING()
@@ -1530,11 +1538,57 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs)
 
         If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะดำเนินการใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
             DETAILDataTable.Rows.Clear()
         End If
 
+    End Sub
+
+
+    Private Sub AddIVButton_Click(sender As Object, e As EventArgs) Handles AddIVButton.Click
+        If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("PASS_REQUEST").ToString()) Then
+            If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("IV_TRAN_NO").ToString()) Then
+                Call MsgBox("มีการออกใบแจ้งหนี้แล้ว", 0, "พบข้อผิดพลาด")
+            Else
+                Call MsgBox("มีการยื่นขอออกใบแจ้งหนี้แล้ว", 0, "พบข้อผิดพลาด")
+            End If
+        Else
+            If PermissionHelper.isAdmin Then
+            Else
+
+            End If
+            If (MessageBox.Show("คุณต้องการที่จะยื่นคำร้องออกใบแจ้งหนี้จากเอกสารที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+                Dim query As String = "UPDATE PN_HEAD SET POST_INVOICE_FLAG = @p0  WHERE TRAN_NO = @p1"
+                Dim parameters As New Dictionary(Of String, Object)
+                parameters.Add("@p0", "P")
+                parameters.Add("@p1", TRAN_NO)
+                getHEAD()
+            End If
+        End If
+    End Sub
+
+    Private Sub PullButton_Click(sender As Object, e As EventArgs) Handles PullButton.Click
+        Dim tempTRAN_NO As String = TRAN_NO
+        TRAN_NO = TRAN_NO_REFLabel.Text
+        getDETAIL()
+        TRAN_NO = tempTRAN_NO
+        tempTRAN_NO = Nothing
+    End Sub
+
+    Private Sub directIV()
+
+    End Sub
+
+    Private Sub NewButton_Click(sender As Object, e As EventArgs) Handles NewButton.Click
+        If (MessageBox.Show("การแก้ไขที่ยังไม่ได้บันทึกจะไม่ได้รับการบันทึก คุณต้องการที่จะเพิ่มเอกสารใหม่ ใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            fPN = New frmFINForm
+            fPN.TRAN_TYPE = Me.TRAN_TYPE
+            fPN.MdiParent = Me.MdiParent
+            fPN.WindowState = FormWindowState.Maximized
+            Me.Dispose()
+            fPN.Show()
+        End If
     End Sub
 End Class

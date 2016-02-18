@@ -108,7 +108,7 @@
         DataGridView1.Columns("TRAN_DATE").HeaderText = "วันที่ทำรายการ"
         DataGridView1.Columns("TRAN_NO").HeaderText = "เลขที่เอกสาร"
         DataGridView1.Columns("FULL_NAME").HeaderText = "ชื่อผู้จ่ายเงิน"
-        DataGridView1.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
+        'DataGridView1.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
         DataGridView1.Columns("NOTE").HeaderText = "หมายเหตุ"
         DataGridView1.Columns("CANCEL_REQUEST").HeaderText = "ยกเลิก"
 
@@ -125,7 +125,7 @@
         DataGridView1.Columns("TRAN_NO").DisplayIndex = 7
         DataGridView1.Columns("FULL_NAME").DisplayIndex = 8
         DataGridView1.Columns("DIV_NAME").DisplayIndex = 9
-        DataGridView1.Columns("BAL_AMT").DisplayIndex = 10
+        'DataGridView1.Columns("BAL_AMT").DisplayIndex = 10
         DataGridView1.Columns("NOTE").DisplayIndex = 11
 
 
@@ -133,7 +133,7 @@
         DataGridView1.Columns("TRAN_DATE").Visible = True
         DataGridView1.Columns("TRAN_NO").Visible = True
         DataGridView1.Columns("FULL_NAME").Visible = True
-        DataGridView1.Columns("BAL_AMT").Visible = True
+        'DataGridView1.Columns("BAL_AMT").Visible = True
         DataGridView1.Columns("NOTE").Visible = True
         DataGridView1.Columns("CANCEL_REASON").Visible = True
         DataGridView1.Columns("CANCEL_REJECT_REASON").Visible = True
@@ -142,7 +142,7 @@
         DataGridView1.Columns("TRAN_DATE").ReadOnly = True
         DataGridView1.Columns("TRAN_NO").ReadOnly = True
         DataGridView1.Columns("FULL_NAME").ReadOnly = True
-        DataGridView1.Columns("BAL_AMT").ReadOnly = True
+        'DataGridView1.Columns("BAL_AMT").ReadOnly = True
         DataGridView1.Columns("NOTE").ReadOnly = True
         DataGridView1.Columns("CANCEL_REASON").ReadOnly = True
         DataGridView1.Columns("CANCEL_REJECT_REASON").ReadOnly = True
@@ -229,10 +229,10 @@
                         Dim query As String = "UPDATE PN_HEAD SET CANCEL_FLAG = @p0, CANCEL_REASON = @p1, CANCEL_BY = @p2 WHERE TRAN_NO = @p3"
                         Dim parameters As New Dictionary(Of String, Object)
                         Dim cancleReason As String = row.Cells("CANCEL_REASON").Value.ToString()
-                        If TRAN_TYPE = "PN" Then
+                        If TRAN_TYPE.Contains("P") Then
                             parameters.Add("@p0", "P")
                         Else
-                            parameters.Add("@p0", "A")    
+                            parameters.Add("@p0", "A")
                         End If
                         parameters.Add("@p1", cancleReason)
                         parameters.Add("@p2", user_name)

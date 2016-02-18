@@ -1,15 +1,19 @@
 ﻿Public Class frmFINEditList
     Public TRAN_TYPE As String
+    Public Action As FORM_ACTION
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If TRAN_TYPE = "I1" Then
-            Me.Text = "แก้ไขใบแจ้งหนี้"
-            Label1.Text = "แก้ไขใบแจ้งหนี้"
-        ElseIf TRAN_TYPE = "I2" Then
-            Me.Text = "ออกใบลดยอดใบแจ้งหนี้"
-            Label1.Text = "ออกใบลดยอดใบแจ้งหนี้"
-            OK_Button.Text = "ออกใบลดยอดใบแจ้งหนี้"
 
+        If Action = FORM_ACTION.Edit Then
+            If TRAN_TYPE = "I1" Then
+                Me.Text = "แก้ไขใบแจ้งหนี้"
+                Label1.Text = "แก้ไขใบแจ้งหนี้"
+            ElseIf TRAN_TYPE = "I2" Then
+                Me.Text = "ออกใบลดยอดใบแจ้งหนี้"
+                Label1.Text = "ออกใบลดยอดใบแจ้งหนี้"
+                OK_Button.Text = "ออกใบลดยอดใบแจ้งหนี้"
+            End If
+        ElseIf Action = FORM_ACTION.Cancel Then
 
         End If
         RefTextBox.Enabled = False
