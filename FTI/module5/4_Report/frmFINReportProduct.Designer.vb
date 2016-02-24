@@ -120,7 +120,7 @@ Partial Class frmFINReportProduct
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.FROM_DATEPicker)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Location = New System.Drawing.Point(950, 159)
+        Me.GroupBox1.Location = New System.Drawing.Point(950, 168)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
@@ -209,7 +209,7 @@ Partial Class frmFINReportProduct
         Me.GroupBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox4.Controls.Add(Me.IsCancel)
         Me.GroupBox4.Controls.Add(Me.IsNormal)
-        Me.GroupBox4.Location = New System.Drawing.Point(949, 100)
+        Me.GroupBox4.Location = New System.Drawing.Point(949, 109)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(243, 52)
         Me.GroupBox4.TabIndex = 170
@@ -273,7 +273,7 @@ Partial Class frmFINReportProduct
         Me.GroupBox6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox6.Controls.Add(Me.IsI1)
         Me.GroupBox6.Controls.Add(Me.IsP1)
-        Me.GroupBox6.Location = New System.Drawing.Point(949, 42)
+        Me.GroupBox6.Location = New System.Drawing.Point(949, 51)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(243, 52)
         Me.GroupBox6.TabIndex = 172
@@ -352,7 +352,7 @@ Partial Class frmFINReportProduct
         Me.Panel10.Controls.Add(Me.FormTitleLabel)
         Me.Panel10.Location = New System.Drawing.Point(-1, 0)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(1200, 38)
+        Me.Panel10.Size = New System.Drawing.Size(1200, 46)
         Me.Panel10.TabIndex = 290
         '
         'FormTitleLabel
@@ -361,7 +361,7 @@ Partial Class frmFINReportProduct
         Me.FormTitleLabel.BackColor = System.Drawing.Color.Transparent
         Me.FormTitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.FormTitleLabel.ForeColor = System.Drawing.Color.White
-        Me.FormTitleLabel.Location = New System.Drawing.Point(4, 3)
+        Me.FormTitleLabel.Location = New System.Drawing.Point(4, 7)
         Me.FormTitleLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.FormTitleLabel.Name = "FormTitleLabel"
         Me.FormTitleLabel.Size = New System.Drawing.Size(205, 29)
@@ -375,9 +375,10 @@ Partial Class frmFINReportProduct
         Me.PreviewReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PreviewReportButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.PreviewReportButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.PreviewReportButton.FlatAppearance.BorderSize = 0
         Me.PreviewReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.PreviewReportButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.PreviewReportButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(173, Byte), Integer))
+        Me.PreviewReportButton.ForeColor = System.Drawing.Color.Black
         Me.PreviewReportButton.Location = New System.Drawing.Point(950, 428)
         Me.PreviewReportButton.Margin = New System.Windows.Forms.Padding(4)
         Me.PreviewReportButton.Name = "PreviewReportButton"
@@ -396,7 +397,7 @@ Partial Class frmFINReportProduct
         Me.ExportProcessingButton.FlatAppearance.BorderSize = 0
         Me.ExportProcessingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ExportProcessingButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.ExportProcessingButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(173, Byte), Integer))
+        Me.ExportProcessingButton.ForeColor = System.Drawing.Color.Black
         Me.ExportProcessingButton.Location = New System.Drawing.Point(950, 623)
         Me.ExportProcessingButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ExportProcessingButton.Name = "ExportProcessingButton"
@@ -408,14 +409,14 @@ Partial Class frmFINReportProduct
         'CancelButton1
         '
         Me.CancelButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CancelButton1.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.CancelButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.CancelButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.CancelButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
         Me.CancelButton1.FlatAppearance.BorderSize = 0
         Me.CancelButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CancelButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.CancelButton1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(173, Byte), Integer))
+        Me.CancelButton1.ForeColor = System.Drawing.Color.Black
         Me.CancelButton1.Location = New System.Drawing.Point(950, 659)
         Me.CancelButton1.Margin = New System.Windows.Forms.Padding(4)
         Me.CancelButton1.Name = "CancelButton1"

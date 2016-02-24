@@ -20,6 +20,7 @@
     Public NET_AMT As Double
     Public VAT_AMT As Double
     Public TOTAL_AMT As Double
+    Public TOP_DISC_AMT As Double
     Public NOTE As String
     Public FREE_YN As String
     Public CR_BY As String

@@ -49,13 +49,9 @@ Partial Class frmFINMain
         Me.ลดหนToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FindIVToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ใบเสรจToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.คนหาToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.เพมToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.กรอกขอมลดวยตนเองToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.อางองเอกสารToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ใบแจงชำระToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ใบแจงหนToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddRCToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IVSUBSECTIONMANAGEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditRCToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -208,85 +204,58 @@ Partial Class frmFINMain
         'AddIVToolStripMenuItem1
         '
         Me.AddIVToolStripMenuItem1.Name = "AddIVToolStripMenuItem1"
-        Me.AddIVToolStripMenuItem1.Size = New System.Drawing.Size(138, 32)
+        Me.AddIVToolStripMenuItem1.Size = New System.Drawing.Size(181, 32)
         Me.AddIVToolStripMenuItem1.Text = "เพิ่ม"
         '
         'EditIVToolStripMenuItem
         '
         Me.EditIVToolStripMenuItem.Name = "EditIVToolStripMenuItem"
-        Me.EditIVToolStripMenuItem.Size = New System.Drawing.Size(138, 32)
+        Me.EditIVToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
         Me.EditIVToolStripMenuItem.Text = "แก้ไข"
         '
         'CancelRequestIVToolStripMenuItem
         '
         Me.CancelRequestIVToolStripMenuItem.Name = "CancelRequestIVToolStripMenuItem"
-        Me.CancelRequestIVToolStripMenuItem.Size = New System.Drawing.Size(138, 32)
+        Me.CancelRequestIVToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
         Me.CancelRequestIVToolStripMenuItem.Text = "ยกเลิก"
         '
         'ลดหนToolStripMenuItem
         '
         Me.ลดหนToolStripMenuItem.Name = "ลดหนToolStripMenuItem"
-        Me.ลดหนToolStripMenuItem.Size = New System.Drawing.Size(138, 32)
+        Me.ลดหนToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
         Me.ลดหนToolStripMenuItem.Text = "ลดหนี้"
         '
         'FindIVToolStripMenuItem1
         '
         Me.FindIVToolStripMenuItem1.Name = "FindIVToolStripMenuItem1"
-        Me.FindIVToolStripMenuItem1.Size = New System.Drawing.Size(138, 32)
+        Me.FindIVToolStripMenuItem1.Size = New System.Drawing.Size(181, 32)
         Me.FindIVToolStripMenuItem1.Text = "ค้้นหา"
         Me.FindIVToolStripMenuItem1.Visible = False
         '
         'ใบเสรจToolStripMenuItem2
         '
-        Me.ใบเสรจToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.คนหาToolStripMenuItem2, Me.เพมToolStripMenuItem2})
+        Me.ใบเสรจToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddRCToolStripMenuItem, Me.EditRCToolStripMenuItem})
         Me.ใบเสรจToolStripMenuItem2.Name = "ใบเสรจToolStripMenuItem2"
         Me.ใบเสรจToolStripMenuItem2.Size = New System.Drawing.Size(328, 32)
         Me.ใบเสรจToolStripMenuItem2.Text = "ใบเสร็จ"
         '
-        'คนหาToolStripMenuItem2
+        'AddRCToolStripMenuItem
         '
-        Me.คนหาToolStripMenuItem2.Name = "คนหาToolStripMenuItem2"
-        Me.คนหาToolStripMenuItem2.Size = New System.Drawing.Size(181, 32)
-        Me.คนหาToolStripMenuItem2.Text = "ค้นหา"
-        Me.คนหาToolStripMenuItem2.Visible = False
-        '
-        'เพมToolStripMenuItem2
-        '
-        Me.เพมToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.กรอกขอมลดวยตนเองToolStripMenuItem, Me.อางองเอกสารToolStripMenuItem})
-        Me.เพมToolStripMenuItem2.Name = "เพมToolStripMenuItem2"
-        Me.เพมToolStripMenuItem2.Size = New System.Drawing.Size(135, 32)
-        Me.เพมToolStripMenuItem2.Text = "เพิ่ม"
-        '
-        'กรอกขอมลดวยตนเองToolStripMenuItem
-        '
-        Me.กรอกขอมลดวยตนเองToolStripMenuItem.Name = "กรอกขอมลดวยตนเองToolStripMenuItem"
-        Me.กรอกขอมลดวยตนเองToolStripMenuItem.Size = New System.Drawing.Size(256, 32)
-        Me.กรอกขอมลดวยตนเองToolStripMenuItem.Text = "กรอกข้อมูลด้วยตนเอง"
-        '
-        'อางองเอกสารToolStripMenuItem
-        '
-        Me.อางองเอกสารToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ใบแจงชำระToolStripMenuItem3, Me.ใบแจงหนToolStripMenuItem3})
-        Me.อางองเอกสารToolStripMenuItem.Name = "อางองเอกสารToolStripMenuItem"
-        Me.อางองเอกสารToolStripMenuItem.Size = New System.Drawing.Size(256, 32)
-        Me.อางองเอกสารToolStripMenuItem.Text = "อ้างอิงเอกสาร"
-        '
-        'ใบแจงชำระToolStripMenuItem3
-        '
-        Me.ใบแจงชำระToolStripMenuItem3.Name = "ใบแจงชำระToolStripMenuItem3"
-        Me.ใบแจงชำระToolStripMenuItem3.Size = New System.Drawing.Size(174, 32)
-        Me.ใบแจงชำระToolStripMenuItem3.Text = "ใบแจ้งชำระ"
-        '
-        'ใบแจงหนToolStripMenuItem3
-        '
-        Me.ใบแจงหนToolStripMenuItem3.Name = "ใบแจงหนToolStripMenuItem3"
-        Me.ใบแจงหนToolStripMenuItem3.Size = New System.Drawing.Size(174, 32)
-        Me.ใบแจงหนToolStripMenuItem3.Text = "ใบแจ้งหนี้"
+        Me.AddRCToolStripMenuItem.Name = "AddRCToolStripMenuItem"
+        Me.AddRCToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
+        Me.AddRCToolStripMenuItem.Text = "เพิ่ม"
         '
         'IVSUBSECTIONMANAGEToolStripMenuItem
         '
         Me.IVSUBSECTIONMANAGEToolStripMenuItem.Name = "IVSUBSECTIONMANAGEToolStripMenuItem"
         Me.IVSUBSECTIONMANAGEToolStripMenuItem.Size = New System.Drawing.Size(328, 32)
         Me.IVSUBSECTIONMANAGEToolStripMenuItem.Text = "IV_SUB_SECTION_MANAGE"
+        '
+        'EditRCToolStripMenuItem
+        '
+        Me.EditRCToolStripMenuItem.Name = "EditRCToolStripMenuItem"
+        Me.EditRCToolStripMenuItem.Size = New System.Drawing.Size(181, 32)
+        Me.EditRCToolStripMenuItem.Text = "แก้ไข"
         '
         'frmFINMain
         '
@@ -297,17 +266,17 @@ Partial Class frmFINMain
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(982, 653)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.DoubleBuffered = true
+        Me.DoubleBuffered = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmFINMain"
         Me.Text = "frmFINMain"
-        Me.MenuStrip1.ResumeLayout(false)
-        Me.MenuStrip1.PerformLayout
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents tsFINANCE As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents คนหาเอกสารToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -323,12 +292,7 @@ End Sub
     Friend WithEvents FindIVToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddIVToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ใบเสรจToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents คนหาToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents เพมToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents กรอกขอมลดวยตนเองToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents อางองเอกสารToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ใบแจงชำระToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ใบแจงหนToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddRCToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents รายงานตามฝายToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents รายงานรายละเอยดเอกสารคางชำระToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -342,4 +306,5 @@ End Sub
     Friend WithEvents ลดหนToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents IVSUBSECTIONMANAGEToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EditRCToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

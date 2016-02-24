@@ -4,11 +4,10 @@
     Dim ADDRESSDataTable As DataTable
     Dim HEADDataTable As DataTable
     Dim DETAILDataTable As DataTable
-
     Dim OU_CODE As String = "001"
     Dim TRAN_NO As String
     Dim VAT_RATE As Double = 7.0
-    Dim vatType As String
+    Dim VAT_TYPE As String
     Dim isNew As Boolean = True
 
     Dim U_PRICE As Double
@@ -153,7 +152,7 @@
         HEADDataTable = New DataTable
         DETAILDataTable = New DataTable
         TRAN_NO = String.Empty
-        vatType = "I"
+        VAT_TYPE = "I"
         vatInclude.Checked = True
 
         TAX_NOTextBox.Text = Nothing
@@ -374,13 +373,13 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                 If (DetailGridView.Columns(e.ColumnIndex).Name = "QTY") Then
                     DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = Format(price, "0")
                 Else
-                    DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = Format(price, "0.0000")
+                    DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = Format(price, numberStringFormat)
                 End If
 
             Catch
                 Call MsgBox("คุณใส่ข้อมูลไม่ถูกต้อง กรุณากรอกเป็นตัวเลข", 0, "พบข้อผิดพลาด")
                 Try
-                    DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = Format(0, "0.0000")
+                    DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = Format(0, numberStringFormat)
                 Catch
                     Try
                         DETAILDataTable.Rows(e.RowIndex).Item(e.ColumnIndex) = Format(0, "0")
@@ -396,17 +395,17 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                     Dim disc As Double = Double.Parse(DetailGridView.Rows(e.RowIndex).Cells("DISC_AMT_INC_VAT").Value.ToString())
                     If net = 0 Then
                         Call MsgBox("คุณใส่ข้อมูลไม่ถูกต้อง กรุณากรอกราคาสินค้าก่อน", 0, "พบข้อผิดพลาด")
-                        DETAILDataTable.Rows(e.RowIndex).Item("DISC_AMT_INC_VAT") = Format(0, "0.0000")
+                        DETAILDataTable.Rows(e.RowIndex).Item("DISC_AMT_INC_VAT") = Format(0, numberStringFormat)
                     Else
                         If net < disc Then
                             Call MsgBox("คุณใส่ข้อมูลไม่ถูกต้อง ส่วนลดห้ามมากกว่าราคารวมสินค้า", 0, "พบข้อผิดพลาด")
-                            DETAILDataTable.Rows(e.RowIndex).Item("DISC_AMT_INC_VAT") = Format(0, "0.0000")
+                            DETAILDataTable.Rows(e.RowIndex).Item("DISC_AMT_INC_VAT") = Format(0, numberStringFormat)
                         End If
                     End If
                 Catch
                     If String.IsNullOrEmpty(DetailGridView.Rows(e.RowIndex).Cells("NET_U_PRICE_INC_VAT").Value.ToString()) Then
                         Call MsgBox("คุณใส่ข้อมูลไม่ถูกต้อง กรุณากรอกราคาสินค้าก่อน", 0, "พบข้อผิดพลาด")
-                        DETAILDataTable.Rows(e.RowIndex).Item("DISC_AMT_INC_VAT") = Format(0, "0.0000")
+                        DETAILDataTable.Rows(e.RowIndex).Item("DISC_AMT_INC_VAT") = Format(0, numberStringFormat)
                     End If
 
                 End Try
@@ -689,32 +688,32 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
     Private Function validateAddress() As Boolean
         Dim retVal As Boolean = True
-
+        Dim errorColor As Color = ColorTranslator.FromHtml("#FFCCCC")
         If thai.Checked Then
             If String.IsNullOrEmpty(ATTN_NAME_THTextBox2.Text.Trim()) Then
-                ATTN_NAME_THTextBox2.BackColor = ColorTranslator.FromHtml("#FFCCCC")
+                ATTN_NAME_THTextBox2.BackColor = errorColor
                 retVal = False
             End If
             If String.IsNullOrEmpty(ADDR1_TH.Text.Trim()) Then
-                ADDR1_TH.BackColor = ColorTranslator.FromHtml("#FFCCCC")
+                ADDR1_TH.BackColor = errorColor
                 retVal = False
             End If
             If String.IsNullOrEmpty(ADDR1_TH2.Text.Trim()) Then
-                ADDR1_TH2.BackColor = ColorTranslator.FromHtml("#FFCCCC")
+                ADDR1_TH2.BackColor = errorColor
                 retVal = False
             End If
 
         ElseIf eng.Checked Then
             If String.IsNullOrEmpty(ATTN_NAME_ENTextBox2.Text.Trim()) Then
-                ATTN_NAME_ENTextBox2.BackColor = ColorTranslator.FromHtml("#FFCCCC")
+                ATTN_NAME_ENTextBox2.BackColor = errorColor
                 retVal = False
             End If
             If String.IsNullOrEmpty(ADDR1_EN.Text.Trim()) Then
-                ADDR1_EN.BackColor = ColorTranslator.FromHtml("#FFCCCC")
+                ADDR1_EN.BackColor = errorColor
                 retVal = False
             End If
             If String.IsNullOrEmpty(ADDR1_EN2.Text.Trim()) Then
-                ADDR1_EN2.BackColor = ColorTranslator.FromHtml("#FFCCCC")
+                ADDR1_EN2.BackColor = errorColor
                 retVal = False
             End If
         End If
@@ -793,7 +792,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
         End Try
 
-        TAX_RATELabel.Text = Format(VAT_RATE, "0.00")
+        TAX_RATELabel.Text = Format(VAT_RATE, numberStringFormat)
 
         If String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("CANCEL_FLAG").ToString()) Then
             DocumentStatusLabel.Text = "ปกติ"
@@ -839,7 +838,8 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         End If
 
 
-
+        TopUpNoteTextBox.Text = HEADDataTable.Rows(0).Item("TOP_DISC_NOTE").ToString()
+        TopUpTextBox.Text = HEADDataTable.Rows(0).Item("TOP_DISC_AMT").ToString()
         CR_TERMTextBox.Text = HEADDataTable.Rows(0).Item("CR_TERM").ToString()
         AR_CODETextBox.Text = HEADDataTable.Rows(0).Item("AR_CODE").ToString()
         MEMBER_CODETextBox.Text = HEADDataTable.Rows(0).Item("MB_MEMBER_CODE").ToString()
@@ -970,6 +970,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.VAT_TYPE = getVATType()
         pn.VAT_RATE = VAT_RATE
 
+        pn.TOP_DISC_NOTE = TopUpNoteTextBox.Text
         pn.TOP_DISC_AMT = TOP_DISC_AMT
 
         pn.NOTE = NOTETextBox.Text
@@ -1071,7 +1072,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
                 QueryHelper.insertModel("PN_DETAIL", pnD)
             End If
         Next
-        
+
     End Sub
 
     Private Sub insertDOC_RUNNING()
@@ -1121,7 +1122,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
     Private Sub setVATType(inpVATType As String)
         Try
-            vatType = inpVATType
+            VAT_TYPE = inpVATType
             DETAILDataTable.Rows.Clear()
             If inpVATType = "I" Then
                 vatInclude.Checked = True
@@ -1172,7 +1173,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub vatInclude_MouseUp(sender As Object, e As MouseEventArgs) Handles vatInclude.MouseUp
-        If ((vatType <> "I") And (Not String.IsNullOrEmpty(vatType))) Then
+        If ((VAT_TYPE <> "I") And (Not String.IsNullOrEmpty(VAT_TYPE))) Then
             If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 setVATType("I")
             End If
@@ -1181,7 +1182,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub vatExclude_MouseUp(sender As Object, e As MouseEventArgs) Handles vatExclude.MouseUp
-        If ((vatType <> "E") And (Not String.IsNullOrEmpty(vatType))) Then
+        If ((VAT_TYPE <> "E") And (Not String.IsNullOrEmpty(VAT_TYPE))) Then
             If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 setVATType("E")
             End If
@@ -1190,7 +1191,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
 
     Private Sub nonVat_MouseUp(sender As Object, e As MouseEventArgs) Handles nonVat.MouseUp
-        If ((vatType <> "N") And (Not String.IsNullOrEmpty(vatType))) Then
+        If ((VAT_TYPE <> "N") And (Not String.IsNullOrEmpty(VAT_TYPE))) Then
             If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะเปลี่ยนชนิตของภาษีมูลค่าเพิ่มใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
                 setVATType("N")
             End If
@@ -1352,10 +1353,8 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             If exrate > 0 Then
                 ex_rate = exrate
                 calculateSum()
-
             Else
-                Call MsgBox("กรุณากรอกข้อมูลเป็นตัวเลข", 0, "พบข้อผิดพลาด")
-                EX_RATETextBox.Text = "1"
+                Throw New Exception
             End If
         Catch ex As Exception
             Call MsgBox("กรุณากรอกข้อมูลเป็นตัวเลข", 0, "พบข้อผิดพลาด")
@@ -1376,7 +1375,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     Private Sub VAT_RATEComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles VAT_RATEComboBox.SelectedIndexChanged
         If Not VAT_RATEComboBox.IsHandleCreated Then Return
         isChanged = True
-        VatLabel.Text = Format(VAT_RATE, "0.00")
+        VatLabel.Text = Format(VAT_RATE, numberStringFormat)
     End Sub
 
     Private Sub CR_TERMTextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles CR_TERMTextBox.KeyUp

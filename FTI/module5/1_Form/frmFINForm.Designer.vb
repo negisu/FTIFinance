@@ -23,7 +23,7 @@ Partial Class frmFINForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -160,11 +160,12 @@ Partial Class frmFINForm
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FormTitleLabel = New System.Windows.Forms.Label()
         Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.NewButton = New System.Windows.Forms.Button()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PullButton = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.NewButton = New System.Windows.Forms.Button()
+        Me.TopUpNoteTextBox = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -479,6 +480,7 @@ Partial Class frmFINForm
         'DETAIL
         '
         Me.DETAIL.BackColor = System.Drawing.Color.SteelBlue
+        Me.DETAIL.Controls.Add(Me.TopUpNoteTextBox)
         Me.DETAIL.Controls.Add(Me.TAX_RATELabel)
         Me.DETAIL.Controls.Add(Me.TopUpTextBox)
         Me.DETAIL.Controls.Add(Me.currLabel4)
@@ -515,9 +517,9 @@ Partial Class frmFINForm
         'TopUpTextBox
         '
         Me.TopUpTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
-        Me.TopUpTextBox.Location = New System.Drawing.Point(229, 52)
+        Me.TopUpTextBox.Location = New System.Drawing.Point(258, 52)
         Me.TopUpTextBox.Name = "TopUpTextBox"
-        Me.TopUpTextBox.Size = New System.Drawing.Size(112, 25)
+        Me.TopUpTextBox.Size = New System.Drawing.Size(83, 25)
         Me.TopUpTextBox.TabIndex = 287
         Me.TopUpTextBox.Text = "0"
         Me.TopUpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -745,9 +747,9 @@ Partial Class frmFINForm
         Me.Label21.Location = New System.Drawing.Point(8, 7)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(79, 20)
+        Me.Label21.Size = New System.Drawing.Size(68, 20)
         Me.Label21.TabIndex = 243
-        Me.Label21.Text = "เลขที่อ้างอิง"
+        Me.Label21.Text = "รหัสลูกหนี้"
         '
         'AR_NAMETextBox
         '
@@ -1285,9 +1287,9 @@ Partial Class frmFINForm
         Me.Label41.Location = New System.Drawing.Point(8, 33)
         Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(85, 20)
+        Me.Label41.Size = New System.Drawing.Size(75, 20)
         Me.Label41.TabIndex = 285
-        Me.Label41.Text = "เลขที่สมาชิก"
+        Me.Label41.Text = "เลขสมาชิก"
         Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TELEPHONETextBox2
@@ -1653,8 +1655,8 @@ Partial Class frmFINForm
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle2.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
@@ -1748,6 +1750,19 @@ Partial Class frmFINForm
         Me.Panel10.Size = New System.Drawing.Size(553, 38)
         Me.Panel10.TabIndex = 289
         '
+        'NewButton
+        '
+        Me.NewButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NewButton.BackgroundImage = Global.FTI.My.Resources.Resources.newCustomButton
+        Me.NewButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.NewButton.FlatAppearance.BorderSize = 0
+        Me.NewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.NewButton.Location = New System.Drawing.Point(445, 7)
+        Me.NewButton.Name = "NewButton"
+        Me.NewButton.Size = New System.Drawing.Size(100, 27)
+        Me.NewButton.TabIndex = 301
+        Me.NewButton.UseVisualStyleBackColor = True
+        '
         'Label23
         '
         Me.Label23.AutoSize = True
@@ -1802,18 +1817,13 @@ Partial Class frmFINForm
         Me.Button2.TabIndex = 300
         Me.Button2.UseVisualStyleBackColor = False
         '
-        'NewButton
+        'TopUpNoteTextBox
         '
-        Me.NewButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NewButton.BackgroundImage = Global.FTI.My.Resources.Resources.newCustomButton
-        Me.NewButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.NewButton.FlatAppearance.BorderSize = 0
-        Me.NewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.NewButton.Location = New System.Drawing.Point(445, 7)
-        Me.NewButton.Name = "NewButton"
-        Me.NewButton.Size = New System.Drawing.Size(100, 27)
-        Me.NewButton.TabIndex = 301
-        Me.NewButton.UseVisualStyleBackColor = True
+        Me.TopUpNoteTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
+        Me.TopUpNoteTextBox.Location = New System.Drawing.Point(114, 52)
+        Me.TopUpNoteTextBox.Name = "TopUpNoteTextBox"
+        Me.TopUpNoteTextBox.Size = New System.Drawing.Size(138, 25)
+        Me.TopUpNoteTextBox.TabIndex = 288
         '
         'frmFINForm
         '
@@ -2025,4 +2035,5 @@ Partial Class frmFINForm
     Friend WithEvents PullButton As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents NewButton As System.Windows.Forms.Button
+    Friend WithEvents TopUpNoteTextBox As System.Windows.Forms.TextBox
 End Class

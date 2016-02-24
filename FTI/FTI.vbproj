@@ -1234,12 +1234,6 @@
     <Compile Include="module5\frmFINAR_MEMBER.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="module5\frmFINSubSectionManage.Designer.vb">
-      <DependentUpon>frmFINSubSectionManage.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\frmFINSubSectionManage.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="module5\frmFINSubSectionRemain.Designer.vb">
       <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>
     </Compile>
@@ -1257,7 +1251,7 @@
     <Compile Include="module5\Helper\NumberHelper.vb" />
     <Compile Include="module5\Helper\PermissionHelper.vb" />
     <Compile Include="module5\Helper\QueryHelper.vb" />
-    <Compile Include="module5\Model\enum.vb" />
+    <Compile Include="module5\Model\ENUM.vb" />
     <Compile Include="module5\Model\FN_MASTER_RECEIPT.vb" />
     <Compile Include="module5\Model\IV_ADDRESS.vb" />
     <Compile Include="module5\Model\IV_DETAIL.vb" />
@@ -1841,9 +1835,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINAR_MEMBER.resx">
       <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="module5\frmFINSubSectionManage.resx">
-      <DependentUpon>frmFINSubSectionManage.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINSubSectionRemain.resx">
       <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>

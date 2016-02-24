@@ -12,31 +12,11 @@
 
 
     Private Sub AddPNToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddPNToolStripMenuItem.Click
-        If fPN Is Nothing Then
-            fPN = New frmFINForm
-            fPN.TRAN_TYPE = "P1"
-            fPN.MdiParent = Me.MdiParent
-            fPN.WindowState = FormWindowState.Maximized
-            fPN.Show()
-        Else
-            'focus opening form
-            fPN.Show()
-            fPN.Focus()
-        End If
+        openFinanceForm("P1", FORM_ACTION.Add)
     End Sub
 
     Private Sub AddIVToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddIVToolStripMenuItem1.Click
-        If fPN Is Nothing Then
-            fPN = New frmFINForm
-            fPN.TRAN_TYPE = "I1"
-            fPN.MdiParent = Me.MdiParent
-            fPN.WindowState = FormWindowState.Maximized
-            fPN.Show()
-        Else
-            'focus opening form
-            fPN.Show()
-            fPN.Focus()
-        End If
+        openFinanceForm("I1", FORM_ACTION.Add)
     End Sub
 
     Private Sub PNRequestInvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PNRequestInvoiceToolStripMenuItem.Click
@@ -99,38 +79,7 @@
     End Sub
 
     Private Sub EditPaymentNoticeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditPNToolStripMenuItem.Click
-
-        Dim f As New frmFINEditList
-        f.TRAN_TYPE = "P1"
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
-            If fPN Is Nothing Then
-                fPN = New frmFINForm
-                fPN.TRAN_TYPE = "P1"
-                fPN.TRAN_NOLabel.Text = TRAN_NO
-                fPN.MdiParent = Me.MdiParent
-                fPN.WindowState = FormWindowState.Maximized
-                fPN.Show()
-            Else
-                If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    fPN.Dispose()
-                    fPN = Nothing
-                    fPN = New frmFINForm
-                    fPN.TRAN_TYPE = "P1"
-                    fPN.TRAN_NOLabel.Text = TRAN_NO
-                    fPN.MdiParent = Me.MdiParent
-                    fPN.WindowState = FormWindowState.Maximized
-                    fPN.Show()
-                Else
-                    'focus opening form
-                    fPN.Show()
-                    fPN.Focus()
-                End If
-
-            End If
-        End If
-        f.Dispose()
-        f = Nothing
+        openFinanceForm("P1", FORM_ACTION.Edit)
     End Sub
 
     Private Sub CancelRequestPNToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelRequestPNToolStripMenuItem.Click
@@ -161,37 +110,7 @@
     End Sub
 
     Private Sub EditIVToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditIVToolStripMenuItem.Click
-        Dim f As New frmFINEditList
-        f.TRAN_TYPE = "I1"
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
-            If fPN Is Nothing Then
-                fPN = New frmFINForm
-                fPN.TRAN_TYPE = "I1"
-                fPN.TRAN_NOLabel.Text = TRAN_NO
-                fPN.MdiParent = Me.MdiParent
-                fPN.WindowState = FormWindowState.Maximized
-                fPN.Show()
-            Else
-                If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    fPN.Dispose()
-                    fPN = Nothing
-                    fPN = New frmFINForm
-                    fPN.TRAN_TYPE = "I1"
-                    fPN.TRAN_NOLabel.Text = TRAN_NO
-                    fPN.MdiParent = Me.MdiParent
-                    fPN.WindowState = FormWindowState.Maximized
-                    fPN.Show()
-                Else
-                    'focus opening form
-                    fPN.Show()
-                    fPN.Focus()
-                End If
-
-            End If
-        End If
-        f.Dispose()
-        f = Nothing
+        openFinanceForm("I1", FORM_ACTION.Edit)
     End Sub
 
     Private Sub CancelRequestIVToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelRequestIVToolStripMenuItem.Click
@@ -205,37 +124,7 @@
     End Sub
 
     Private Sub ลดหนToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ลดหนToolStripMenuItem.Click
-        Dim f As New frmFINEditList
-        f.TRAN_TYPE = "I2"
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
-            If fPN Is Nothing Then
-                fPN = New frmFINForm
-                fPN.TRAN_TYPE = "I2"
-                fPN.TRAN_NO_REFLabel.Text = TRAN_NO
-                fPN.MdiParent = Me.MdiParent
-                fPN.WindowState = FormWindowState.Maximized
-                fPN.Show()
-            Else
-                If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
-                    fPN.Dispose()
-                    fPN = Nothing
-                    fPN = New frmFINForm
-                    fPN.TRAN_TYPE = "I2"
-                    fPN.TRAN_NO_REFLabel.Text = TRAN_NO
-                    fPN.MdiParent = Me.MdiParent
-                    fPN.WindowState = FormWindowState.Maximized
-                    fPN.Show()
-                Else
-                    'focus opening form
-                    fPN.Show()
-                    fPN.Focus()
-                End If
-
-            End If
-        End If
-        f.Dispose()
-        f = Nothing
+        openFinanceForm("I2", FORM_ACTION.Edit)
     End Sub
 
     Private Sub คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem.Click
@@ -248,13 +137,62 @@
         f = Nothing
     End Sub
 
-    Private Sub IVSUBSECTIONMANAGEToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IVSUBSECTIONMANAGEToolStripMenuItem.Click
-        Dim f As New frmFINSubSectionManage
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
+    Private Sub AddRCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddRCToolStripMenuItem.Click
+        openFinanceForm("R1", FORM_ACTION.Add)
+    End Sub
+
+    Public Sub openFinanceForm(TRAN_TYPE As String, ACTION As FORM_ACTION)
+        If ACTION = FORM_ACTION.Add Then
+            If fPN Is Nothing Then
+                fPN = New frmFINForm
+                fPN.TRAN_TYPE = TRAN_TYPE
+                fPN.MdiParent = Me.MdiParent
+                fPN.WindowState = FormWindowState.Maximized
+                fPN.Show()
+            Else
+                'focus opening form
+                fPN.Show()
+                fPN.Focus()
+            End If
+        ElseIf ACTION = FORM_ACTION.Edit Then
+            Dim f As New frmFINEditList
+            f.TRAN_TYPE = TRAN_TYPE
+            f.Action = ACTION
+            If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Dim TRAN_NO As String = f.DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString()
+                If fPN Is Nothing Then
+                    fPN = New frmFINForm
+                    fPN.TRAN_TYPE = TRAN_TYPE
+                    fPN.TRAN_NOLabel.Text = TRAN_NO
+                    fPN.MdiParent = Me.MdiParent
+                    fPN.WindowState = FormWindowState.Maximized
+                    fPN.Show()
+                Else
+                    If (MessageBox.Show("มีหน้าต่างใบแจ้งชำระเปิดค้างไว้ คุณต้องการที่จะปิดและแก้ไขใบแจ้งชำระที่เลือกใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+                        fPN.Dispose()
+                        fPN = Nothing
+                        fPN = New frmFINForm
+                        fPN.TRAN_TYPE = TRAN_TYPE
+                        fPN.TRAN_NOLabel.Text = TRAN_NO
+                        fPN.MdiParent = Me.MdiParent
+                        fPN.WindowState = FormWindowState.Maximized
+                        fPN.Show()
+                    Else
+                        'focus opening form
+                        fPN.Show()
+                        fPN.Focus()
+                    End If
+
+                End If
+            End If
+            f.Dispose()
+            f = Nothing
         End If
 
-        f.Dispose()
-        f = Nothing
+    End Sub
+
+    Private Sub EditRCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditRCToolStripMenuItem.Click
+        openFinanceForm("R1", FORM_ACTION.Edit)
     End Sub
 End Class

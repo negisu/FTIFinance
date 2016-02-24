@@ -102,18 +102,19 @@ Public Class frmFINAR_MEMBER
             DataGridView1.Columns("COMP_PERSON_NAME_TH").Visible = True
             DataGridView1.Columns("COMP_PERSON_NAME_EN").Visible = True
 
-            DataGridView1.Columns("MEMBER_CODE").HeaderText = "รหัสสมาชิก"
+            DataGridView1.Columns("MEMBER_CODE").HeaderText = "เลขสมาชิก"
             DataGridView1.Columns("MEMBER_MAIN_GROUP_NAME").HeaderText = "กลุ่มสมาชิก"
             DataGridView1.Columns("MEMBER_STATUS_NAME_TH").HeaderText = "สถานะ"
-            DataGridView1.Columns("COMP_PERSON_CODE").HeaderText = "รหัสประจำตัว"
+            DataGridView1.Columns("COMP_PERSON_CODE").HeaderText = "รหัสลูกหนี้"
             DataGridView1.Columns("TAX_ID").HeaderText = "เลขประจำตัวผู้เสียภาษี"
             DataGridView1.Columns("COMP_PERSON_NAME_TH").HeaderText = "ชื่อภาษาไทย"
             DataGridView1.Columns("COMP_PERSON_NAME_EN").HeaderText = "English Name"
 
             DataGridView1.Columns("MEMBER_CODE").DisplayIndex = 0
-            DataGridView1.Columns("MEMBER_MAIN_GROUP_NAME").DisplayIndex = 1
-            DataGridView1.Columns("MEMBER_STATUS_NAME_TH").DisplayIndex = 2
-            DataGridView1.Columns("COMP_PERSON_CODE").DisplayIndex = 3
+            DataGridView1.Columns("COMP_PERSON_CODE").DisplayIndex = 1
+            DataGridView1.Columns("MEMBER_MAIN_GROUP_NAME").DisplayIndex = 2
+            DataGridView1.Columns("MEMBER_STATUS_NAME_TH").DisplayIndex = 3
+
             DataGridView1.Columns("TAX_ID").DisplayIndex = 4
             DataGridView1.Columns("COMP_PERSON_NAME_TH").DisplayIndex = 5
             DataGridView1.Columns("COMP_PERSON_NAME_EN").DisplayIndex = 6

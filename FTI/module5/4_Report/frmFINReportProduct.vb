@@ -82,7 +82,7 @@
             query &= " GROUP BY MB_COMP_PERSON.COMP_PERSON_NAME_TH, PN_HEAD.MB_MEMBER_CODE"
             DataGridView1.DataSource = fillWebSQL(query, parameters, "PN_DETAIL")
             DataGridView1.Columns("COMP_PERSON_NAME_TH").HeaderText = "ชื่อลูกหนี้"
-            DataGridView1.Columns("MB_MEMBER_CODE").HeaderText = "รหัสสมาชิก"
+            DataGridView1.Columns("MB_MEMBER_CODE").HeaderText = "เลขสมาชิก"
         End If
 
         DataGridView1.Columns("CNT").HeaderText = "จำนวนรายการ"
@@ -134,16 +134,16 @@
         TO_DATEPicker.MinDate = FROM_DATEPicker.Value
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
 
-
+        If DataGridView1.SelectedRows.Count = 0 Then Return
         Dim SEARCH_CODE_LIST As New List(Of String)
 
         For Each item As DataGridViewRow In DataGridView1.SelectedRows
             If isSubSection.Checked Then
                 SEARCH_CODE_LIST.Add("'" & item.Cells("SUB_SECTION_CODE").Value.ToString() & "'")
             Else
-                SEARCH_CODE_LIST.Add("'" & item.Cells("MEMBER_CODE").Value.ToString() & "'")
+                SEARCH_CODE_LIST.Add("'" & item.Cells("MB_MEMBER_CODE").Value.ToString() & "'")
             End If
         Next
 
@@ -308,4 +308,5 @@
         End If
 
     End Sub
+
 End Class

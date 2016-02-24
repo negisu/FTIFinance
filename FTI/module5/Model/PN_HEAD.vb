@@ -18,7 +18,7 @@
     Public EX_RATE As Double
 
     Public TOP_DISC_AMT As Double
-
+    Public TOP_DISC_NOTE As String
     Public NOTE As String
     Public CANCEL_FLAG As String
     Public CANCEL_REASON As String

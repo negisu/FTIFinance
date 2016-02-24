@@ -3,19 +3,33 @@
     Public Action As FORM_ACTION
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         If Action = FORM_ACTION.Edit Then
             If TRAN_TYPE = "I1" Then
                 Me.Text = "แก้ไขใบแจ้งหนี้"
                 Label1.Text = "แก้ไขใบแจ้งหนี้"
+                Me.BackColor = Color.LavenderBlush
+                Panel10.BackColor = Color.Plum
             ElseIf TRAN_TYPE = "I2" Then
                 Me.Text = "ออกใบลดยอดใบแจ้งหนี้"
                 Label1.Text = "ออกใบลดยอดใบแจ้งหนี้"
                 OK_Button.Text = "ออกใบลดยอดใบแจ้งหนี้"
+                Me.BackColor = Color.Ivory
+                Panel10.BackColor = Color.PaleGoldenrod
+            ElseIf TRAN_TYPE = "R1" Then
+                Me.Text = "แก้ไขใบเสร็จ"
+                Label1.Text = "แก้ไขใบเสร็จ"
+                Me.BackColor = Color.MistyRose
+                Panel10.BackColor = Color.Salmon
             End If
-        ElseIf Action = FORM_ACTION.Cancel Then
-
+        ElseIf Action = FORM_ACTION.SelectDoc Then
+            If TRAN_TYPE = "%" Then
+                Me.Text = "เลือกเอกสาร"
+                Label1.Text = "เลือกเอกสาร"
+                OK_Button.Text = "เลือก"
+                DataGridView1.MultiSelect = True
+            End If
         End If
+       
         RefTextBox.Enabled = False
         FromDateTextBox.Enabled = False
         ToDateTextBox.Enabled = False
@@ -52,7 +66,7 @@
             parameters.Add("@p9", user_div)
         End If
 
-        query &= " AND PN_HEAD.CANCEL_FLAG IS NULL AND PN_HEAD.TRAN_TYPE = @p10 "
+        query &= " AND PN_HEAD.CANCEL_FLAG IS NULL AND PN_HEAD.TRAN_TYPE LIKE @p10 "
         If TRAN_TYPE = "I2" Then
             parameters.Add("@p10", "I1")
         Else
@@ -126,20 +140,21 @@
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
         If DataGridView1.CurrentRow IsNot Nothing Then
-            If (MessageBox.Show("คุณต้องการที่จะแก้ไขเอกสารหมายเลข " & DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString() & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+            If Action = FORM_ACTION.SelectDoc Then
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
+            Else
+                If (MessageBox.Show("คุณต้องการที่จะแก้ไขเอกสารหมายเลข " & DataGridView1.CurrentRow.Cells("TRAN_NO").Value.ToString() & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
+                    Me.DialogResult = System.Windows.Forms.DialogResult.OK
+                    Me.Close()
+                End If
             End If
+            
+
 
         End If
     End Sub
 
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        RefTextBox.Text = ""
-        FromDateTextBox.Text = DateTime.Now.ToString("{dd/MM/yyyy}", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
-        ToDateTextBox.Text = DateTime.Now.ToString("{dd/MM/yyyy}", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
-        DataGridView1.Columns.Clear()
-    End Sub
 
     Private Sub FromDateTextBox_TypeValidationCompleted(sender As Object, e As TypeValidationEventArgs) Handles FromDateTextBox.TypeValidationCompleted
 
