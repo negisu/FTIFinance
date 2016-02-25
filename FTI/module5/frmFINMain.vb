@@ -97,6 +97,8 @@
         Else
             PNRequestCancelToolStripMenuItem.Visible = False
             PNRequestInvoiceToolStripMenuItem.Visible = False
+            ใบแจงหนToolStripMenuItem2.Visible = False
+            ใบเสรจToolStripMenuItem2.Visible = False
         End If
     End Sub
 

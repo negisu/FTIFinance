@@ -35,11 +35,11 @@
             If e.ColumnIndex = DataGridView1.Columns("APPROVE").Index Then
                 If (MessageBox.Show("คุณต้องการที่จะอนุมัติการออกใบแจ้งหนี้จากเอกสารหมายเลข " & TRAN_NO & " ใช่หรือไม่?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
 
-
-                    Dim IV_TRAN_NO As String = DocumentNumberHelper.getPN_DOC_RUNNING("001", user_div, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "I1", DateTime.Now.ToString("MM"))
+                    Dim DIV_CODE = HEADDataTable.Rows(0).Item("DIV_CODE").ToString()
+                    Dim IV_TRAN_NO As String = DocumentNumberHelper.getPN_DOC_RUNNING("001", DIV_CODE, DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat), "I1", DateTime.Now.ToString("MM"))
                     Dim docRunning = New DOC_RUNNING
                     docRunning.OU_CODE = "001"
-                    docRunning.DIV_CODE = user_div
+                    docRunning.DIV_CODE = DIV_CODE
                     docRunning.BUDGET_YEAR = Integer.Parse(DateTime.Now.ToString("yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
                     docRunning.PERIOD = 0
                     docRunning.SUB_TYPE = "I1"
@@ -85,14 +85,14 @@
                     parameters.Clear()
                     parameters.Add("@p0", TRAN_NO)
                     parameters.Add("@p1", IV_TRAN_NO)
-                    query = "UPDATE PN_HEAD SET IV_TRAN_NO = @p1 WHERE TRAN_NO = @p0"
+                    query = "UPDATE PN_HEAD SET IV_TRAN_NO = @p1, COMPLETE_FLAG = '1' WHERE TRAN_NO = @p0"
 
                     Try
                         executeWebSQL(query, parameters)
                     Catch ex As Exception
                         MessageBox.Show(query & vbCrLf & ex.Message, "ERROR=client.ExecuteNonQuery")
                     End Try
-
+                    Call MsgBox("ระบบได้ออกใบแจ้งหนี้หมายเลข " & IV_TRAN_NO & " แล้ว", 0, "พบข้อผิดพลาด")
                     Me.frmFINPaymentNoticeCancleList_Load(sender, e)
                 End If
             End If

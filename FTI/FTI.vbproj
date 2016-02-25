@@ -1102,6 +1102,12 @@
     <Compile Include="module4\frmTrainingSettingCourse.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="module5\4_Report\frmFINReportDaily.Designer.vb">
+      <DependentUpon>frmFINReportDaily.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\4_Report\frmFINReportDaily.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="module5\frmBank.Designer.vb">
       <DependentUpon>frmBank.vb</DependentUpon>
     </Compile>
@@ -1232,6 +1238,12 @@
       <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
     </Compile>
     <Compile Include="module5\frmFINAR_MEMBER.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\frmFINReport.Designer.vb">
+      <DependentUpon>frmFINReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\frmFINReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="module5\frmFINSubSectionRemain.Designer.vb">
@@ -1770,6 +1782,9 @@
     <EmbeddedResource Include="module4\frmTrainingSettingCourse.resx">
       <DependentUpon>frmTrainingSettingCourse.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="module5\4_Report\frmFINReportDaily.resx">
+      <DependentUpon>frmFINReportDaily.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="module5\frmBank.resx">
       <DependentUpon>frmBank.vb</DependentUpon>
     </EmbeddedResource>
@@ -1835,6 +1850,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINAR_MEMBER.resx">
       <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\frmFINReport.resx">
+      <DependentUpon>frmFINReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINSubSectionRemain.resx">
       <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>

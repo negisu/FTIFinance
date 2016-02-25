@@ -23,7 +23,7 @@ Partial Class frmFINForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -1655,8 +1655,8 @@ Partial Class frmFINForm
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle1.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '

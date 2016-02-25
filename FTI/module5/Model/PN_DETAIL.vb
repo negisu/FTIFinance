@@ -20,6 +20,7 @@
     Public TOTAL As Double
     Public TOTAL_VAT As Double
     Public SUM_TOTAL As Double
+    Public TOP_DISC_AMT As Double
     Public NOTE_EN As String
     Public NOTE As String
     Public FREE_YN As String

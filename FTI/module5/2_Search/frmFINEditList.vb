@@ -3,6 +3,10 @@
     Public Action As FORM_ACTION
 
     Private Sub frmFINPaymentNoticeSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TO_DATEPicker.MinDate = FROM_DATEPicker.Value
+        FROM_DATEPicker.Value = New Date(FROM_DATEPicker.Value.Year, FROM_DATEPicker.Value.Month, FROM_DATEPicker.Value.Day, 0, 0, 0)
+        TO_DATEPicker.Value = New Date(TO_DATEPicker.Value.Year, TO_DATEPicker.Value.Month, TO_DATEPicker.Value.Day, 23, 59, 59)
+
         If Action = FORM_ACTION.Edit Then
             If TRAN_TYPE = "I1" Then
                 Me.Text = "แก้ไขใบแจ้งหนี้"
@@ -29,10 +33,8 @@
                 DataGridView1.MultiSelect = True
             End If
         End If
-       
+
         RefTextBox.Enabled = False
-        FromDateTextBox.Enabled = False
-        ToDateTextBox.Enabled = False
 
         Dim err As Integer = 0
         Try
@@ -46,13 +48,7 @@
         RefTextBox.Enabled = isRef.Checked
     End Sub
 
-    Private Sub isFromDate_CheckedChanged(sender As Object, e As EventArgs) Handles isFromDate.CheckedChanged
-        FromDateTextBox.Enabled = isFromDate.Checked
-    End Sub
 
-    Private Sub isToDate_CheckedChanged(sender As Object, e As EventArgs) Handles isToDate.CheckedChanged
-        ToDateTextBox.Enabled = isToDate.Checked
-    End Sub
 
     Private Sub btFind_Click(sender As Object, e As EventArgs) Handles btFind.Click
         Dim parameters As New Dictionary(Of String, Object)
@@ -80,19 +76,25 @@
             parameters.Add("@p0", searchValue)
 
         End If
-        If isFromDate.Checked And Not String.IsNullOrEmpty(FromDateTextBox.Text.Replace("/", String.Empty).Trim) Then
-            query &= " AND TRAN_DATE >=  @p1"
-            parameters.Add("@p1", Date.ParseExact(FromDateTextBox.Text, "dd/MM/yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
-        End If
-        If isToDate.Checked And Not String.IsNullOrEmpty(ToDateTextBox.Text.Replace("/", String.Empty).Trim) Then
-            query &= " AND TRAN_DATE <=  @p2"
-            parameters.Add("@p2", Date.ParseExact(ToDateTextBox.Text, "dd/MM/yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
-        End If
+
+        query &= " AND (PN_HEAD.TRAN_DATE BETWEEN @p1 AND @p2) "
+        parameters.Add("@p1", FROM_DATEPicker.Value)
+        parameters.Add("@p2", TO_DATEPicker.Value)
+
+        query &= " AND COMPLETE_FLAG IS NULL "
 
         query = query.Replace("WHERE  AND", "WHERE ")
         query = query.Trim()
         If query.Substring(query.Length - 5, 5) = "WHERE" Then
             query = query.Replace("WHERE", String.Empty)
+        End If
+
+        If Not PAY_STATUSComboBox.SelectedIndex = 0 Then
+            If PAY_STATUSComboBox.SelectedIndex = 1 Then
+                query &= " AND BAL_AMT > 0 "
+            ElseIf PAY_STATUSComboBox.SelectedIndex = 2 Then
+                query &= " AND BAL_AMT = 0 "
+            End If
         End If
 
         query &= " GROUP BY PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE, SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH "
@@ -149,40 +151,25 @@
                     Me.Close()
                 End If
             End If
-            
-
-
         End If
     End Sub
 
-
-    Private Sub FromDateTextBox_TypeValidationCompleted(sender As Object, e As TypeValidationEventArgs) Handles FromDateTextBox.TypeValidationCompleted
-
-        Try
-            Dim tempDate As Date = Date.ParseExact(FromDateTextBox.Text, "dd/MM/yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
-            If tempDate > Date.Now.AddYears(100) Or tempDate < Date.Now.AddYears(-100) Then
-                Call MsgBox("ปีที่คุณกรอกอยู่นอกเหนือขอบเขตที่ระบบอนุญาติ (บวกลบ 100 ปี จากปีปัจจุบัน) กรุณากรอกใหม่อีกครั้ง", 0, "พบข้อผิดพลาด")
-            End If
-
-        Catch ex As FormatException
-            Call MsgBox("คุณกรอกวันที่ผิดรูปแบบ (กรอกไม่ครบ, ตัวเลขเดือนผิด หรือ ไม่มีวันนั้นในเดือน) กรุณากรอกใหม่อีกครัง", 0, "พบข้อผิดพลาด")
-            FromDateTextBox.Text = DateTime.Now.ToString("{dd/MM/yyyy}", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
-        End Try
-
+    Private Sub TRAN_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles FROM_DATEPicker.ValueChanged
+        If Not FROM_DATEPicker.IsHandleCreated Then
+            Return
+        Else
+            FROM_DATEPicker.Value = New Date(FROM_DATEPicker.Value.Year, FROM_DATEPicker.Value.Month, FROM_DATEPicker.Value.Day, 0, 0, 0)
+        End If
+        TO_DATEPicker.MinDate = FROM_DATEPicker.Value
     End Sub
 
-    Private Sub ToDateTextBox_TypeValidationCompleted(sender As Object, e As TypeValidationEventArgs) Handles ToDateTextBox.TypeValidationCompleted
 
-        Try
-            Dim tempDate As Date = Date.ParseExact(ToDateTextBox.Text, "dd/MM/yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
-            If tempDate > Date.Now.AddYears(100) Or tempDate < Date.Now.AddYears(-100) Then
-                Call MsgBox("ปีที่คุณกรอกอยู่นอกเหนือขอบเขตที่ระบบอนุญาติ (บวกลบ 100 ปี จากปีปัจจุบัน) กรุณากรอกใหม่อีกครั้ง", 0, "พบข้อผิดพลาด")
-            End If
-
-        Catch ex As FormatException
-            Call MsgBox("คุณกรอกวันที่ผิดรูปแบบ (กรอกไม่ครบ, ตัวเลขเดือนผิด หรือ ไม่มีวันนั้นในเดือน) กรุณากรอกใหม่อีกครัง", 0, "พบข้อผิดพลาด")
-            ToDateTextBox.Text = DateTime.Now.ToString("{dd/MM/yyyy}", New System.Globalization.CultureInfo("th-TH").DateTimeFormat)
-        End Try
+    Private Sub TO_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles TO_DATEPicker.ValueChanged
+        If Not FROM_DATEPicker.IsHandleCreated Then
+            Return
+        Else
+            TO_DATEPicker.Value = New Date(TO_DATEPicker.Value.Year, TO_DATEPicker.Value.Month, TO_DATEPicker.Value.Day, 23, 59, 59)
+        End If
 
     End Sub
 End Class

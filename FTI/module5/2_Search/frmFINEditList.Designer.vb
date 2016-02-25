@@ -25,26 +25,25 @@ Partial Class frmFINEditList
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.RefTextBox = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ToDateTextBox = New System.Windows.Forms.MaskedTextBox()
-        Me.FromDateTextBox = New System.Windows.Forms.MaskedTextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.isToDate = New System.Windows.Forms.CheckBox()
-        Me.isFromDate = New System.Windows.Forms.CheckBox()
         Me.isRef = New System.Windows.Forms.CheckBox()
-        Me.btFind = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btFind = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TO_DATEPicker = New System.Windows.Forms.DateTimePicker()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.FROM_DATEPicker = New System.Windows.Forms.DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.PAY_STATUSComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -57,158 +56,50 @@ Partial Class frmFINEditList
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Location = New System.Drawing.Point(17, 216)
+        Me.DataGridView1.Location = New System.Drawing.Point(17, 147)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(952, 380)
+        Me.DataGridView1.Size = New System.Drawing.Size(958, 449)
         Me.DataGridView1.TabIndex = 1
         '
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.PAY_STATUSComboBox)
         Me.GroupBox2.Controls.Add(Me.RefTextBox)
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.GroupBox1)
         Me.GroupBox2.Controls.Add(Me.isRef)
-        Me.GroupBox2.Location = New System.Drawing.Point(-1, 54)
+        Me.GroupBox2.Location = New System.Drawing.Point(17, 54)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(365, 154)
+        Me.GroupBox2.Size = New System.Drawing.Size(243, 85)
         Me.GroupBox2.TabIndex = 160
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "ขอบเขตการค้นหา"
         '
         'RefTextBox
         '
-        Me.RefTextBox.Location = New System.Drawing.Point(168, 28)
+        Me.RefTextBox.Location = New System.Drawing.Point(106, 21)
         Me.RefTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.RefTextBox.Name = "RefTextBox"
-        Me.RefTextBox.Size = New System.Drawing.Size(175, 22)
+        Me.RefTextBox.Size = New System.Drawing.Size(128, 22)
         Me.RefTextBox.TabIndex = 3
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(45, 32)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 17)
-        Me.Label3.TabIndex = 71
-        Me.Label3.Text = "เลขที่อ้างอิง"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.ToDateTextBox)
-        Me.GroupBox1.Controls.Add(Me.FromDateTextBox)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.isToDate)
-        Me.GroupBox1.Controls.Add(Me.isFromDate)
-        Me.GroupBox1.Location = New System.Drawing.Point(17, 60)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(335, 87)
-        Me.GroupBox1.TabIndex = 72
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "วันที่ออกเอกสาร"
-        '
-        'ToDateTextBox
-        '
-        Me.ToDateTextBox.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.ToDateTextBox.Location = New System.Drawing.Point(151, 48)
-        Me.ToDateTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.ToDateTextBox.Mask = "00/00/0000"
-        Me.ToDateTextBox.Name = "ToDateTextBox"
-        Me.ToDateTextBox.Size = New System.Drawing.Size(175, 22)
-        Me.ToDateTextBox.TabIndex = 154
-        Me.ToDateTextBox.ValidatingType = GetType(Date)
-        '
-        'FromDateTextBox
-        '
-        Me.FromDateTextBox.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.FromDateTextBox.Location = New System.Drawing.Point(151, 20)
-        Me.FromDateTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.FromDateTextBox.Mask = "00/00/0000"
-        Me.FromDateTextBox.Name = "FromDateTextBox"
-        Me.FromDateTextBox.Size = New System.Drawing.Size(175, 22)
-        Me.FromDateTextBox.TabIndex = 153
-        Me.FromDateTextBox.ValidatingType = GetType(Date)
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(28, 52)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(46, 17)
-        Me.Label4.TabIndex = 74
-        Me.Label4.Text = "ถึงวันที่"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(28, 23)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(53, 17)
-        Me.Label8.TabIndex = 75
-        Me.Label8.Text = "จากวันที่"
-        '
-        'isToDate
-        '
-        Me.isToDate.AutoSize = True
-        Me.isToDate.Location = New System.Drawing.Point(8, 52)
-        Me.isToDate.Margin = New System.Windows.Forms.Padding(4)
-        Me.isToDate.Name = "isToDate"
-        Me.isToDate.Size = New System.Drawing.Size(18, 17)
-        Me.isToDate.TabIndex = 75
-        Me.isToDate.UseVisualStyleBackColor = True
-        '
-        'isFromDate
-        '
-        Me.isFromDate.AutoSize = True
-        Me.isFromDate.Location = New System.Drawing.Point(8, 23)
-        Me.isFromDate.Margin = New System.Windows.Forms.Padding(4)
-        Me.isFromDate.Name = "isFromDate"
-        Me.isFromDate.Size = New System.Drawing.Size(18, 17)
-        Me.isFromDate.TabIndex = 74
-        Me.isFromDate.UseVisualStyleBackColor = True
         '
         'isRef
         '
         Me.isRef.AutoSize = True
-        Me.isRef.Location = New System.Drawing.Point(25, 32)
+        Me.isRef.Location = New System.Drawing.Point(9, 23)
         Me.isRef.Margin = New System.Windows.Forms.Padding(4)
         Me.isRef.Name = "isRef"
-        Me.isRef.Size = New System.Drawing.Size(18, 17)
+        Me.isRef.Size = New System.Drawing.Size(89, 21)
         Me.isRef.TabIndex = 73
+        Me.isRef.Text = "เลขที่อ้างอิง"
         Me.isRef.UseVisualStyleBackColor = True
-        '
-        'btFind
-        '
-        Me.btFind.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btFind.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.btFind.BackgroundImage = Global.FTI.My.Resources.Resources.searchCustomButton
-        Me.btFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btFind.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
-        Me.btFind.FlatAppearance.BorderSize = 0
-        Me.btFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFind.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btFind.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.btFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btFind.Location = New System.Drawing.Point(870, 9)
-        Me.btFind.Margin = New System.Windows.Forms.Padding(4)
-        Me.btFind.Name = "btFind"
-        Me.btFind.Size = New System.Drawing.Size(100, 27)
-        Me.btFind.TabIndex = 161
-        Me.btFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btFind.UseVisualStyleBackColor = False
         '
         'TableLayoutPanel1
         '
@@ -288,12 +179,108 @@ Partial Class frmFINEditList
         Me.Label1.TabIndex = 250
         Me.Label1.Text = "แก้ไขใบแจ้งชำระ"
         '
+        'btFind
+        '
+        Me.btFind.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btFind.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.btFind.BackgroundImage = Global.FTI.My.Resources.Resources.searchCustomButton
+        Me.btFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btFind.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight
+        Me.btFind.FlatAppearance.BorderSize = 0
+        Me.btFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btFind.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btFind.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.btFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btFind.Location = New System.Drawing.Point(870, 9)
+        Me.btFind.Margin = New System.Windows.Forms.Padding(4)
+        Me.btFind.Name = "btFind"
+        Me.btFind.Size = New System.Drawing.Size(100, 27)
+        Me.btFind.TabIndex = 161
+        Me.btFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btFind.UseVisualStyleBackColor = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.TO_DATEPicker)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.FROM_DATEPicker)
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Location = New System.Drawing.Point(267, 54)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(242, 85)
+        Me.GroupBox1.TabIndex = 291
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "วันที่ออกเอกสาร"
+        '
+        'TO_DATEPicker
+        '
+        Me.TO_DATEPicker.CustomFormat = "dd/MM/yyyy"
+        Me.TO_DATEPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.TO_DATEPicker.ImeMode = System.Windows.Forms.ImeMode.Off
+        Me.TO_DATEPicker.Location = New System.Drawing.Point(82, 50)
+        Me.TO_DATEPicker.Name = "TO_DATEPicker"
+        Me.TO_DATEPicker.Size = New System.Drawing.Size(152, 22)
+        Me.TO_DATEPicker.TabIndex = 290
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(11, 55)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(46, 17)
+        Me.Label4.TabIndex = 74
+        Me.Label4.Text = "ถึงวันที่"
+        '
+        'FROM_DATEPicker
+        '
+        Me.FROM_DATEPicker.CustomFormat = "dd/MM/yyyy"
+        Me.FROM_DATEPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.FROM_DATEPicker.ImeMode = System.Windows.Forms.ImeMode.Off
+        Me.FROM_DATEPicker.Location = New System.Drawing.Point(82, 21)
+        Me.FROM_DATEPicker.Name = "FROM_DATEPicker"
+        Me.FROM_DATEPicker.Size = New System.Drawing.Size(152, 22)
+        Me.FROM_DATEPicker.TabIndex = 289
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(11, 25)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(53, 17)
+        Me.Label8.TabIndex = 75
+        Me.Label8.Text = "จากวันที่"
+        '
+        'PAY_STATUSComboBox
+        '
+        Me.PAY_STATUSComboBox.AutoCompleteCustomSource.AddRange(New String() {"ทั้งหมด", "ค้างชำระ", "ชำระแล้ว"})
+        Me.PAY_STATUSComboBox.FormattingEnabled = True
+        Me.PAY_STATUSComboBox.Items.AddRange(New Object() {"ทั้งหมด", "ค้างชำระ", "ชำระแล้ว"})
+        Me.PAY_STATUSComboBox.Location = New System.Drawing.Point(106, 48)
+        Me.PAY_STATUSComboBox.Name = "PAY_STATUSComboBox"
+        Me.PAY_STATUSComboBox.Size = New System.Drawing.Size(128, 24)
+        Me.PAY_STATUSComboBox.TabIndex = 292
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(27, 51)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(62, 17)
+        Me.Label2.TabIndex = 293
+        Me.Label2.Text = "สถานะหนี้"
+        '
         'frmFINEditList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(982, 653)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.GroupBox2)
@@ -305,30 +292,29 @@ Partial Class frmFINEditList
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents RefTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents isToDate As System.Windows.Forms.CheckBox
-    Friend WithEvents isFromDate As System.Windows.Forms.CheckBox
     Friend WithEvents isRef As System.Windows.Forms.CheckBox
     Friend WithEvents btFind As System.Windows.Forms.Button
-    Friend WithEvents ToDateTextBox As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents FromDateTextBox As System.Windows.Forms.MaskedTextBox
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents OK_Button As System.Windows.Forms.Button
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents TO_DATEPicker As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents FROM_DATEPicker As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents PAY_STATUSComboBox As System.Windows.Forms.ComboBox
 End Class

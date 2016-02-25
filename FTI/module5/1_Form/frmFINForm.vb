@@ -1,4 +1,5 @@
 ﻿Public Class frmFINForm
+    Public ACTION As FORM_ACTION
     Public TRAN_TYPE As String
     Dim MB_COMP_PERSON_ADDRESS As DataTable
     Dim ADDRESSDataTable As DataTable
@@ -127,6 +128,9 @@
         End If
         initForm()
         loadForm()
+        If ACTION = FORM_ACTION.Preview Then
+            LockAllInput()
+        End If
     End Sub
 
     Sub DetailGridView_CellFormatting(ByVal sender As Object, _
@@ -1527,7 +1531,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
         End If
         f.TRAN_NOLabel.Text = TRAN_NO_REFLabel.Text
-        f.LockAllInput()
+        f.ACTION = FORM_ACTION.Preview
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
         End If
@@ -1590,4 +1594,5 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             fPN.Show()
         End If
     End Sub
+
 End Class

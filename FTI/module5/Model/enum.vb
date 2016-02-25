@@ -4,4 +4,5 @@
     Cancel
     Pass
     SelectDoc
+    Preview
 End Enum

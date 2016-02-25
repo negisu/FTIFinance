@@ -63,6 +63,7 @@
             query &= " AND TRAN_DATE <=  @p2"
             parameters.Add("@p2", Date.ParseExact(ToDateTextBox.Text, "dd/MM/yyyy", New System.Globalization.CultureInfo("th-TH").DateTimeFormat))
         End If
+        query &= " AND COMPLETE_FLAG IS NULL "
 
         query = query.Replace("WHERE  AND", "WHERE ")
         query = query.Trim()
