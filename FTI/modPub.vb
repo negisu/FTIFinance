@@ -35,5 +35,6 @@
 
     Friend fFMain As frmFINMain
     Friend fPN As frmFINForm
+    Friend fRC As frmFINRCForm
 
 End Module

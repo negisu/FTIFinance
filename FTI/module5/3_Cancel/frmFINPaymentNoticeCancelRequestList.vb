@@ -46,7 +46,6 @@
 
         query &= " AND TRAN_TYPE = @p10 "
         parameters.Add("@p10", TRAN_TYPE)
-        'query &= " AND CANCEL_FLAG IS NULL "
 
         If isRef.Checked And Not String.IsNullOrEmpty(RefTextBox.Text) Then
             Dim searchValue As String = RefTextBox.Text.Trim.Replace(" ", "%")
@@ -155,7 +154,7 @@
         DataGridView1.Refresh()
 
         For Each row As DataGridViewRow In DataGridView1.Rows
-            If String.IsNullOrEmpty(row.Cells("CANCEL_FLAG").Value.ToString()) Then
+            If row.Cells("CANCEL_FLAG").Value.ToString() = "N" Then
                 If String.IsNullOrEmpty(row.Cells("CANCEL_REJECT_REASON").Value.ToString()) Then
                     row.Cells("STATUS").Value = "ปกติ"
                     row.Cells("STATUS").Style.BackColor = ColorTranslator.FromHtml("#CCFFCC")
@@ -265,7 +264,7 @@
 
         Try
             If e.ColumnIndex = DataGridView1.Columns("RESTORE").Index Then
-                If DataGridView1.Rows(e.RowIndex).Cells("CANCEL_FLAG").Value.ToString() = "A" Or String.IsNullOrEmpty(DataGridView1.Rows(e.RowIndex).Cells("CANCEL_FLAG").Value.ToString()) Then Return
+                If DataGridView1.Rows(e.RowIndex).Cells("CANCEL_FLAG").Value.ToString() = "A" Or DataGridView1.Rows(e.RowIndex).Cells("CANCEL_FLAG").Value.ToString() = "N" Then Return
             End If
         Catch ex As Exception
 

@@ -1,4 +1,4 @@
-﻿Public Class frmFINForm
+﻿Public Class frmFINRCForm
     Public ACTION As FORM_ACTION
     Public TRAN_TYPE As String
     Dim MB_COMP_PERSON_ADDRESS As DataTable
@@ -106,25 +106,6 @@
     '==============================================================================================================================================='
     '==============================================================================================================================================='
     Private Sub frmFINPaymentNotice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If TRAN_TYPE = "I1" Then
-            Me.Text = "บันทึกใบแจ้งหนี้"
-            FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
-            Me.BackColor = Color.LavenderBlush
-            Panel10.BackColor = Color.Plum
-            Panel1.BackColor = Color.Plum
-        ElseIf TRAN_TYPE = "I2" Then
-            Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
-            FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
-            Me.BackColor = Color.Ivory
-            Panel10.BackColor = Color.PaleGoldenrod
-            Panel1.BackColor = Color.PaleGoldenrod
-        ElseIf TRAN_TYPE = "R1" Then
-            Me.Text = "บันทึกใบเสร็จ"
-            FormTitleLabel.Text = "บันทึกใบเสร็จ"
-            Me.BackColor = Color.MistyRose
-            Panel10.BackColor = Color.Salmon
-            Panel1.BackColor = Color.Salmon
-        End If
         initForm()
         loadForm()
         If ACTION = FORM_ACTION.Preview Then
@@ -175,7 +156,6 @@
             DocumentStatusLabel.Text = "ปกติ"
             PrintStatusLabel.Text = "0"
             getHEADDatatable()
-
         Else
             TRAN_NO = TRAN_NOLabel.Text
             Try
@@ -186,8 +166,6 @@
             Catch
             End Try
         End If
-
-
         calculateSum()
         AR_NAMETextBox.Select()
         If Not PermissionHelper.isAdmin() Then lockNonAdminInput()
@@ -237,6 +215,8 @@
             .Columns("TOTAL").Visible = True
             .Columns("TOTAL_VAT").Visible = True
             .Columns("SUM_TOTAL").Visible = True
+            .Columns("BAL_AMT").Visible = True
+            .Columns("PAY_AMT").Visible = True
 
             .Columns("SEQ").HeaderText = "ลำดับ"
             .Columns("BUDGET_YEAR").HeaderText = "ปี"
@@ -285,22 +265,6 @@
             .Columns("U_PRICE_INC_VAT").ReadOnly = False
             .Columns("DISC_AMT_INC_VAT").ReadOnly = False
         End With
-
-        If TRAN_TYPE = "I2" Then
-            Dim gridCheckbox As New DataGridViewCheckBoxColumn
-            gridCheckbox.Name = "SELECTED"
-            gridCheckbox.HeaderText = "เลือก"
-            DetailGridView.Columns.Add(gridCheckbox)
-        End If
-
-        If TRAN_TYPE = "R1" Then
-            DetailGridView.Columns("PN_TRAN_NO").Visible = True
-            DetailGridView.Columns("IV_TRAN_NO").Visible = True
-            DetailGridView.Columns("BAL_AMT").Visible = True
-            DetailGridView.Columns("PAY_AMT").Visible = True
-            DetailGridView.Columns("PN_TRAN_NO").HeaderText = "เลขที่ใบแจ้งชำระ"
-            DetailGridView.Columns("IV_TRAN_NO").HeaderText = "เลขที่ใบแจ้งหนี้"
-        End If
 
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -1481,6 +1445,55 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             Me.Dispose()
             fPN.Show()
         End If
+    End Sub
+
+    Private Sub AddRCButton_Click(sender As Object, e As EventArgs) Handles AddRCButton.Click
+        Dim f As New frmFINEditList
+        f.TRAN_TYPE = "%"
+        f.Action = FORM_ACTION.SelectDoc
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+            Dim TRAN_NO_LIST As New List(Of String)
+            For Each item As DataGridViewRow In f.DataGridView1.SelectedRows
+                TRAN_NO_LIST.Add("'" & item.Cells("TRAN_NO").Value.ToString() & "'")
+            Next
+            addDetailFromManyRefDocs(String.Join(",", TRAN_NO_LIST))
+        End If
+        f.Dispose()
+        f = Nothing
+
+
+    End Sub
+
+    Private Sub addDetailFromManyRefDocs(docListString As String)
+        Dim query As String = "SELECT * FROM FIN_PN_IV_DETAIL INNER JOIN IV_SUB_SECTION ON FIN_PN_IV_DETAIL.SUB_SECTION_CODE = IV_SUB_SECTION.SUB_SECTION_CODE INNER JOIN SU_DIVISION ON IV_SUB_SECTION.DIV_CODE_INC=SU_DIVISION.DIV_CODE  WHERE TRAN_NO IN (" & docListString & ") ORDER BY TRAN_NO, SEQ "
+        Dim parameters As New Dictionary(Of String, Object)
+        DETAILDataTable.Merge(fillWebSQL(query, parameters, "FIN_PN_IV_DETAIL"))
+        DetailGridView.DataSource = DETAILDataTable
+        DetailGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        DetailGridView.AutoResizeColumns()
+        DetailGridView.Refresh()
+        DetailGridView.Update()
+
+        query = "SELECT * FROM FIN_PN_IV_HEAD  WHERE TRAN_NO IN (" & docListString & ") ORDER BY TRAN_NO"
+        REF_RCDatatable.Merge(fillWebSQL(query, parameters, "FIN_PN_IV_HEAD"))
+        REF__RCGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        REF__RCGridView.AutoResizeColumns()
+        REF__RCGridView.Refresh()
+        REF__RCGridView.Update()
+
+        For Each item As DataRow In DETAILDataTable.Rows
+            If item.Item("TRAN_NO").ToString().Contains("P") Then
+                item.Item("PN_TRAN_NO") = item.Item("TRAN_NO")
+            ElseIf item.Item("TRAN_NO").ToString().Contains("I") Then
+                item.Item("IV_TRAN_NO") = item.Item("TRAN_NO")
+            End If
+        Next
+
+        calculateSum()
+
+
+
     End Sub
 
     Private Sub updateRC_TRAN_NOPNAndIV(docListString As String)

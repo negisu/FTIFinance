@@ -52,17 +52,17 @@
 
     Private Sub btFind_Click(sender As Object, e As EventArgs) Handles btFind.Click
         Dim parameters As New Dictionary(Of String, Object)
-        Dim query As String = "SELECT PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE,SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH,SUM(PN_DETAIL.BAL_AMT) as SUM_BAL_AMT,SUM(PN_DETAIL.PAY_AMT) as SUM_PAY_AMT ,SUM(PN_DETAIL.SUM_TOTAL) as SUM_SUM_TOTAL FROM PN_DETAIL "
-        query &= "LEFT JOIN PN_HEAD ON PN_HEAD.TRAN_NO = PN_DETAIL.TRAN_NO "
-        query &= "LEFT JOIN MB_COMP_PERSON ON PN_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
-        query &= "LEFT JOIN SU_DIVISION ON PN_HEAD.DIV_CODE = SU_DIVISION.DIV_CODE WHERE "
+        Dim query As String = "SELECT FIN_PN_IV_HEAD.TRAN_NO,FIN_PN_IV_HEAD.TRAN_DATE,SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH,SUM(FIN_PN_IV_DETAIL.BAL_AMT) as SUM_BAL_AMT,SUM(FIN_PN_IV_DETAIL.PAY_AMT) as SUM_PAY_AMT ,SUM(FIN_PN_IV_DETAIL.SUM_TOTAL) as SUM_SUM_TOTAL FROM FIN_PN_IV_DETAIL "
+        query &= "LEFT JOIN FIN_PN_IV_HEAD ON FIN_PN_IV_HEAD.TRAN_NO = FIN_PN_IV_DETAIL.TRAN_NO "
+        query &= "LEFT JOIN MB_COMP_PERSON ON FIN_PN_IV_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
+        query &= "LEFT JOIN SU_DIVISION ON FIN_PN_IV_HEAD.DIV_CODE = SU_DIVISION.DIV_CODE WHERE "
 
         If Not PermissionHelper.isAdmin() Then
-            query &= " PN_HEAD.DIV_CODE = @p9 "
+            query &= " FIN_PN_IV_HEAD.DIV_CODE = @p9 "
             parameters.Add("@p9", user_div)
         End If
 
-        query &= " AND PN_HEAD.CANCEL_FLAG IS NULL AND PN_HEAD.TRAN_TYPE LIKE @p10 "
+        query &= " AND FIN_PN_IV_HEAD.CANCEL_FLAG = 'N' AND FIN_PN_IV_HEAD.TRAN_TYPE LIKE @p10 "
         If TRAN_TYPE = "I2" Then
             parameters.Add("@p10", "I1")
         Else
@@ -77,11 +77,11 @@
 
         End If
 
-        query &= " AND (PN_HEAD.TRAN_DATE BETWEEN @p1 AND @p2) "
+        query &= " AND (FIN_PN_IV_HEAD.TRAN_DATE BETWEEN @p1 AND @p2) "
         parameters.Add("@p1", FROM_DATEPicker.Value)
         parameters.Add("@p2", TO_DATEPicker.Value)
 
-        query &= " AND COMPLETE_FLAG IS NULL "
+        'query &= " AND COMPLETE_FLAG IS NULL "
 
         query = query.Replace("WHERE  AND", "WHERE ")
         query = query.Trim()
@@ -97,10 +97,10 @@
             End If
         End If
 
-        query &= " GROUP BY PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE, SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH "
-        query &= " ORDER BY TRAN_DATE "
+        query &= " GROUP BY FIN_PN_IV_HEAD.TRAN_NO,FIN_PN_IV_HEAD.TRAN_DATE, SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH "
+        'query &= " ORDER BY TRAN_DATE "
 
-        DataGridView1.DataSource = fillWebSQL(query, parameters, "PN_DETAIL")
+        DataGridView1.DataSource = fillWebSQL(query, parameters, "FIN_PN_IV_DETAIL")
 
         For i As Integer = 0 To DataGridView1.ColumnCount - 1
             With DataGridView1.Columns(i)

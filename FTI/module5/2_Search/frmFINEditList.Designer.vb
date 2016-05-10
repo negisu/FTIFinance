@@ -24,6 +24,8 @@ Partial Class frmFINEditList
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PAY_STATUSComboBox = New System.Windows.Forms.ComboBox()
         Me.RefTextBox = New System.Windows.Forms.TextBox()
         Me.isRef = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -37,8 +39,6 @@ Partial Class frmFINEditList
         Me.Label4 = New System.Windows.Forms.Label()
         Me.FROM_DATEPicker = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.PAY_STATUSComboBox = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -56,14 +56,13 @@ Partial Class frmFINEditList
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Location = New System.Drawing.Point(17, 147)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
+        Me.DataGridView1.Location = New System.Drawing.Point(13, 119)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(958, 449)
+        Me.DataGridView1.Size = New System.Drawing.Size(718, 365)
         Me.DataGridView1.TabIndex = 1
         '
         'GroupBox2
@@ -73,30 +72,47 @@ Partial Class frmFINEditList
         Me.GroupBox2.Controls.Add(Me.PAY_STATUSComboBox)
         Me.GroupBox2.Controls.Add(Me.RefTextBox)
         Me.GroupBox2.Controls.Add(Me.isRef)
-        Me.GroupBox2.Location = New System.Drawing.Point(17, 54)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 44)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(243, 85)
+        Me.GroupBox2.Size = New System.Drawing.Size(182, 69)
         Me.GroupBox2.TabIndex = 160
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "ขอบเขตการค้นหา"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(20, 41)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
+        Me.Label2.TabIndex = 293
+        Me.Label2.Text = "สถานะหนี้"
+        '
+        'PAY_STATUSComboBox
+        '
+        Me.PAY_STATUSComboBox.AutoCompleteCustomSource.AddRange(New String() {"ทั้งหมด", "ค้างชำระ", "ชำระแล้ว"})
+        Me.PAY_STATUSComboBox.FormattingEnabled = True
+        Me.PAY_STATUSComboBox.Items.AddRange(New Object() {"ทั้งหมด", "ค้างชำระ", "ชำระแล้ว"})
+        Me.PAY_STATUSComboBox.Location = New System.Drawing.Point(80, 39)
+        Me.PAY_STATUSComboBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PAY_STATUSComboBox.Name = "PAY_STATUSComboBox"
+        Me.PAY_STATUSComboBox.Size = New System.Drawing.Size(97, 21)
+        Me.PAY_STATUSComboBox.TabIndex = 292
+        '
         'RefTextBox
         '
-        Me.RefTextBox.Location = New System.Drawing.Point(106, 21)
-        Me.RefTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.RefTextBox.Location = New System.Drawing.Point(80, 17)
         Me.RefTextBox.Name = "RefTextBox"
-        Me.RefTextBox.Size = New System.Drawing.Size(128, 22)
+        Me.RefTextBox.Size = New System.Drawing.Size(97, 20)
         Me.RefTextBox.TabIndex = 3
         '
         'isRef
         '
         Me.isRef.AutoSize = True
-        Me.isRef.Location = New System.Drawing.Point(9, 23)
-        Me.isRef.Margin = New System.Windows.Forms.Padding(4)
+        Me.isRef.Location = New System.Drawing.Point(7, 19)
         Me.isRef.Name = "isRef"
-        Me.isRef.Size = New System.Drawing.Size(89, 21)
+        Me.isRef.Size = New System.Drawing.Size(77, 17)
         Me.isRef.TabIndex = 73
         Me.isRef.Text = "เลขที่อ้างอิง"
         Me.isRef.UseVisualStyleBackColor = True
@@ -109,12 +125,11 @@ Partial Class frmFINEditList
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(690, 604)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(518, 491)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(285, 36)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(214, 29)
         Me.TableLayoutPanel1.TabIndex = 163
         '
         'OK_Button
@@ -126,10 +141,9 @@ Partial Class frmFINEditList
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.OK_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.OK_Button.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(173, Byte), Integer))
-        Me.OK_Button.Location = New System.Drawing.Point(10, 4)
-        Me.OK_Button.Margin = New System.Windows.Forms.Padding(4)
+        Me.OK_Button.Location = New System.Drawing.Point(8, 3)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(121, 28)
+        Me.OK_Button.Size = New System.Drawing.Size(91, 23)
         Me.OK_Button.TabIndex = 0
         Me.OK_Button.Text = "แก้ไข"
         Me.OK_Button.UseVisualStyleBackColor = False
@@ -144,10 +158,9 @@ Partial Class frmFINEditList
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Cancel_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.Cancel_Button.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(173, Byte), Integer))
-        Me.Cancel_Button.Location = New System.Drawing.Point(153, 4)
-        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4)
+        Me.Cancel_Button.Location = New System.Drawing.Point(115, 3)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(121, 28)
+        Me.Cancel_Button.Size = New System.Drawing.Size(91, 23)
         Me.Cancel_Button.TabIndex = 1
         Me.Cancel_Button.Text = "ปิด"
         Me.Cancel_Button.UseVisualStyleBackColor = False
@@ -160,10 +173,10 @@ Partial Class frmFINEditList
         Me.Panel10.BackgroundImage = Global.FTI.My.Resources.Resources.tabbg
         Me.Panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel10.Controls.Add(Me.Label1)
-        Me.Panel10.Controls.Add(Me.btFind)
         Me.Panel10.Location = New System.Drawing.Point(-1, 0)
+        Me.Panel10.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(987, 47)
+        Me.Panel10.Size = New System.Drawing.Size(740, 38)
         Me.Panel10.TabIndex = 290
         '
         'Label1
@@ -172,12 +185,11 @@ Partial Class frmFINEditList
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(13, 9)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(10, 7)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(185, 29)
+        Me.Label1.Size = New System.Drawing.Size(164, 24)
         Me.Label1.TabIndex = 250
-        Me.Label1.Text = "แก้ไขใบแจ้งชำระ"
+        Me.Label1.Text = "สอบถามใบแจ้งชำระ"
         '
         'btFind
         '
@@ -191,10 +203,9 @@ Partial Class frmFINEditList
         Me.btFind.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btFind.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.btFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btFind.Location = New System.Drawing.Point(870, 9)
-        Me.btFind.Margin = New System.Windows.Forms.Padding(4)
+        Me.btFind.Location = New System.Drawing.Point(656, 44)
         Me.btFind.Name = "btFind"
-        Me.btFind.Size = New System.Drawing.Size(100, 27)
+        Me.btFind.Size = New System.Drawing.Size(75, 22)
         Me.btFind.TabIndex = 161
         Me.btFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btFind.UseVisualStyleBackColor = False
@@ -206,11 +217,9 @@ Partial Class frmFINEditList
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.FROM_DATEPicker)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Location = New System.Drawing.Point(267, 54)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Location = New System.Drawing.Point(200, 44)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(242, 85)
+        Me.GroupBox1.Size = New System.Drawing.Size(182, 69)
         Me.GroupBox1.TabIndex = 291
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "วันที่ออกเอกสาร"
@@ -220,18 +229,18 @@ Partial Class frmFINEditList
         Me.TO_DATEPicker.CustomFormat = "dd/MM/yyyy"
         Me.TO_DATEPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.TO_DATEPicker.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.TO_DATEPicker.Location = New System.Drawing.Point(82, 50)
+        Me.TO_DATEPicker.Location = New System.Drawing.Point(62, 41)
+        Me.TO_DATEPicker.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TO_DATEPicker.Name = "TO_DATEPicker"
-        Me.TO_DATEPicker.Size = New System.Drawing.Size(152, 22)
+        Me.TO_DATEPicker.Size = New System.Drawing.Size(115, 20)
         Me.TO_DATEPicker.TabIndex = 290
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(11, 55)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(8, 45)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(46, 17)
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
         Me.Label4.TabIndex = 74
         Me.Label4.Text = "ถึงวันที่"
         '
@@ -240,55 +249,36 @@ Partial Class frmFINEditList
         Me.FROM_DATEPicker.CustomFormat = "dd/MM/yyyy"
         Me.FROM_DATEPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.FROM_DATEPicker.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.FROM_DATEPicker.Location = New System.Drawing.Point(82, 21)
+        Me.FROM_DATEPicker.Location = New System.Drawing.Point(62, 17)
+        Me.FROM_DATEPicker.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.FROM_DATEPicker.Name = "FROM_DATEPicker"
-        Me.FROM_DATEPicker.Size = New System.Drawing.Size(152, 22)
+        Me.FROM_DATEPicker.Size = New System.Drawing.Size(115, 20)
         Me.FROM_DATEPicker.TabIndex = 289
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(11, 25)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(8, 20)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(53, 17)
+        Me.Label8.Size = New System.Drawing.Size(46, 13)
         Me.Label8.TabIndex = 75
         Me.Label8.Text = "จากวันที่"
         '
-        'PAY_STATUSComboBox
-        '
-        Me.PAY_STATUSComboBox.AutoCompleteCustomSource.AddRange(New String() {"ทั้งหมด", "ค้างชำระ", "ชำระแล้ว"})
-        Me.PAY_STATUSComboBox.FormattingEnabled = True
-        Me.PAY_STATUSComboBox.Items.AddRange(New Object() {"ทั้งหมด", "ค้างชำระ", "ชำระแล้ว"})
-        Me.PAY_STATUSComboBox.Location = New System.Drawing.Point(106, 48)
-        Me.PAY_STATUSComboBox.Name = "PAY_STATUSComboBox"
-        Me.PAY_STATUSComboBox.Size = New System.Drawing.Size(128, 24)
-        Me.PAY_STATUSComboBox.TabIndex = 292
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(27, 51)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 17)
-        Me.Label2.TabIndex = 293
-        Me.Label2.Text = "สถานะหนี้"
-        '
         'frmFINEditList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(982, 653)
+        Me.ClientSize = New System.Drawing.Size(736, 531)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.btFind)
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmFINEditList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "แก้ไขใบแจ้งชำระ"
+        Me.Text = "สอบถามใบแจ้งชำระ"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()

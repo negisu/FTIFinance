@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmFINForm
+Partial Class frmFINRCForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,9 +23,9 @@ Partial Class frmFINForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.POST_CODETextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -167,6 +167,10 @@ Partial Class frmFINForm
         Me.TabPage7 = New System.Windows.Forms.TabPage()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.TabControl3 = New System.Windows.Forms.TabControl()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -189,6 +193,10 @@ Partial Class frmFINForm
         Me.TabPage8.SuspendLayout()
         Me.TabPage7.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.TabControl3.SuspendLayout()
+        Me.TabPage5.SuspendLayout()
+        Me.TabPage6.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'POST_CODETextBox2
@@ -688,12 +696,12 @@ Partial Class frmFINForm
         Me.DetailGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DetailGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DetailGridView.GridColor = System.Drawing.SystemColors.Control
-        Me.DetailGridView.Location = New System.Drawing.Point(12, 337)
+        Me.DetailGridView.Location = New System.Drawing.Point(0, 0)
         Me.DetailGridView.MultiSelect = False
         Me.DetailGridView.Name = "DetailGridView"
         Me.DetailGridView.RowHeadersVisible = False
         Me.DetailGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DetailGridView.Size = New System.Drawing.Size(1054, 142)
+        Me.DetailGridView.Size = New System.Drawing.Size(1048, 135)
         Me.DetailGridView.TabIndex = 236
         '
         'Label18
@@ -1131,11 +1139,11 @@ Partial Class frmFINForm
         Me.RCTRAN_NOLabel.AutoSize = True
         Me.RCTRAN_NOLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold)
         Me.RCTRAN_NOLabel.ForeColor = System.Drawing.Color.White
-        Me.RCTRAN_NOLabel.Location = New System.Drawing.Point(6, 33)
+        Me.RCTRAN_NOLabel.Location = New System.Drawing.Point(6, 6)
         Me.RCTRAN_NOLabel.Name = "RCTRAN_NOLabel"
-        Me.RCTRAN_NOLabel.Size = New System.Drawing.Size(53, 17)
+        Me.RCTRAN_NOLabel.Size = New System.Drawing.Size(90, 17)
         Me.RCTRAN_NOLabel.TabIndex = 279
-        Me.RCTRAN_NOLabel.Text = "ใบเสร็จ"
+        Me.RCTRAN_NOLabel.Text = "เอกสารอ้างอิง"
         Me.RCTRAN_NOLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel6
@@ -1452,7 +1460,7 @@ Partial Class frmFINForm
         Me.AddRCButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AddRCButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.AddRCButton.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.AddRCButton.Location = New System.Drawing.Point(265, 32)
+        Me.AddRCButton.Location = New System.Drawing.Point(265, 3)
         Me.AddRCButton.Name = "AddRCButton"
         Me.AddRCButton.Size = New System.Drawing.Size(20, 20)
         Me.AddRCButton.TabIndex = 303
@@ -1467,7 +1475,7 @@ Partial Class frmFINForm
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Button1.Location = New System.Drawing.Point(291, 32)
+        Me.Button1.Location = New System.Drawing.Point(291, 3)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(20, 20)
         Me.Button1.TabIndex = 294
@@ -1477,29 +1485,29 @@ Partial Class frmFINForm
         '
         Me.REF__RCGridView.AllowUserToAddRows = False
         Me.REF__RCGridView.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.REF__RCGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.REF__RCGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.REF__RCGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.REF__RCGridView.DefaultCellStyle = DataGridViewCellStyle2
-        Me.REF__RCGridView.Location = New System.Drawing.Point(9, 62)
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.REF__RCGridView.DefaultCellStyle = DataGridViewCellStyle14
+        Me.REF__RCGridView.Location = New System.Drawing.Point(9, 28)
         Me.REF__RCGridView.Margin = New System.Windows.Forms.Padding(2)
         Me.REF__RCGridView.Name = "REF__RCGridView"
         Me.REF__RCGridView.ReadOnly = True
         Me.REF__RCGridView.RowTemplate.Height = 24
-        Me.REF__RCGridView.Size = New System.Drawing.Size(302, 66)
+        Me.REF__RCGridView.Size = New System.Drawing.Size(302, 100)
         Me.REF__RCGridView.TabIndex = 293
         '
         'DataGridViewTextBoxColumn1
@@ -1548,8 +1556,8 @@ Partial Class frmFINForm
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle3.NullValue = "F2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.NullValue = "F2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle15
         Me.DataGridViewTextBoxColumn8.HeaderText = "*ราคา/หน่วย"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
@@ -1624,15 +1632,15 @@ Partial Class frmFINForm
         Me.FormTitleLabel.ForeColor = System.Drawing.Color.White
         Me.FormTitleLabel.Location = New System.Drawing.Point(3, 2)
         Me.FormTitleLabel.Name = "FormTitleLabel"
-        Me.FormTitleLabel.Size = New System.Drawing.Size(155, 24)
+        Me.FormTitleLabel.Size = New System.Drawing.Size(121, 24)
         Me.FormTitleLabel.TabIndex = 250
-        Me.FormTitleLabel.Text = "เอกสารใบแจ้งชำระ"
+        Me.FormTitleLabel.Text = "เอกสารใบเสร็จ"
         '
         'Panel10
         '
         Me.Panel10.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel10.BackColor = System.Drawing.Color.Aquamarine
+        Me.Panel10.BackColor = System.Drawing.Color.LightCoral
         Me.Panel10.BackgroundImage = Global.FTI.My.Resources.Resources.tabbg
         Me.Panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel10.Controls.Add(Me.NewButton)
@@ -1675,7 +1683,7 @@ Partial Class frmFINForm
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.Aquamarine
+        Me.Panel1.BackColor = System.Drawing.Color.LightCoral
         Me.Panel1.BackgroundImage = Global.FTI.My.Resources.Resources.tabbg
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel1.Controls.Add(Me.Label23)
@@ -1735,7 +1743,7 @@ Partial Class frmFINForm
         'Panel5
         '
         Me.Panel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel5.BackColor = System.Drawing.Color.Aquamarine
+        Me.Panel5.BackColor = System.Drawing.Color.LightCoral
         Me.Panel5.BackgroundImage = Global.FTI.My.Resources.Resources.tabbg
         Me.Panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel5.Controls.Add(Me.Label12)
@@ -1745,14 +1753,66 @@ Partial Class frmFINForm
         Me.Panel5.Size = New System.Drawing.Size(714, 22)
         Me.Panel5.TabIndex = 302
         '
-        'frmFINForm
+        'TabControl3
+        '
+        Me.TabControl3.Controls.Add(Me.TabPage5)
+        Me.TabControl3.Controls.Add(Me.TabPage6)
+        Me.TabControl3.Location = New System.Drawing.Point(12, 328)
+        Me.TabControl3.Name = "TabControl3"
+        Me.TabControl3.SelectedIndex = 0
+        Me.TabControl3.Size = New System.Drawing.Size(1056, 161)
+        Me.TabControl3.TabIndex = 303
+        '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.DetailGridView)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage5.Size = New System.Drawing.Size(1048, 135)
+        Me.TabPage5.TabIndex = 0
+        Me.TabPage5.Text = "TabPage5"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'TabPage6
+        '
+        Me.TabPage6.Controls.Add(Me.DataGridView1)
+        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage6.Size = New System.Drawing.Size(1048, 135)
+        Me.TabPage6.TabIndex = 1
+        Me.TabPage6.Text = "TabPage6"
+        Me.TabPage6.UseVisualStyleBackColor = True
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridView1.Location = New System.Drawing.Point(8, 6)
+        Me.DataGridView1.MultiSelect = False
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.DataGridView1.Size = New System.Drawing.Size(741, 123)
+        Me.DataGridView1.TabIndex = 237
+        '
+        'frmFINRCForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(249, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.MistyRose
         Me.BackgroundImage = Global.FTI.My.Resources.Resources.BGs
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1080, 661)
+        Me.Controls.Add(Me.TabControl3)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.DETAIL)
         Me.Controls.Add(Me.INNER_NOTETextBox)
@@ -1764,14 +1824,13 @@ Partial Class frmFINForm
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
-        Me.Controls.Add(Me.DetailGridView)
         Me.Controls.Add(Me.PrintButton)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSave)
         Me.MinimumSize = New System.Drawing.Size(1096, 622)
-        Me.Name = "frmFINForm"
+        Me.Name = "frmFINRCForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = " บันทึกใบแจ้งชำระ"
+        Me.Text = " บันทึกใบเสร็จ"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1809,6 +1868,10 @@ Partial Class frmFINForm
         Me.TabPage7.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.TabControl3.ResumeLayout(False)
+        Me.TabPage5.ResumeLayout(False)
+        Me.TabPage6.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1954,4 +2017,8 @@ Partial Class frmFINForm
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents DIV_NAMEComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents DIV_CODETextBox As System.Windows.Forms.TextBox
+    Friend WithEvents TabControl3 As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
 End Class

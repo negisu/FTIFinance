@@ -21,7 +21,7 @@
             query = " SELECT TOP 1000 MB_COMP_PERSON.COMP_PERSON_NAME_TH, PN_HEAD.MB_MEMBER_CODE, COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT "
         End If
         If isDoc.Checked Then
-            query = " SELECT TOP 1000 PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE ,SU_DIVISION.DIV_NAME,MB_COMP_PERSON.COMP_PERSON_NAME_TH , COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT ,SUM(PN_DETAIL.BAL_AMT) as SUM_BAL_AMT,SUM(PN_DETAIL.PAY_AMT) as SUM_PAY_AMT ,SUM(PN_DETAIL.SUM_TOTAL) as SUM_SUM_TOTAL "
+            query = " SELECT TOP 1000 PN_HEAD.TRAN_NO,PN_HEAD.TRAN_DATE ,SU_DIVISION.DIV_NAME ,MB_COMP_PERSON.COMP_PERSON_NAME_TH , COUNT(IV_SUB_SECTION.SUB_SECTION_CODE) AS CNT ,SUM(PN_DETAIL.BAL_AMT) as SUM_BAL_AMT,SUM(PN_DETAIL.PAY_AMT) as SUM_PAY_AMT ,SUM(PN_DETAIL.SUM_TOTAL) as SUM_SUM_TOTAL "
         End If
 
 
@@ -30,6 +30,7 @@
         query &= " FROM PN_DETAIL INNER JOIN IV_SUB_SECTION ON IV_SUB_SECTION.SUB_SECTION_CODE = PN_DETAIL.SUB_SECTION_CODE INNER JOIN  PN_HEAD ON PN_DETAIL.TRAN_NO = PN_HEAD.TRAN_NO "
         query &= " LEFT JOIN MB_COMP_PERSON ON PN_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
         query &= " LEFT JOIN SU_DIVISION ON PN_HEAD.DIV_CODE = SU_DIVISION.DIV_CODE "
+
         If IsAR.Checked Then
             query &= " WHERE (PN_HEAD.MB_MEMBER_CODE LIKE @p0 "
             query &= " OR MB_COMP_PERSON.COMP_PERSON_NAME_TH LIKE @p0 "
@@ -105,32 +106,11 @@
         PAY_STATUSComboBox.SelectedIndex = 0
         getSU_DIVISION()
         DIV_NAMEComboBox.SelectedIndex = 0
-    End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        Dim param As New Dictionary(Of String, String)
-
-        param.Add("FROM_DATE", FROM_DATEPicker.Value.ToString("MM/dd/yyyy"))
-        param.Add("TO_DATE", TO_DATEPicker.Value.ToString("MM/dd/yyyy"))
-
-        If PermissionHelper.isAdmin() Then
-            param.Add("DIV_CODE", "%")
-        Else
-            param.Add("DIV_CODE", user_div)
+        If Not PermissionHelper.isAdmin() Then
+            DIVGroupBox.Visible = False
         End If
-
-        param.Add("USER_NAME", user_name)
-
-        Dim f As New frmMainReports
-        f.reportPath = getParameters(5, "PN_SUB_SECTION_CODE_OVERALL")
-        f.reportParameters = param
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            '
-        End If
-        f.Dispose()
-        f = Nothing
     End Sub
-
 
     Private Sub TRAN_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles FROM_DATEPicker.ValueChanged
         If Not FROM_DATEPicker.IsHandleCreated Then
@@ -141,7 +121,7 @@
         TO_DATEPicker.MinDate = FROM_DATEPicker.Value
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As EventArgs)
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
 
         If DataGridView1.SelectedRows.Count = 0 Then Return
         Dim SEARCH_CODE_LIST As New List(Of String)
@@ -151,16 +131,20 @@
                 SEARCH_CODE_LIST.Add("'" & item.Cells("SUB_SECTION_CODE").Value.ToString() & "'")
             ElseIf IsAR.Checked Then
                 SEARCH_CODE_LIST.Add("'" & item.Cells("MB_MEMBER_CODE").Value.ToString() & "'")
+            Else
+                SEARCH_CODE_LIST.Add("'" & item.Cells("TRAN_NO").Value.ToString() & "'")
             End If
         Next
 
         Dim parameters As New Dictionary(Of String, Object)
-        Dim query As String = " SELECT PN_HEAD.DIV_CODE, PN_HEAD.TRAN_NO, PN_HEAD.TRAN_DATE, PN_DETAIL.BAL_AMT, MB_COMP_PERSON.COMP_PERSON_NAME_TH, PN_DETAIL.NOTE "
+        Dim query As String = " SELECT PN_HEAD.TRAN_NO, PN_HEAD.TRAN_DATE, PN_DETAIL.BAL_AMT, MB_COMP_PERSON.COMP_PERSON_NAME_TH, PN_DETAIL.NOTE "
         query &= " FROM PN_DETAIL INNER JOIN IV_SUB_SECTION ON IV_SUB_SECTION.SUB_SECTION_CODE = PN_DETAIL.SUB_SECTION_CODE INNER JOIN  PN_HEAD ON PN_DETAIL.TRAN_NO = PN_HEAD.TRAN_NO LEFT JOIN MB_COMP_PERSON ON PN_HEAD.AR_CODE = MB_COMP_PERSON.COMP_PERSON_CODE LEFT JOIN MB_PRENAME ON MB_COMP_PERSON.PREN_CODE = MB_PRENAME.PRENAME_CODE "
         If isSubSection.Checked Then
             query &= " WHERE IV_SUB_SECTION.SUB_SECTION_CODE IN (" & String.Join(",", SEARCH_CODE_LIST) & ") "
-        Else
+        ElseIf IsAR.Checked Then
             query &= " WHERE PN_HEAD.MB_MEMBER_CODE IN (" & String.Join(",", SEARCH_CODE_LIST) & ") "
+        Else
+            query &= " WHERE PN_HEAD.TRAN_NO IN (" & String.Join(",", SEARCH_CODE_LIST) & ") "
         End If
 
         addFilterQuery(parameters, query)
@@ -173,19 +157,17 @@
         For i As Integer = 0 To DataGridView2.ColumnCount - 1
             DataGridView2.Columns(i).ReadOnly = True
         Next
-        DataGridView2.Columns("DIV_CODE").HeaderText = "รหัสแผนก"
         DataGridView2.Columns("TRAN_DATE").HeaderText = "วันที่ทำรายการ"
         DataGridView2.Columns("TRAN_NO").HeaderText = "เลขที่เอกสาร"
         DataGridView2.Columns("BAL_AMT").HeaderText = "ยอดค้างชำระ"
         DataGridView2.Columns("COMP_PERSON_NAME_TH").HeaderText = "ชื่อลูกหนี้"
         DataGridView2.Columns("NOTE").HeaderText = "ชื่อรายการ"
 
-        DataGridView2.Columns("DIV_CODE").DisplayIndex = 0
-        DataGridView2.Columns("TRAN_DATE").DisplayIndex = 2
-        DataGridView2.Columns("TRAN_NO").DisplayIndex = 3
-        DataGridView2.Columns("BAL_AMT").DisplayIndex = 4
-        DataGridView2.Columns("COMP_PERSON_NAME_TH").DisplayIndex = 5
-        DataGridView2.Columns("NOTE").DisplayIndex = 1
+        DataGridView2.Columns("TRAN_DATE").DisplayIndex = 1
+        DataGridView2.Columns("TRAN_NO").DisplayIndex = 2
+        DataGridView2.Columns("BAL_AMT").DisplayIndex = 3
+        DataGridView2.Columns("COMP_PERSON_NAME_TH").DisplayIndex = 4
+        DataGridView2.Columns("NOTE").DisplayIndex = 0
 
 
         DataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
@@ -194,6 +176,10 @@
     End Sub
     Private Sub addFilterQuery(ByRef parameters As Dictionary(Of String, Object), ByRef query As String)
         If PermissionHelper.isAdmin() Then
+            If IsDIV.Checked Then
+                query &= " AND IV_SUB_SECTION.DIV_CODE_INC = @p1 "
+                parameters.Add("@p1", DIV_CODETextBox.Text)
+            End If
         Else
             query &= " AND IV_SUB_SECTION.DIV_CODE_INC = @p1 "
             parameters.Add("@p1", user_div)
@@ -213,9 +199,10 @@
                 query &= " AND (PN_HEAD.TRAN_TYPE = 'R1') "
             End If
         End If
+        'query &= " AND COMPLETE_FLAG IS NULL "
         If Not DOC_STATUSComboBox.SelectedIndex = 0 Then
             If DOC_STATUSComboBox.SelectedIndex = 1 Then
-                query &= " AND CANCEL_FLAG IS NULL "
+                query &= " AND CANCEL_FLAG = 'N' "
             ElseIf DOC_STATUSComboBox.SelectedIndex = 2 Then
                 query &= " AND CANCEL_FLAG = 'A' "
             End If
@@ -229,7 +216,7 @@
             End If
         End If
 
-        query &= " AND COMPLETE_FLAG IS NULL "
+
     End Sub
     Private Sub PreviewReportButton_Click(sender As Object, e As EventArgs) Handles PreviewReportButton.Click
         If DataGridView1.SelectedRows.Count = 0 Then Return
@@ -241,6 +228,9 @@
 
         If PermissionHelper.isAdmin() Then
             param.Add("DIV_CODE", "%")
+            If IsDIV.Checked Then
+                param.Add("DIV_CODE", DIV_CODETextBox.Text)
+            End If
         Else
             param.Add("DIV_CODE", user_div)
         End If
@@ -259,9 +249,10 @@
         For Each item As DataGridViewRow In DataGridView1.SelectedRows
             If isSubSection.Checked Then
                 SEARCH_CODE_LIST.Add(item.Cells("SUB_SECTION_CODE").Value.ToString())
+
                 attrName = "PN_SUB_SECTION_CODE_OVERALL"
-            Else
-                SEARCH_CODE_LIST.Add(item.Cells("MEMBER_CODE").Value.ToString())
+            ElseIf IsAR.Checked Then
+                SEARCH_CODE_LIST.Add(item.Cells("MB_MEMBER_CODE").Value.ToString())
                 attrName = "PN_AR_CODE_OVERALL"
             End If
         Next
@@ -279,7 +270,7 @@
 
     End Sub
 
-    Private Sub ExportProcessingButton_Click(sender As Object, e As EventArgs) Handles ExportProcessingButton.Click
+    Private Sub ExportProcessingButton_Click(sender As Object, e As EventArgs)
         Dim headers = (From header As DataGridViewColumn In DataGridView2.Columns.Cast(Of DataGridViewColumn)() _
               Select header.HeaderText).ToArray
         Dim rows = From row As DataGridViewRow In DataGridView2.Rows.Cast(Of DataGridViewRow)() _
@@ -299,7 +290,7 @@
     End Sub
 
     Private Sub TO_DATEPicker_ValueChanged(sender As Object, e As EventArgs) Handles TO_DATEPicker.ValueChanged
-        If Not FROM_DATEPicker.IsHandleCreated Then
+        If Not TO_DATEPicker.IsHandleCreated Then
             Return
         Else
             TO_DATEPicker.Value = New Date(TO_DATEPicker.Value.Year, TO_DATEPicker.Value.Month, TO_DATEPicker.Value.Day, 23, 59, 59)
@@ -315,5 +306,9 @@
 
     Private Sub DIV_NAMEComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DIV_NAMEComboBox.SelectedIndexChanged
         DIV_CODETextBox.Text = DIV_NAMEComboBox.SelectedValue.ToString()
+    End Sub
+
+    Private Sub IsDIV_CheckedChanged(sender As Object, e As EventArgs) Handles IsDIV.CheckedChanged
+        DIV_NAMEComboBox.Enabled = IsDIV.Checked
     End Sub
 End Class

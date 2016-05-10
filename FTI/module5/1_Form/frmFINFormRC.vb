@@ -1,4 +1,4 @@
-﻿Public Class frmFINForm
+﻿Public Class frmFINFormRC
     Public ACTION As FORM_ACTION
     Public TRAN_TYPE As String
     Dim MB_COMP_PERSON_ADDRESS As DataTable
@@ -106,25 +106,6 @@
     '==============================================================================================================================================='
     '==============================================================================================================================================='
     Private Sub frmFINPaymentNotice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If TRAN_TYPE = "I1" Then
-            Me.Text = "บันทึกใบแจ้งหนี้"
-            FormTitleLabel.Text = "เอกสารใบแจ้งหนี้"
-            Me.BackColor = Color.LavenderBlush
-            Panel10.BackColor = Color.Plum
-            Panel1.BackColor = Color.Plum
-        ElseIf TRAN_TYPE = "I2" Then
-            Me.Text = "บันทึกใบลดยอดใบแจ้งหนี้"
-            FormTitleLabel.Text = "เอกสารใบลดยอดใบแจ้งหนี้"
-            Me.BackColor = Color.Ivory
-            Panel10.BackColor = Color.PaleGoldenrod
-            Panel1.BackColor = Color.PaleGoldenrod
-        ElseIf TRAN_TYPE = "R1" Then
-            Me.Text = "บันทึกใบเสร็จ"
-            FormTitleLabel.Text = "บันทึกใบเสร็จ"
-            Me.BackColor = Color.MistyRose
-            Panel10.BackColor = Color.Salmon
-            Panel1.BackColor = Color.Salmon
-        End If
         initForm()
         loadForm()
         If ACTION = FORM_ACTION.Preview Then
@@ -178,16 +159,15 @@
 
         Else
             TRAN_NO = TRAN_NOLabel.Text
+            getHEAD()
+            getDETAIL()
             Try
-                getHEAD()
-                getDETAIL()
                 getADDRESS()
-                getRefRC()
             Catch
             End Try
         End If
 
-
+        getRefRC()
         calculateSum()
         AR_NAMETextBox.Select()
         If Not PermissionHelper.isAdmin() Then lockNonAdminInput()
@@ -225,7 +205,6 @@
 
         With DetailGridView
             .Columns("SEQ").Visible = True
-            .Columns("BUDGET_YEAR").Visible = True
             .Columns("SUB_SECTION_CODE").Visible = True
             .Columns("NOTE").Visible = True
             .Columns("QTY").Visible = True
@@ -239,7 +218,6 @@
             .Columns("SUM_TOTAL").Visible = True
 
             .Columns("SEQ").HeaderText = "ลำดับ"
-            .Columns("BUDGET_YEAR").HeaderText = "ปี"
             .Columns("SUB_SECTION_CODE").HeaderText = "รหัส"
             .Columns("NOTE").HeaderText = "ชื่อ"
             .Columns("NOTE_EN").HeaderText = "Name"
@@ -255,7 +233,6 @@
             .Columns("BAL_AMT").HeaderText = "ยอดคงค้าง"
             .Columns("PAY_AMT").HeaderText = "ยอดชำระ"
 
-            .Columns("BUDGET_YEAR").DefaultCellStyle.BackColor = Color.White
             .Columns("QTY").DefaultCellStyle.BackColor = Color.White
             .Columns("NOTE").DefaultCellStyle.BackColor = Color.White
             .Columns("NOTE_EN").DefaultCellStyle.BackColor = Color.White
@@ -263,45 +240,26 @@
             .Columns("DISC_AMT_INC_VAT").DefaultCellStyle.BackColor = Color.White
 
             .Columns("SEQ").DisplayIndex = 1
-            .Columns("BUDGET_YEAR").DisplayIndex = 2
-            .Columns("SUB_SECTION_CODE").DisplayIndex = 3
-            .Columns("NOTE").DisplayIndex = 4
-            .Columns("NOTE_EN").DisplayIndex = 5
-            .Columns("DIV_NAME").DisplayIndex = 6
-            .Columns("QTY").DisplayIndex = 7
-            .Columns("U_PRICE").DisplayIndex = 8
-            .Columns("U_PRICE_INC_VAT").DisplayIndex = 9
-            .Columns("NET_U_PRICE_INC_VAT").DisplayIndex = 10
-            .Columns("DISC_AMT").DisplayIndex = 11
-            .Columns("DISC_AMT_INC_VAT").DisplayIndex = 12
-            .Columns("TOTAL").DisplayIndex = 13
-            .Columns("TOTAL_VAT").DisplayIndex = 14
-            .Columns("SUM_TOTAL").DisplayIndex = 15
+            .Columns("SUB_SECTION_CODE").DisplayIndex = 2
+            .Columns("NOTE").DisplayIndex = 3
+            .Columns("NOTE_EN").DisplayIndex = 4
+            .Columns("DIV_NAME").DisplayIndex = 5
+            .Columns("QTY").DisplayIndex = 6
+            .Columns("U_PRICE").DisplayIndex = 7
+            .Columns("U_PRICE_INC_VAT").DisplayIndex = 8
+            .Columns("NET_U_PRICE_INC_VAT").DisplayIndex = 9
+            .Columns("DISC_AMT").DisplayIndex = 10
+            .Columns("DISC_AMT_INC_VAT").DisplayIndex = 11
+            .Columns("TOTAL").DisplayIndex = 12
+            .Columns("TOTAL_VAT").DisplayIndex = 13
+            .Columns("SUM_TOTAL").DisplayIndex = 14
 
-            .Columns("BUDGET_YEAR").ReadOnly = False
             .Columns("QTY").ReadOnly = False
             .Columns("NOTE_EN").ReadOnly = False
             .Columns("NOTE_EN").ReadOnly = False
             .Columns("U_PRICE_INC_VAT").ReadOnly = False
             .Columns("DISC_AMT_INC_VAT").ReadOnly = False
         End With
-
-        If TRAN_TYPE = "I2" Then
-            Dim gridCheckbox As New DataGridViewCheckBoxColumn
-            gridCheckbox.Name = "SELECTED"
-            gridCheckbox.HeaderText = "เลือก"
-            DetailGridView.Columns.Add(gridCheckbox)
-        End If
-
-        If TRAN_TYPE = "R1" Then
-            DetailGridView.Columns("PN_TRAN_NO").Visible = True
-            DetailGridView.Columns("IV_TRAN_NO").Visible = True
-            DetailGridView.Columns("BAL_AMT").Visible = True
-            DetailGridView.Columns("PAY_AMT").Visible = True
-            DetailGridView.Columns("PN_TRAN_NO").HeaderText = "เลขที่ใบแจ้งชำระ"
-            DetailGridView.Columns("IV_TRAN_NO").HeaderText = "เลขที่ใบแจ้งหนี้"
-        End If
-
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If validateFIN_PN_IV_DETAIL() And validateAddress() Then
@@ -827,6 +785,10 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
         End Try
 
+        If Not String.IsNullOrEmpty(HEADDataTable.Rows(0).Item("RC_TRAN_NO").ToString()) Then
+            getRefRC()
+        End If
+
         TopUpNoteTextBox.Text = HEADDataTable.Rows(0).Item("TOP_DISC_NOTE").ToString()
         TopUpTextBox.Text = HEADDataTable.Rows(0).Item("TOP_DISC_AMT").ToString()
         CR_TERMTextBox.Text = HEADDataTable.Rows(0).Item("CR_TERM").ToString()
@@ -843,24 +805,24 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
     End Sub
     Private Sub getRefRC()
 
-        'Dim query As String = "SELECT * FROM FIN_PN_IV_HEAD  WHERE PN_TRAN_NO = @p0 AND TRAN_TYPE = 'R1' "
-        'Dim parameters As New Dictionary(Of String, Object)
-        'parameters.Add("@p0", TRAN_NO)
-        'REF_RCDatatable = fillWebSQL(query, parameters, "FIN_PN_IV_HEAD")
-        'REF__RCGridView.DataSource = REF_RCDatatable
+        Dim query As String = "SELECT * FROM FIN_PN_IV_HEAD  WHERE PN_TRAN_NO = @p0 AND TRAN_TYPE = 'R1' "
+        Dim parameters As New Dictionary(Of String, Object)
+        parameters.Add("@p0", TRAN_NO)
+        REF_RCDatatable = fillWebSQL(query, parameters, "FIN_PN_IV_HEAD")
+        REF__RCGridView.DataSource = REF_RCDatatable
 
-        'For i As Integer = 0 To REF__RCGridView.ColumnCount - 1
-        '    With REF__RCGridView.Columns(i)
-        '        .Visible = False
-        '        .SortMode = DataGridViewColumnSortMode.NotSortable
-        '        .ReadOnly = True
-        '    End With
-        'Next
-        'REF__RCGridView.Columns("TRAN_NO").Visible = True
-        'REF__RCGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-        'REF__RCGridView.AutoResizeColumns()
-        'REF__RCGridView.Refresh()
-        'REF__RCGridView.Update()
+        For i As Integer = 0 To REF__RCGridView.ColumnCount - 1
+            With REF__RCGridView.Columns(i)
+                .Visible = False
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .ReadOnly = True
+            End With
+        Next
+        REF__RCGridView.Columns("TRAN_NO").Visible = True
+        REF__RCGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        REF__RCGridView.AutoResizeColumns()
+        REF__RCGridView.Refresh()
+        REF__RCGridView.Update()
     End Sub
     Private Sub getADDRESS()
         BRANCH_NAME_THTextBox.Text = HEADDataTable.Rows(0).Item("BRANCH_NAME_TH").ToString()
@@ -902,7 +864,6 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
 
         Dim pn As New FIN_PN_IV_HEAD
         pn.OU_CODE = OU_CODE
-
         If isNew Then
             pn.DIV_CODE = user_div
             pn.CR_BY = user_name
@@ -981,9 +942,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         pn.CANCEL_FLAG = "N"
         pn.PROG_ID = Me.Name
         QueryHelper.insertModel("FIN_PN_IV_HEAD", pn)
-        If TRAN_TYPE = "R1" Then
-            updateRC_TRAN_NOPNAndIV("")
-        End If
+
+
+
         getHEADDatatable()
 
 
@@ -1001,9 +962,6 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         End Try
 
         For Each row As DataRow In DETAILDataTable.Rows
-            If TRAN_TYPE.Contains("R") Then
-                row.Item("RC_TRAN_NO") = TRAN_NO
-            End If
             If String.IsNullOrEmpty(row.Item("TRAN_NO").ToString()) Then
                 row.Item("TRAN_NO") = TRAN_NO
                 Dim pnD As FIN_PN_IV_DETAIL = CType(ModelHelper.convertDataRowToModel(New FIN_PN_IV_DETAIL, row), FIN_PN_IV_DETAIL)
@@ -1178,19 +1136,9 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             param.Add("TRAN_NO", TRAN_NO)
             Dim TRAN_NAME_TH As String = String.Empty
             Dim TRAN_NAME_EN As String = String.Empty
-            If TRAN_TYPE = "P1" Then
-                TRAN_NAME_TH = "ใบแจ้งชำระ"
-                TRAN_NAME_EN = "Payment Notice"
-            ElseIf TRAN_TYPE = "I1" Then
-                TRAN_NAME_TH = "ใบแจ้งหนี้"
-                TRAN_NAME_EN = "Invoice"
-            ElseIf TRAN_TYPE = "I2" Then
-                TRAN_NAME_TH = "ใบลดหนี้"
-                TRAN_NAME_EN = "Credit note"
-            ElseIf TRAN_TYPE = "R1" Then
-                TRAN_NAME_TH = "ใบเสร็จ"
-                TRAN_NAME_EN = "Receipt"
-            End If
+
+            TRAN_NAME_TH = "ใบเสร็จ"
+            TRAN_NAME_EN = "Receipt"
             param.Add("TRAN_NAME_TH", TRAN_NAME_TH)
             param.Add("TRAN_NAME_EN", TRAN_NAME_EN)
 
@@ -1456,6 +1404,7 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         CR_TERMTextBox.Text = (TRAN_DATEPicker.Value - DUE_DATEPicker.Value).ToString("dd")
     End Sub
 
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs)
 
         If (MessageBox.Show("ข้อมูลรายการจะถูกล้าง คุณต้องการที่จะดำเนินการใช่หรือไม่?", String.Empty, MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes) Then
@@ -1481,6 +1430,55 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
             Me.Dispose()
             fPN.Show()
         End If
+    End Sub
+
+    Private Sub AddRCButton_Click(sender As Object, e As EventArgs)
+        Dim f As New frmFINEditList
+        f.TRAN_TYPE = "%"
+        f.Action = FORM_ACTION.SelectDoc
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+            Dim TRAN_NO_LIST As New List(Of String)
+            For Each item As DataGridViewRow In f.DataGridView1.SelectedRows
+                TRAN_NO_LIST.Add("'" & item.Cells("TRAN_NO").Value.ToString() & "'")
+            Next
+            addDetailFromManyRefDocs(String.Join(",", TRAN_NO_LIST))
+        End If
+        f.Dispose()
+        f = Nothing
+
+
+    End Sub
+
+    Private Sub addDetailFromManyRefDocs(docListString As String)
+        Dim query As String = "SELECT * FROM FIN_PN_IV_DETAIL INNER JOIN IV_SUB_SECTION ON FIN_PN_IV_DETAIL.SUB_SECTION_CODE = IV_SUB_SECTION.SUB_SECTION_CODE INNER JOIN SU_DIVISION ON IV_SUB_SECTION.DIV_CODE_INC=SU_DIVISION.DIV_CODE  WHERE TRAN_NO IN (" & docListString & ") ORDER BY TRAN_NO, SEQ "
+        Dim parameters As New Dictionary(Of String, Object)
+        DETAILDataTable.Merge(fillWebSQL(query, parameters, "FIN_PN_IV_DETAIL"))
+        DetailGridView.DataSource = DETAILDataTable
+        DetailGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        DetailGridView.AutoResizeColumns()
+        DetailGridView.Refresh()
+        DetailGridView.Update()
+
+        query = "SELECT * FROM FIN_PN_IV_HEAD  WHERE TRAN_NO IN (" & docListString & ") ORDER BY TRAN_NO"
+        REF_RCDatatable.Merge(fillWebSQL(query, parameters, "FIN_PN_IV_HEAD"))
+        REF__RCGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        REF__RCGridView.AutoResizeColumns()
+        REF__RCGridView.Refresh()
+        REF__RCGridView.Update()
+
+        For Each item As DataRow In DETAILDataTable.Rows
+            If item.Item("TRAN_NO").ToString().Contains("P") Then
+                item.Item("PN_TRAN_NO") = item.Item("TRAN_NO")
+            ElseIf item.Item("TRAN_NO").ToString().Contains("I") Then
+                item.Item("IV_TRAN_NO") = item.Item("TRAN_NO")
+            End If
+        Next
+
+        calculateSum()
+
+
+
     End Sub
 
     Private Sub updateRC_TRAN_NOPNAndIV(docListString As String)
@@ -1512,9 +1510,13 @@ ByVal e As DataGridViewDataErrorEventArgs) Handles DetailGridView.DataError
         'FIN_LOG.LOG_TEXT = 
     End Sub
     Private Sub getSU_DIVISION()
-        DIV_NAMEComboBox.DataSource = QueryHelper.selectStar("FIN_PN_MAIN_TYPE").DefaultView
-        DIV_NAMEComboBox.DisplayMember = "MAIN_TYPE_DESC"
-        DIV_NAMEComboBox.ValueMember = "MAIN_TYPE"
+        DIV_NAMEComboBox.DataSource = QueryHelper.selectStar("PN_SUB_TYPE").DefaultView
+        DIV_NAMEComboBox.DisplayMember = "SUB_TYPE_DESC"
+        DIV_NAMEComboBox.ValueMember = "SUB_TYPE"
         DIV_CODETextBox.Text = DIV_NAMEComboBox.SelectedValue.ToString()
+    End Sub
+
+    Private Sub AddRefDocButton_Click(sender As Object, e As EventArgs) Handles AddRefDocButton.Click
+
     End Sub
 End Class

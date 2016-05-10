@@ -19,16 +19,6 @@
         openFinanceForm("I1", FORM_ACTION.Add)
     End Sub
 
-    Private Sub PNRequestInvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PNRequestInvoiceToolStripMenuItem.Click
-        Dim f As New frmFINPaymentNoticeInvoicePassRequestApprovalList
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-
-        End If
-
-        f.Dispose()
-        f = Nothing
-    End Sub
-
     Private Sub PNRequestCancelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PNRequestCancelToolStripMenuItem.Click
         Dim f As New frmFINPaymentNoticeCancelRequestApprovalList
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -102,15 +92,6 @@
         End If
     End Sub
 
-    Private Sub InvoicePassToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InvoicePassToolStripMenuItem.Click
-        Dim f As New frmFINPaymentNoticeInvoicePassRequestList
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-
-        End If
-        f.Dispose()
-        f = Nothing
-    End Sub
-
     Private Sub EditIVToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditIVToolStripMenuItem.Click
         openFinanceForm("I1", FORM_ACTION.Edit)
     End Sub
@@ -128,20 +109,20 @@
     Private Sub ลดหนToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ลดหนToolStripMenuItem.Click
         openFinanceForm("I2", FORM_ACTION.Edit)
     End Sub
-
-    Private Sub คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles คำรองออกใบแจงหนจากแผนกตางๆToolStripMenuItem.Click
-        Dim f As New frmFINPaymentNoticeInvoicePassRequestApprovalListAccount
-        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-
-        End If
-
-        f.Dispose()
-        f = Nothing
-    End Sub
-
-
     Private Sub AddRCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddRCToolStripMenuItem.Click
-        openFinanceForm("R1", FORM_ACTION.Add)
+
+        If fRC Is Nothing Then
+            fRC = New frmFINRCForm
+            fRC.TRAN_TYPE = "R1"
+            fRC.MdiParent = Me.MdiParent
+            fRC.WindowState = FormWindowState.Maximized
+            fRC.Show()
+        Else
+            'focus opening form
+            fRC.Show()
+            fRC.Focus()
+        End If
+            'openFinanceForm("R1", FORM_ACTION.Add)
     End Sub
 
     Public Sub openFinanceForm(TRAN_TYPE As String, ACTION As FORM_ACTION)
@@ -196,5 +177,14 @@
 
     Private Sub EditRCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditRCToolStripMenuItem.Click
         openFinanceForm("R1", FORM_ACTION.Edit)
+    End Sub
+
+    Private Sub ตามรหสสนคาToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ตามรหสสนคาToolStripMenuItem.Click
+        Dim f As New frmFINOldFashionedReport
+
+        f.MdiParent = Me.MdiParent
+        'f.WindowState = FormWindowState.Maximized
+        f.Show()
+        f.Focus()
     End Sub
 End Class

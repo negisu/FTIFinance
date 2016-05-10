@@ -1102,10 +1102,34 @@
     <Compile Include="module4\frmTrainingSettingCourse.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="module5\4_Report\frmFINReportDaily.Designer.vb">
-      <DependentUpon>frmFINReportDaily.vb</DependentUpon>
+    <Compile Include="module5\1_Form\frmFINFormRC.Designer.vb">
+      <DependentUpon>frmFINFormRC.vb</DependentUpon>
     </Compile>
-    <Compile Include="module5\4_Report\frmFINReportDaily.vb">
+    <Compile Include="module5\1_Form\frmFINFormRC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\1_Form\frmFINRCForm.Designer.vb">
+      <DependentUpon>frmFINRCForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\1_Form\frmFINRCForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\3_Cancel\frmFINCancelDIV.Designer.vb">
+      <DependentUpon>frmFINCancelDIV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\3_Cancel\frmFINCancelDIV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\4_Report\frmFINOldFashionedReport - Copy.Designer.vb">
+      <DependentUpon>frmFINOldFashionedReport - Copy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\4_Report\frmFINOldFashionedReport - Copy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module5\4_Report\frmFINOldFashionedReport.Designer.vb">
+      <DependentUpon>frmFINOldFashionedReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="module5\4_Report\frmFINOldFashionedReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="module5\frmBank.Designer.vb">
@@ -1228,22 +1252,10 @@
     <Compile Include="module5\frmFINNewInvoice.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="module5\frmFINAddress.Designer.vb">
-      <DependentUpon>frmFINAddress.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\frmFINAddress.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="module5\frmFINAR_MEMBER.Designer.vb">
       <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
     </Compile>
     <Compile Include="module5\frmFINAR_MEMBER.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="module5\frmFINReport.Designer.vb">
-      <DependentUpon>frmFINReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\frmFINReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="module5\frmFINSubSectionRemain.Designer.vb">
@@ -1252,38 +1264,17 @@
     <Compile Include="module5\frmFINSubSectionRemain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="module5\frmFINTestFunction.Designer.vb">
-      <DependentUpon>frmFINTestFunction.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\frmFINTestFunction.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="module5\Helper\DocumentNumberHelper.vb" />
     <Compile Include="module5\Helper\ModelHelper.vb" />
     <Compile Include="module5\Helper\NumberHelper.vb" />
     <Compile Include="module5\Helper\PermissionHelper.vb" />
     <Compile Include="module5\Helper\QueryHelper.vb" />
+    <Compile Include="module5\Model\DOC_TYPE.vb" />
     <Compile Include="module5\Model\ENUM.vb" />
+    <Compile Include="module5\Model\FIN_LOG.vb" />
     <Compile Include="module5\Model\FN_MASTER_RECEIPT.vb" />
-    <Compile Include="module5\Model\IV_ADDRESS.vb" />
-    <Compile Include="module5\Model\IV_DETAIL.vb" />
-    <Compile Include="module5\Model\IV_HEAD.vb" />
-    <Compile Include="module5\Model\PN_ADDRESS.vb" />
-    <Compile Include="module5\Model\PN_DETAIL.vb" />
+    <Compile Include="module5\Model\Models.vb" />
     <Compile Include="module5\Model\DOC_RUNNING.vb" />
-    <Compile Include="module5\Model\PN_HEAD.vb" />
-    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.Designer.vb">
-      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.Designer.vb">
-      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="module5\1_Form\frmFINForm.Designer.vb">
       <DependentUpon>frmFINForm.vb</DependentUpon>
     </Compile>
@@ -1342,12 +1333,6 @@
       <DependentUpon>frmFINEditList.vb</DependentUpon>
     </Compile>
     <Compile Include="module5\2_Search\frmFINEditList.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalList.Designer.vb">
-      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalList.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="module5\frmFINDocumentList.Designer.vb">
@@ -1782,8 +1767,20 @@
     <EmbeddedResource Include="module4\frmTrainingSettingCourse.resx">
       <DependentUpon>frmTrainingSettingCourse.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module5\4_Report\frmFINReportDaily.resx">
-      <DependentUpon>frmFINReportDaily.vb</DependentUpon>
+    <EmbeddedResource Include="module5\1_Form\frmFINFormRC.resx">
+      <DependentUpon>frmFINFormRC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\1_Form\frmFINRCForm.resx">
+      <DependentUpon>frmFINRCForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\3_Cancel\frmFINCancelDIV.resx">
+      <DependentUpon>frmFINCancelDIV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\4_Report\frmFINOldFashionedReport - Copy.resx">
+      <DependentUpon>frmFINOldFashionedReport - Copy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module5\4_Report\frmFINOldFashionedReport.resx">
+      <DependentUpon>frmFINOldFashionedReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmBank.resx">
       <DependentUpon>frmBank.vb</DependentUpon>
@@ -1793,9 +1790,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmBankBranch.resx">
       <DependentUpon>frmBankBranch.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="module5\frmFINAddress.resx">
-      <DependentUpon>frmFINAddress.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINCalculateFee.resx">
       <DependentUpon>frmFINCalculateFee.vb</DependentUpon>
@@ -1851,14 +1845,8 @@
     <EmbeddedResource Include="module5\frmFINAR_MEMBER.resx">
       <DependentUpon>frmFINAR_MEMBER.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module5\frmFINReport.resx">
-      <DependentUpon>frmFINReport.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINSubSectionRemain.resx">
       <DependentUpon>frmFINSubSectionRemain.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="module5\frmFINTestFunction.resx">
-      <DependentUpon>frmFINTestFunction.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\1_Form\frmFINForm.resx">
       <DependentUpon>frmFINForm.vb</DependentUpon>
@@ -1887,20 +1875,11 @@
     <EmbeddedResource Include="module5\3_Cancel\frmFINPaymentNoticeCancelRequestApprovalList.resx">
       <DependentUpon>frmFINPaymentNoticeCancelRequestApprovalList.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.resx">
-      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalListAccount.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="module5\2_Search\frmFINEditList.resx">
       <DependentUpon>frmFINEditList.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestApprovalList.resx">
-      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestApprovalList.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="module5\frmFINDocumentList.resx">
       <DependentUpon>frmFINDocumentList.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="module5\PaymentNotice\InvoicePass\frmFINPaymentNoticeInvoicePassRequestList.resx">
-      <DependentUpon>frmFINPaymentNoticeInvoicePassRequestList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module5\4_Report\frmFINReportProduct.resx">
       <DependentUpon>frmFINReportProduct.vb</DependentUpon>
@@ -2278,6 +2257,7 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="module5\PaymentNotice\" />
     <Folder Include="module6\" />
     <Folder Include="Reports\module2\" />
     <Folder Include="Reports\module3\" />

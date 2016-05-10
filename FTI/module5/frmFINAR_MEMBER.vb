@@ -5,6 +5,7 @@ Public Class frmFINAR_MEMBER
     Dim ds As DataSet
     Dim parameters As New Dictionary(Of String, Object)
     Dim query As String
+    Dim dt As DataTable = New DataTable
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
 
@@ -59,6 +60,7 @@ Public Class frmFINAR_MEMBER
         query &= "LEFT JOIN MB_COMP_PERSON ON MB_MEMBER.COMP_PERSON_CODE = MB_COMP_PERSON.COMP_PERSON_CODE "
         query &= "LEFT JOIN MB_MEMBER_STATUS ON MB_MEMBER.MEMBER_STATUS_CODE = MB_MEMBER_STATUS.MEMBER_STATUS_CODE  AND MB_MEMBER_STATUS.MODULE = '1' "
         query &= "LEFT JOIN MB_MEMBER_MAIN_GROUP ON MB_MEMBER.MEMBER_MAIN_GROUP_CODE = MB_MEMBER_MAIN_GROUP.MEMBER_MAIN_GROUP_CODE "
+        query &= "LEFT JOIN MB_PRENAME ON MB_COMP_PERSON.PREN_CODE = MB_PRENAME.PRENAME_CODE "
         query &= "WHERE MEMBER_CODE LIKE @p0 "
         query &= "OR COMP_PERSON_NAME_TH LIKE @p0 "
         query &= "OR COMP_PERSON_NAME_EN LIKE @p0 "
@@ -74,7 +76,7 @@ Public Class frmFINAR_MEMBER
         'query &= "OR TAX_ID LIKE @p0 "
         'query &= "ORDER BY COMP_PERSON_CODE"
 
-        Dim dt As DataTable = New DataTable
+
 
         dt = fillWebSQL(query, parameters, "MB_MEMBER")
 
